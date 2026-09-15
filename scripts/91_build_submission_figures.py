@@ -1,4 +1,5 @@
 import re, os, subprocess, sys, shutil
+ONLY = [x for x in os.environ.get('ONLY','').split(',') if x]
 import fitz
 from PIL import Image, ImageOps
 
@@ -16,7 +17,8 @@ def preamble(path):
     pre = s[:i]
     pre = re.sub(r'\\externaldocument\{[^}]*\}\n?', '', pre)
     pre = pre.replace('\\usepackage[margin=2.5cm]{geometry}',
-                      '\\usepackage[paperwidth=8.27in,paperheight=64in,margin=1cm]{geometry}')
+                      '\\usepackage[paperwidth=6.69in,paperheight=64in,margin=0.5cm]{geometry}')
+    pre = pre.replace('\\usepackage{graphicx}', '\\usepackage{graphicx}\n\\usepackage{float}')
     return pre
 
 def spans(s, cmd=r'\\caption'):
@@ -46,7 +48,7 @@ def blank_subcaptions(blk):
         out.append(blk[pos:a])
         sub = blk[a:b]
         for s0, s1 in reversed(spans(sub)):
-            sub = sub[:s0] + '\\caption{}' + sub[s1:]
+            sub = sub[:s0] + '@@SUBCAP@@' + sub[s1:]
         out.append(sub); pos = b
     out.append(blk[pos:])
     return ''.join(out)
@@ -59,7 +61,9 @@ def drop_outer_captions(blk):
 def clean_block(blk):
     blk = blank_subcaptions(blk)
     blk = drop_outer_captions(blk)
-    blk = re.sub(r'^\s*\\ContinuedFloat\s*$', '', blk, flags=re.M)
+    blk = blk.replace('@@SUBCAP@@', '\\caption{}')
+    pass  # keep \ContinuedFloat: it stops \caption from resetting the subfigure counter
+    blk = re.sub('\\\\begin\\{figure\\}\\[[^]]*\\]', '\\\\begin{figure}[H]', blk)
     blk = blk.replace('\\end{figure}', '\\end{figure}')
     return blk
 
@@ -72,7 +76,7 @@ def build(name, pre, blocks):
     tex = standalone(pre, body)
     src = f'{SRC}/{name}.tex'
     open(src, 'w', encoding='utf-8').write(tex)
-    for _ in range(2):
+    for _ in range(1):
         r = subprocess.run(['pdflatex','-interaction=nonstopmode','-halt-on-error',
                             f'-output-directory={SRC}', src],
                            capture_output=True, text=True)
@@ -125,6 +129,7 @@ print(f'MAIN: {len(groups)} figure groups')
 report = []
 for i, g in enumerate(groups, 1):
     name = f'Figure{i}'
+    if ONLY and name not in ONLY: continue
     pdf = build(name, pre_main, g)
     if not pdf: continue
     dst = f'{OUT}/{name}.pdf'
@@ -141,6 +146,7 @@ senvs = [m.group(0) for m in re.finditer(r'\\begin\{figure\}.*?\\end\{figure\}',
 print(f'SUPP: {len(senvs)} figures')
 for i, e in enumerate(senvs, 1):
     name = f'FigureS{i}'
+    if ONLY and name not in ONLY: continue
     pdf = build(name, pre_supp, [e])
     if not pdf: continue
     dst = f'{OUT}/{name}.pdf'
