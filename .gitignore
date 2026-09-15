@@ -1,0 +1,22 @@
+# Large data files are not tracked; see README for public sources
+*.rds
+*.RDS
+*.h5ad
+*.vcf
+*.vcf.gz
+*.bgen
+*.bed
+*.bim
+*.fam
+*.gz
+*.tar
+*.zip
+results/
+data/
+tmp/
+.Rhistory
+.RData
+.Rproj.user/
+__pycache__/
+*.pyc
+.DS_Store
