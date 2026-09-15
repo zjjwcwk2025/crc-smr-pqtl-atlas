@@ -49,3 +49,18 @@ R 4.4.3; Python 3.11. Genomic coordinates are hg38.
 ## Licence
 
 MIT (see LICENSE). Data remain subject to the terms of the original resources.
+
+## Manuscript sources and submission figures
+
+- `manuscript/crc_smr_atlas_rev3.tex` - main text (TeX source)
+- `manuscript/crc_smr_supplementary.tex` - supplementary material (19 figures, 9 tables)
+- `manuscript/tables/` - Table 1-3 and Supplementary Tables S1-S9
+- `manuscript/cover_letter.tex` - cover letter
+- `scripts/91_build_submission_figures.py` - builds one combined PDF (and a 600-dpi TIFF)
+  per figure - `Figure 1`-`Figure 5` and `Figure S1`-`Figure S19` - into `submission/figures/`,
+  for journals that require multi-panel figures as a single file. Panel letters (a), (b), (c)
+  are preserved; captions are not embedded.
+
+Compile the manuscript with `pdflatex manuscript/crc_smr_atlas_rev3.tex` (twice, plus
+`bibtex crc_smr_atlas_rev3` for the main text). Figures are resolved through
+`\graphicspath{{results/figures/}{results/phase6_scrna/}}`.

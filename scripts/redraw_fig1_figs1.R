@@ -175,22 +175,22 @@ CMplot(d_cm, plot.type = "m",
        amplify = TRUE, signal.col = "red3", signal.pch = 19, signal.cex = 0.8,
        highlight = top_hits$SNP, highlight.col = "red3", highlight.pch = 19,
        highlight.text = top_hits$label,
-       highlight.text.col = "black", highlight.text.cex = 0.7, highlight.text.font = 3,
+       highlight.text.col = "black", highlight.text.cex = 0.65, highlight.text.font = 3,
        main = "SMR eQTL to CRC Manhattan plot",
-       main.cex = 1.4,
+       main.cex = 0.9, axis.cex = 0.7, lab.cex = 0.8, cex = 0.45,
        file.output = TRUE, file = "pdf",
        file.name = "FigS1a_manhattan",
-       dpi = 300, width = 14, height = 6,
+       dpi = 300, width = 6.3, height = 2.7,
        verbose = FALSE)
 
 # --- QQ ---
 CMplot(d_cm, plot.type = "q",
        conf.int = TRUE, conf.int.col = "grey80", box = FALSE,
        main = paste0("QQ plot of SMR p-values (lambda = ", sprintf("%.3f", lam), ")"),
-       main.cex = 1.4,
+       main.cex = 0.9, axis.cex = 0.7, lab.cex = 0.8,
        file.output = TRUE, file = "pdf",
        file.name = "FigS1b_qq_plot",
-       dpi = 300, width = 8, height = 8,
+       dpi = 300, width = 4.54, height = 4.54,
        verbose = FALSE)
 
 # rename CMplot-prefixed files to clean names

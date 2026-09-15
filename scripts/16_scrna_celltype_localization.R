@@ -135,12 +135,17 @@ plot_genes <- intersect(plot_genes, top_genes)
 p_dot <- DotPlot(scrna, features = plot_genes, group.by = "CellType_Major",
                   assay = "RNA", dot.scale = 8) +
   RotatedAxis() +
-  ggtitle(sprintf("SMR Top Genes: Cell-Type Expression (%d genes; %d cells; %d cell types)",
-                  length(plot_genes), ncol(scrna), length(cell_types))) +
+  # Short title: the gene / cell / cell-type counts live in the figure caption.
+  ggtitle("Cell-type expression of SMR genes") +
+  labs(x = "Gene", y = "Cell type") +
   theme(axis.text.x = element_text(size = 7, angle = 45, hjust = 1),
         axis.text.y = element_text(size = 9))
 
-ggsave(file.path(OUT_DIR, "FigX_dotplot_celltype.pdf"), p_dot, width = 14, height = 6)
+ggsave(file.path(OUT_DIR, "FigX_dotplot_celltype.pdf"), p_dot, width = 6.30, height = 2.70)
+dir.create("/ifs1/User/zhouman/project9-v5-crc-atlas/results/figures", showWarnings = FALSE, recursive = TRUE)
+file.copy(file.path(OUT_DIR, "FigX_dotplot_celltype.pdf"),
+          "/ifs1/User/zhouman/project9-v5-crc-atlas/results/figures/FigS7_celltype_dotplot.pdf",
+          overwrite = TRUE)
 cat("Dot plot saved.\n")
 
 # ===== 6. CAF-specific Expression Analysis =====

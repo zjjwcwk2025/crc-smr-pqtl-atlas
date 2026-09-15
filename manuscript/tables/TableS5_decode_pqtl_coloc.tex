@@ -1,0 +1,16 @@
+\begin{table}[htbp]
+\centering
+\caption{deCODE pQTL colocalization results. Only CCM2 passed coloc (PPH4 $>$ 0.8). The remaining 4 genes showed PPH3 $\approx$ 1.0, suggesting independent causal variants for pQTL and GWAS signals.}\label{tab:decode_pqtl_coloc}
+\small
+\begin{tabular}{llllllll}
+\toprule
+  Gene & Source & $n_{\text{SNPs}}$ & PPH4 & PPH3 & Coloc & Wald $b$ & Wald $p$ \\
+\midrule
+  STAT6 & deCODE & 5180 & 0.0000 & 1.000 & Fail & -0.029 & 0.0000 \\
+  LIMA1 & deCODE & 5014 & 0.0002 & 1.000 & Fail & 0.858 & 0.0000 \\
+  CCM2 & deCODE & 6850 & 0.9514 & 0.049 & Pass & -0.766 & 0.0000 \\
+  TNFRSF1A & deCODE & 6859 & 0.0000 & 1.000 & Fail & -0.070 & 0.3487 \\
+  TNFRSF1B & deCODE & 6462 & 0.0084 & 0.287 & Fail & -0.035 & 0.6139 \\
+\bottomrule
+\end{tabular}
+\end{table}

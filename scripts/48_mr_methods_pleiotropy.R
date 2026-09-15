@@ -23,10 +23,10 @@ setwd("/ifs1/User/zhouman/project9-v5-crc-atlas")
 outdir <- "results/figures"
 dir.create(outdir, showWarnings = FALSE, recursive = TRUE)
 
-theme_nc <- theme_classic(base_size = 11, base_family = "sans") +
+theme_nc <- theme_classic(base_size = 9, base_family = "Liberation Sans") +
   theme(
-    axis.title = element_text(size = 11, face = "bold"),
-    axis.text  = element_text(size = 9, color = "black"),
+    axis.title = element_text(size = 10, face = "bold"),
+    axis.text  = element_text(size = 8.5, color = "black"),
     plot.title = element_text(size = 11, face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = 8, hjust = 0.5, color = "grey40"),
     strip.text = element_text(face = "bold"),
@@ -166,7 +166,7 @@ p26 <- ggplot(forest, aes(x = b, y = method, color = method)) +
   theme_nc
 
 ggsave(file.path(outdir, "FigS26_pqtl_mr_methods_forest.pdf"), p26,
-       device = cairo_pdf, width = 11, height = 7)
+       device = cairo_pdf, width = 6.30, height = 4.01)
 cat("-> FigS26_pqtl_mr_methods_forest.pdf\n")
 
 # ══════════════════════════════════════════════════════════════════
@@ -205,7 +205,7 @@ p27 <- ggplot(funnel, aes(x = ratio, y = precision)) +
   theme_nc
 
 ggsave(file.path(outdir, "FigS27_pqtl_mr_funnel_pleiotropy.pdf"), p27,
-       device = cairo_pdf, width = 11, height = 7)
+       device = cairo_pdf, width = 6.30, height = 4.01)
 cat("-> FigS27_pqtl_mr_funnel_pleiotropy.pdf\n")
 
 # ── postcondition checks ──────────────────────────────────────────

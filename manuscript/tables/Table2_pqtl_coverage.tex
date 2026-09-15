@@ -1,0 +1,31 @@
+\begin{table}[htbp]
+\centering
+\caption{Plasma protein coverage and pQTL--GWAS colocalization for the 17 genes with matching protein measurements. Cis-pQTL instruments were defined at $p < 5\times10^{-8}$ within $\pm$1 Mb of the gene; $n$ is the number of instruments used in the Mendelian randomization analysis. Wald-ratio estimates are the ratio of the CRC GWAS effect to the cis-pQTL effect on protein level. PPH4, posterior probability of a shared causal variant between the cis-pQTL and CRC GWAS signals (coloc.abf); PPH4 $>$ 0.8 indicates colocalization. Median $F$ is the median instrument $F$ statistic across the cis-pQTL instruments. No genome-wide significant cis-pQTL was detected for the seven deCODE-only proteins or for TET2; TET2 was nonetheless tested by colocalization and showed no evidence of a shared causal variant (PPH4 $= 0.006$). Panel names refer to the proteomic panel in which the protein was measured; MR panel is the panel supplying the cis-pQTL instruments.}
+\label{tab:pqtl_coverage}
+\scriptsize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llllllll}
+\toprule
+  Gene & Panel & $n$ cis-pQTL & Median $F$ & Wald $b$ ($p$) & PPH4 & Protein-level support \\
+\midrule
+  CCM2      & deCODE         & deCODE   & 94     & 30.4   & -0.766 ($6.28\times10^{-6}$) & 0.9514     & colocalizes \\
+  TNF       & both           & UKB-PPP  & 2288   & 49.2   & -0.295 ($5.22\times10^{-4}$) & 0.2751     & no coloc \\
+  LTA       & both           & UKB-PPP  & 10213  & 175.4  & -0.014 (0.506)       & 0.2605     & no coloc \\
+  TNFRSF1B  & deCODE         & deCODE   & 73     & 127.5  & -0.035 (0.614)       & 0.0084     & no coloc \\
+  LIMA1     & deCODE         & deCODE   & 70     & 32.8   & +0.858 ($4.29\times10^{-7}$) & $1.93\times10^{-4}$ & no coloc \\
+  NCF2      & both           & UKB-PPP  & 28     & 62.6   & -0.071 (0.307)       & $2.14\times10^{-6}$ & no coloc \\
+  STAT6     & deCODE         & deCODE   & 61     & 66.0   & -0.029 ($3.86\times10^{-5}$) & $4.65\times10^{-8}$ & no coloc \\
+  CDKN1A    & both           & UKB-PPP  & 228    & 66.9   & +0.130 (0.020)       & $1.33\times10^{-9}$ & no coloc \\
+  TNFRSF1A  & deCODE         & deCODE   & 25     & 54.2   & -0.070 (0.349)       & $1.58\times10^{-10}$ & no coloc \\
+  ARPC5     & deCODE         & ---      & none   & ---    & ---                  & ---        & no cis-pQTL instruments \\
+  BMP2      & deCODE         & ---      & none   & ---    & ---                  & ---        & no cis-pQTL instruments \\
+  CABLES2   & deCODE         & ---      & none   & ---    & ---                  & ---        & no cis-pQTL instruments \\
+  CERS5     & deCODE         & ---      & none   & ---    & ---                  & ---        & no cis-pQTL instruments \\
+  MZF1      & deCODE         & ---      & none   & ---    & ---                  & ---        & no cis-pQTL instruments \\
+  STAB1     & deCODE         & ---      & none   & ---    & ---                  & ---        & no cis-pQTL instruments \\
+  UBE2M     & deCODE         & ---      & none   & ---    & ---                  & ---        & no cis-pQTL instruments \\
+  TET2      & UKB-PPP        & ---      & none   & ---    & ---                  & 0.0059     & no cis-pQTL instruments \\ 
+\bottomrule
+\end{tabular}
+}
+\end{table}

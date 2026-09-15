@@ -27,10 +27,10 @@ outdir <- "results/figures"
 dir.create(outdir, showWarnings = FALSE, recursive = TRUE)
 
 # ── theme (mirror of generate_manuscript_figures.R) ───────────
-theme_nc <- theme_classic(base_size = 12, base_family = "sans") +
+theme_nc <- theme_classic(base_size = 9, base_family = "Liberation Sans") +
   theme(
-    axis.title = element_text(size = 13, face = "bold"),
-    axis.text  = element_text(size = 11, color = "black"),
+    axis.title = element_text(size = 10, face = "bold"),
+    axis.text  = element_text(size = 8.5, color = "black"),
     plot.title = element_text(size = 14, face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = 10, hjust = 0.5, color = "grey40"),
     legend.title = element_text(size = 11, face = "bold"),
@@ -148,7 +148,7 @@ fg_plot <- fg %>%
   )
 
 subtitle_fg <- sprintf(
-  "eQTL-IVW MR of CRC risk in FinnGen R13. n = %d genes; colour = direction vs discovery SMR.",
+  "FinnGen R13 eQTL-IVW MR (n = %d genes; colour = concordance).",
   nrow(fg_plot))
 
 p_fg <- ggplot(fg_plot, aes(x = ivw_b, y = gene, color = concord)) +
@@ -165,11 +165,11 @@ p_fg <- ggplot(fg_plot, aes(x = ivw_b, y = gene, color = concord)) +
 
 # ── save all ──────────────────────────────────────────────────
 ggsave(file.path(outdir, "FigS20_pqtl_mr_decode_forest.pdf"), p_decode,
-       device = cairo_pdf, width = 8, height = 5)
+       device = cairo_pdf, width = 5.04, height = 3.15)
 ggsave(file.path(outdir, "FigS21_pqtl_mr_ukbppp_forest.pdf"), p_ukb,
-       device = cairo_pdf, width = 8, height = 4.5)
+       device = cairo_pdf, width = 4.41, height = 2.48)
 ggsave(file.path(outdir, "FigS22_finngen_replication_forest.pdf"), p_fg,
-       device = cairo_pdf, width = 8, height = 6)
+       device = cairo_pdf, width = 5.67, height = 4.25)
 
 cat("Saved 3 MR forest plots to", outdir, "\n")
 cat("  - FigS20_pqtl_mr_decode_forest.pdf\n")

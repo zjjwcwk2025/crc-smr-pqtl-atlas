@@ -23,18 +23,20 @@ outdir <- "results/figures"
 dir.create(outdir, showWarnings=FALSE, recursive=TRUE)
 
 # ── ggplot2 theme ──────────────────────────────────────────────
-theme_nc <- theme_classic(base_size=12, base_family="sans") +
+# Figures are generated at their final printed width (see manuscript), so these
+# sizes are the on-page point sizes: nothing falls below ~8 pt after inclusion.
+theme_nc <- theme_classic(base_size=9, base_family="Liberation Sans") +
   theme(
-    axis.title = element_text(size=13, face="bold"),
-    axis.text  = element_text(size=11, color="black"),
-    plot.title = element_text(size=14, face="bold", hjust=0.5),
-    plot.subtitle = element_text(size=10, hjust=0.5, color="grey40"),
-    legend.title = element_text(size=11, face="bold"),
-    legend.text = element_text(size=10),
+    axis.title = element_text(size=10, face="bold"),
+    axis.text  = element_text(size=8.5, color="black"),
+    plot.title = element_text(size=10, face="bold", hjust=0.5),
+    plot.subtitle = element_text(size=8, hjust=0.5, color="grey40"),
+    legend.title = element_text(size=9, face="bold"),
+    legend.text = element_text(size=8),
     legend.position = "bottom",
-    panel.grid.major.y = element_line(color="grey90", linewidth=0.3),
+    panel.grid.major.y = element_line(color="grey92", linewidth=0.25),
     panel.grid.major.x = element_blank(),
-    plot.margin = margin(12,12,12,12)
+    plot.margin = margin(5,6,4,4)
   )
 
 # ==== Colours ====
@@ -293,7 +295,7 @@ p2a_supp <- ggplot(smr_tier1, aes(x = OR, y = SYMBOL, color = direction)) +
   theme_nc + theme(panel.grid.major.x = element_line(color = "grey90", linewidth = 0.3),
                    panel.grid.major.y = element_blank())
 
-ggsave(file.path(outdir, "FigS2_smr_or_forest.pdf"), p2a_supp, width = 9, height = 4.5, device = cairo_pdf)
+ggsave(file.path(outdir, "FigS2_smr_or_forest.pdf"), p2a_supp, width = 5.04, height = 2.52, device = cairo_pdf)
 cat("  -> FigS2_smr_or_forest.pdf\n")
 
 # ==============================================================
@@ -543,7 +545,7 @@ p5a_idg <- ggplot(idg_data, aes(x = gene, y = tdl_score, fill = tdl)) +
   coord_flip() +
   theme_nc
 
-ggsave(file.path(outdir, "FigS18_idg_druggability.pdf"), p5a_idg, width = 8, height = 4, device = cairo_pdf)
+ggsave(file.path(outdir, "FigS18_idg_druggability.pdf"), p5a_idg, width = 5.04, height = 2.52, device = cairo_pdf)
 cat("  -> FigS18_idg_druggability.pdf\n")
 
 # ==============================================================
@@ -596,7 +598,7 @@ p5b2 <- ggplot(phewas %>% mutate(gene=fct_reorder(gene, safety_concern_score)),
   coord_flip() +
   theme_nc
 
-ggsave(file.path(outdir,"FigS19_phewas_safety_scores.pdf"), p5b2, width=7, height=4, device=cairo_pdf)
+ggsave(file.path(outdir,"FigS19_phewas_safety_scores.pdf"), p5b2, width = 4.41, height = 2.52, device=cairo_pdf)
 cat("  -> FigS19_phewas_safety_scores.pdf\n")
 
 # ==============================================================
@@ -709,7 +711,7 @@ if(nrow(susie_sens) > 0) {
       legend.position = "right"
     )
 
-  ggsave(file.path(outdir,"FigS3_susie_sensitivity.pdf"), pS3, width=12, height=5, device=cairo_pdf)
+  ggsave(file.path(outdir,"FigS3_susie_sensitivity.pdf"), pS3, width = 6.3, height = 2.63, device=cairo_pdf)
   cat("  -> FigS3_susie_sensitivity.pdf\n")
 }
 
@@ -746,7 +748,7 @@ if(nrow(ukb_coloc) > 0) {
          caption=paste0("n = ", nrow(ukb_coloc), " UKB-PPP genes; dashed line, PPH4 = 0.8.")) +
     coord_flip() + theme_nc
 
-  ggsave(file.path(outdir,"FigS4_ukbppp_pqtl_coloc.pdf"), pS4, width=6, height=3.5, device=cairo_pdf)
+  ggsave(file.path(outdir,"FigS4_ukbppp_pqtl_coloc.pdf"), pS4, width = 3.78, height = 2.21, device=cairo_pdf)
   cat("  -> FigS4_ukbppp_pqtl_coloc.pdf\n")
 }
 
@@ -780,7 +782,7 @@ if(nrow(decode_coloc) > 0) {
          caption=paste0("n = ", nrow(decode_coloc), " deCODE genes; CCM2 PPH4 = 0.9514.")) +
     coord_flip() + theme_nc
 
-  ggsave(file.path(outdir,"FigS5_decode_pqtl_coloc.pdf"), pS5, width=6, height=3.5, device=cairo_pdf)
+  ggsave(file.path(outdir,"FigS5_decode_pqtl_coloc.pdf"), pS5, width = 3.78, height = 2.21, device=cairo_pdf)
   cat("  -> FigS5_decode_pqtl_coloc.pdf\n")
 }
 
@@ -792,24 +794,31 @@ cat("\n>>> Fig S6: Microenvironment (ME) zone distribution\n")
 me_chars <- read_csv("results/phase6_scrna/TableS_microenvironment_characterization.csv", show_col_types=FALSE)
 me_chars <- me_chars %>%
   mutate(
-    me_label = paste0(microenvironment, "\n", top_ct1, "\n(", n_spots, " spots)"),
-    me_label = factor(me_label, levels = me_label)
+    # Compact axis labels: the dominant cell type is carried by the fill legend,
+    # and the zone sizes and descriptions are given in the figure caption.
+    me_label = factor(microenvironment, levels = paste0("ME", 1:6))
   )
 
 # Panel A: spot count barplot per ME zone
+# Rendered at the final printed width (0.44 x 6.30 in = 2.77 in). Titles, the
+# per-zone spot counts and the zone descriptions are carried by the figure
+# caption, so the panel itself only carries the bars and the fill legend.
 pS6a <- ggplot(me_chars, aes(x = me_label, y = n_spots, fill = top_ct1)) +
-  geom_col(width = 0.65, color = "black", linewidth = 0.3) +
-  geom_text(aes(label = paste0(n_spots, " (", pct_spots, "%)")),
-            vjust = -0.5, size = 3.8, fontface = "bold") +
+  geom_col(width = 0.7, color = "black", linewidth = 0.3) +
   scale_fill_brewer(palette = "Set2", name = "Dominant cell type") +
-  scale_y_continuous(limits = c(0, max(me_chars$n_spots) * 1.15), expand = c(0, 0)) +
-  labs(x = "", y = "Number of Visium spots",
-       title = "Spatial Microenvironment Zones (K-means, k=6)",
-       subtitle = paste0(sum(me_chars$n_spots), " Visium spots clustered by cell-type module scores"),
-       caption = "Elbow method selected k = 6; spots = biological samples, n = 3493.") +
-  theme_nc + theme(axis.text.x = element_text(size = 8.5))
+  scale_y_continuous(limits = c(0, max(me_chars$n_spots) * 1.06), expand = c(0, 0)) +
+  labs(x = "", y = "Visium spots") +
+  theme_nc +
+  theme(axis.text.x = element_text(size = 8.5),
+        legend.position = "bottom",
+        legend.title = element_text(size = 7.5),
+        legend.text = element_text(size = 7.5),
+        legend.key.size = unit(0.22, "cm"),
+        legend.spacing.x = unit(0.08, "cm"),
+        legend.margin = margin(0, 0, 0, 0)) +
+  guides(fill = guide_legend(ncol = 3))
 
-ggsave(file.path(outdir, "FigS15_me_zone_barplot.pdf"), pS6a, width = 10, height = 5, device = cairo_pdf)
+ggsave(file.path(outdir, "FigS15_me_zone_barplot.pdf"), pS6a, width = 2.77, height = 2.60, device = cairo_pdf)
 cat("  -> FigS15_me_zone_barplot.pdf\n")
 
 # Panel B: Tier 1 gene expression heatmap across ME zones
@@ -835,7 +844,7 @@ pS6b <- ggplot(me_expr_plot, aes(x = microenvironment, y = gene, fill = mean_exp
        caption = "n = 15 genes across 6 zones; mean of SCT-normalized counts.") +
   theme_nc + theme(panel.grid = element_blank(), axis.text.x = element_text(angle = 30, hjust = 1))
 
-ggsave(file.path(outdir, "FigS16_me_tier1_heatmap.pdf"), pS6b, width = 8, height = 6.5, device = cairo_pdf)
+ggsave(file.path(outdir, "FigS16_me_tier1_heatmap.pdf"), pS6b, width = 5.54, height = 3.60, device = cairo_pdf)
 cat("  -> FigS16_me_tier1_heatmap.pdf\n")
 
 # ==== Summary ====

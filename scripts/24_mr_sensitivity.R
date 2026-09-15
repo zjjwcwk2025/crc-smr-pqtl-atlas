@@ -162,10 +162,16 @@ if (nrow(results_valid) > 0) {
          y = expression(-log[10](p[HEIDI])),
          title = "MR Sensitivity: HEIDI vs SMR Significance",
          subtitle = sprintf("75 Bonferroni-significant genes")) +
-    theme_bw(base_size = 10)
+    theme_bw(base_size = 9)
 
-  ggsave("results/phase5c_sensitivity/mr_sensitivity_scatter.pdf", p, width = 8, height = 6)
-  ggsave("results/phase5c_sensitivity/mr_sensitivity_scatter.png", p, width = 8, height = 6, dpi = 150)
+  # Rendered at the final printed width (0.80 x 6.30 in = 5.04 in) so the type is
+  # not down-scaled below 7 pt in the supplementary PDF.
+  ggsave("results/phase5c_sensitivity/mr_sensitivity_scatter.pdf", p, width = 5.04, height = 3.78)
+  ggsave("results/phase5c_sensitivity/mr_sensitivity_scatter.png", p, width = 5.04, height = 3.78, dpi = 300)
+  dir.create("results/figures", showWarnings = FALSE, recursive = TRUE)
+  file.copy("results/phase5c_sensitivity/mr_sensitivity_scatter.pdf",
+            "results/figures/FigS6_mr_sensitivity.pdf", overwrite = TRUE)
+  cat("  -> FigS6_mr_sensitivity.pdf exported at printed width (5.04 x 3.78 in)\n")
 }
 
 cat("\nDone. Results saved to results/phase5c_sensitivity/\n")

@@ -35,10 +35,10 @@ outdir <- "results/figures"
 dir.create(outdir, showWarnings = FALSE, recursive = TRUE)
 
 # ── shared theme (mirrors generate_manuscript_figures.R) ───────────
-theme_nc <- theme_classic(base_size = 11, base_family = "sans") +
+theme_nc <- theme_classic(base_size = 9, base_family = "Liberation Sans") +
   theme(
-    axis.title = element_text(size = 11, face = "bold"),
-    axis.text  = element_text(size = 9, color = "black"),
+    axis.title = element_text(size = 10, face = "bold"),
+    axis.text  = element_text(size = 8.5, color = "black"),
     plot.title = element_text(size = 10, face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = 8, hjust = 0.5, color = "grey40"),
     legend.position = "none",
@@ -101,7 +101,7 @@ for (i in seq_len(nrow(tier1))) {
     theme_nc
 
   if (nrow(lab) > 0) {
-    p <- p + geom_text_repel(data = lab, aes(label = SNP), size = 2.2,
+    p <- p + geom_text_repel(data = lab, aes(label = SNP), size = 2.6,
                              color = "#E41A1C", max.overlaps = 20,
                              nudge_y = 0.3, segment.size = 0.2)
   }
@@ -115,7 +115,7 @@ p23 <- wrap_plots(p_list, ncol = 3) +
         plot.subtitle = element_text(size = 9, hjust = 0.5, color = "grey40"))
 
 ggsave(file.path(outdir, "FigS23_tier1_regional_plots.pdf"), p23,
-       device = cairo_pdf, width = 12, height = 8)
+       device = cairo_pdf, width = 6.30, height = 4.20)
 cat("  -> FigS23_tier1_regional_plots.pdf\n")
 
 # ══════════════════════════════════════════════════════════════════
@@ -188,7 +188,7 @@ p24 <- ggplot(scatter_tbl, aes(x = e_beta, y = o_beta)) +
   theme_nc + theme(strip.text = element_text(face = "bold"), legend.position = "none")
 
 ggsave(file.path(outdir, "FigS24_pqtl_mr_scatter.pdf"), p24,
-       device = cairo_pdf, width = 11, height = 7)
+       device = cairo_pdf, width = 6.30, height = 4.01)
 cat("  -> FigS24_pqtl_mr_scatter.pdf\n")
 
 ## --- FigS25: leave-one-out IVW (one facet per gene) ---
@@ -226,7 +226,7 @@ p25 <- ggplot(loo, aes(x = b, y = exclude)) +
   theme_nc + theme(strip.text = element_text(face = "bold"))
 
 ggsave(file.path(outdir, "FigS25_pqtl_mr_loo.pdf"), p25,
-       device = cairo_pdf, width = 11, height = 7)
+       device = cairo_pdf, width = 6.30, height = 4.01)
 cat("  -> FigS25_pqtl_mr_loo.pdf\n")
 
 # ── postcondition checks ──────────────────────────────────────────

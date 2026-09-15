@@ -159,19 +159,20 @@ cat(sprintf("Optimal k (elbow method) = %d\n", opt_k))
 
 # Generate elbow plot
 elbow_df <- data.frame(k=k_range, wss=wss)
+# Rendered at the final printed width (0.56 x 6.30 in = 3.53 in) with a 9 pt
+# base size, so the type is not down-scaled below 7 pt in print. Panel titles
+# are omitted because the figure caption carries that information.
 elbow_plot <- ggplot(elbow_df, aes(x=k, y=wss)) +
-  geom_point(size=3) +
-  geom_line(linewidth=1) +
-  geom_vline(xintercept=opt_k, linetype="dashed", color="darkred", linewidth=1) +
+  geom_point(size=1.6) +
+  geom_line(linewidth=0.5) +
+  geom_vline(xintercept=opt_k, linetype="dashed", color="darkred", linewidth=0.5) +
   annotate("text", x=opt_k, y=max(wss), label=sprintf("k=%d", opt_k),
-           vjust=-0.5, color="darkred", fontface="bold") +
-  labs(title="Elbow Plot: Optimal Number of Microenvironment Clusters",
-       subtitle=sprintf("Selected k=%d (max curvature of WSS)", opt_k),
-       x="Number of clusters (k)", y="Total Within-Cluster Sum of Squares") +
-  theme_minimal(base_size=12)
+           vjust=-0.5, color="darkred", fontface="bold", size=3) +
+  labs(x="Number of clusters (k)", y="Total within-cluster sum of squares") +
+  theme_minimal(base_size=9)
 
 ggsave(file.path(OUT_DIR, "FigS14_microenvironment_elbow_plot.pdf"),
-       elbow_plot, width=6, height=5)
+       elbow_plot, width=3.28, height=2.65)
 
 # ===== 6. Cluster spots into microenvironment types =====
 cat(sprintf("\nClustering spots into %d microenvironment types...\n", opt_k))

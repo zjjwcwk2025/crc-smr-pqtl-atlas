@@ -20,3 +20,11 @@ tmp/
 __pycache__/
 *.pyc
 .DS_Store
+
+# Compilation by-products and large figure exports
+*.aux
+*.log
+*.out
+*.blg
+submission/figures/*.tif
+submission/figures/src/

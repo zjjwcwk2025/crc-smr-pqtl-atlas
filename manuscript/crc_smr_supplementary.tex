@@ -1,0 +1,281 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{subcaption}
+\captionsetup[subfigure]{labelformat=parens,labelsep=space}
+\renewcommand{\thesubfigure}{\alph{subfigure}}
+\graphicspath{{results/figures_rev3/}{results/figures/}{results/phase6_scrna/}}
+
+\title{Supplementary Material\\[0.4em]
+\large Limited plasma proteomic coverage constrains genetic drug-target prioritization in colorectal cancer}
+\author{Jiajie Zhou}
+\date{}
+
+\begin{document}
+\maketitle
+
+%------------------------------------------------------------------
+\setcounter{figure}{0}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\figurename}{Supplementary Figure}
+\subsection*{Supplementary Figures}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{FigS1a_manhattan.pdf}
+
+\vspace{0.5em}
+
+\includegraphics[width=0.72\textwidth]{FigS1b_qq_plot.pdf}
+\caption{\textbf{Genome-wide SMR results.}
+(Top) Manhattan plot of 15,582 gene-level SMR tests. Red line: Bonferroni threshold
+($p < 3.21 \times 10^{-6}$). (Bottom) QQ plot with genomic inflation factor $\lambda = 1.600$.}
+\label{fig:S1}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{FigS23_tier1_regional_plots.pdf}
+\caption{\textbf{Regional association plots for the six non-MHC Tier 1 genes.}
+CRC GWAS $-\log_{10}p$ (blue) with SuSiE credible-set SNPs (red) and gene position (green dashed)
+for UTP11, BMP2, PNKD, LAMC1, TMBIM1 and GPBAR1. Each locus resolved to single-SNP credible sets
+(PIP = 1.0); panel titles give coloc PPH4.}
+\label{fig:S23}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{FigS3_susie_sensitivity.pdf}
+\caption{\textbf{SuSiE fine-mapping sensitivity analysis.}
+Heatmap of credible set counts across 108 parameter combinations for the six non-MHC
+Tier 1 genes (65/108 successful; 43 failures concentrated in chr2:219Mb at $\pm$1,000 kb
+windows).
+All successful runs produced single-SNP credible sets (PIP = 1.0) across all conditions,
+consistent with, but not by itself establishing, a single causal variant at these loci.}
+\label{fig:S3}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{FigS2_smr_or_forest.pdf}
+\caption{\textbf{Per-SD odds ratios for six non-MHC Tier 1 genes.}
+Forest plot of SMR-derived per-standard-deviation odds ratios (OR) and 95\% confidence intervals for CRC risk.
+BMP2 (OR = 1.38, 95\% CI 1.27--1.50) and TMBIM1 (OR = 1.35, 95\% CI 1.25--1.46) showed the largest risk
+effects; GPBAR1 (OR = 0.78, 95\% CI 0.73--0.83) was the only protective gene.}
+\label{fig:S2}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{FigS6_mr_sensitivity.pdf}
+\caption{\textbf{HEIDI heterogeneity versus SMR significance.}
+Scatter of $-\log_{10}(p_{\mathrm{HEIDI}})$ against $-\log_{10}(p_{\mathrm{SMR}})$ for the 75
+Bonferroni-significant genes, colored by sensitivity tier. Dashed vertical line:
+$p_{\mathrm{SMR}} = 3.21\times10^{-6}$ (Bonferroni threshold); dashed horizontal line:
+$p_{\mathrm{HEIDI}} = 0.01$ (heterogeneity threshold).}
+\label{fig:S6}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{FigS4_ukbppp_pqtl_coloc.pdf}
+\caption{\textbf{UKB-PPP pQTL colocalization.}
+Forest plot of coloc.abf PPH4 values for $n = 5$ UKB-PPP pQTL--GWAS colocalization tests. All genes failed
+coloc (PPH4 $<$ 0.8).}
+\label{fig:S4}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{FigS5_decode_pqtl_coloc.pdf}
+\caption{\textbf{deCODE pQTL colocalization.}
+Forest plot of coloc.abf PPH4 values for $n = 5$ deCODE pQTL--GWAS colocalization tests
+(LIMA1, CCM2, STAT6, TNFRSF1A, TNFRSF1B). Only CCM2 passed
+coloc (PPH4 = 0.9514).}
+\label{fig:S5}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{FigS20_pqtl_mr_decode_forest.pdf}
+\caption{\textbf{deCODE pQTL Mendelian randomization forest.}
+Wald ratio (single top cis-pQTL) and inverse-variance-weighted (IVW) estimates with 95\% CI for
+$n = 5$ deCODE genes with cis-pQTL instruments (LIMA1, CCM2, STAT6, TNFRSF1A, TNFRSF1B).
+LIMA1 (Wald $p = 4.29\times10^{-7}$), CCM2 ($p = 6.28\times10^{-6}$) and STAT6
+($p = 3.86\times10^{-5}$) were significant; TNFRSF1A ($p = 0.349$) and TNFRSF1B ($p = 0.614$)
+were not.}
+\label{fig:S20}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{FigS21_pqtl_mr_ukbppp_forest.pdf}
+\caption{\textbf{UKB-PPP pQTL Mendelian randomization forest.}
+Wald ratio and IVW estimates for $n = 4$ UKB-PPP genes with Olink protein measurements and
+cis-pQTL instruments (CDKN1A, LTA, NCF2, TNF). CDKN1A (Wald $p = 0.020$, $b = +0.130$,
+risk-increasing) and TNF ($p = 5.0\times10^{-4}$, $b = -0.295$, protective) were significant.}
+\label{fig:S21}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{FigS24_pqtl_mr_scatter.pdf}
+\caption{\textbf{pQTL MR instrument scatter.}
+SNP effect on protein level (exposure, pQTL $\beta$) versus SNP effect on CRC risk (outcome,
+GWAS $\beta$) for the multi-instrument pQTL MR genes (CCM2, LIMA1, STAT6, CDKN1A, TNF); dashed
+line = IVW causal estimate per gene.}
+\label{fig:S24}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{FigS25_pqtl_mr_loo.pdf}
+\caption{\textbf{pQTL MR leave-one-out sensitivity.}
+IVW causal estimate after sequentially dropping each instrument (red triangle = all instruments),
+showing robustness of the estimate to any single instrument for the five pQTL MR genes.}
+\label{fig:S25}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{FigS26_pqtl_mr_methods_forest.pdf}
+\caption{\textbf{pQTL MR multi-method comparison.}
+IVW, weighted median, weighted mode and MR-Egger slope estimates with 95\% CI for each of the five
+pQTL MR genes. MR-Egger slope accounts for directional pleiotropy; qualitatively consistent
+directions across methods support a robust causal estimate.}
+\label{fig:S26}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{FigS27_pqtl_mr_funnel_pleiotropy.pdf}
+\caption{\textbf{pQTL MR funnel plot and pleiotropy diagnostics.}
+Per-SNP Wald-ratio causal estimate versus instrument precision (1/SE) for the five pQTL MR genes;
+symmetry around the IVW line indicates no directional pleiotropy. Annotations report MR-Egger
+intercept and Cochran's Q. Statistically significant MR-Egger intercepts for STAT6
+($p = 3.0\times10^{-12}$), CDKN1A ($p = 1.8\times10^{-4}$) and TNF ($p < 10^{-6}$) indicate
+directional pleiotropy at these loci; high Cochran's Q indicates residual heterogeneity.
+MR-PRESSO flagged 5 (STAT6), 10 (LIMA1), 15 (CCM2) and 22 (CDKN1A) outlier instruments and left
+the direction of every estimate unchanged (Table~3).}
+\label{fig:S27}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{FigS7_celltype_dotplot.pdf}
+\caption{\textbf{Cell-type specificity of SMR genes in CRC single-cell RNA-seq.}
+Dotplot of the 16 most cell-type-specific SMR genes across 10 cell types in CRC single-cell RNA-seq
+($n = 50,214$ cells; dot size = fraction expressing, color = mean normalized expression). MMP11 was
+the only fibroblast-specific SMR gene (specificity = 5.78).}
+\label{fig:S7}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.70\textwidth]{FigS8_spatial_TMBIM1.pdf}
+\caption{\textbf{Spatial expression of TMBIM1 in CRC tissue.}
+Visium spatial expression of TMBIM1 across $n = 3{,}493$ spots; TMBIM1 was detected in 57\% of
+spots with fibroblast-enriched localization (colour scale: SCT-normalized expression).}
+\label{fig:S8}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{subfigure}[b]{0.52\textwidth}
+\centering
+\includegraphics[width=\linewidth]{FigS14_microenvironment_elbow_plot.pdf}
+\caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.44\textwidth}
+\centering
+\includegraphics[width=\linewidth]{FigS15_me_zone_barplot.pdf}
+\caption{}
+\end{subfigure}
+\\[0.6em]
+\begin{subfigure}[b]{0.88\textwidth}
+\centering
+\includegraphics[width=\linewidth]{FigS16_me_tier1_heatmap.pdf}
+\caption{}
+\end{subfigure}
+\caption{\textbf{Spatial microenvironment zoning of CRC Visium data.}
+(a) K-means within-cluster sum of squares for $k = 2$ to $k = 8$; the elbow at $k = 6$ defined
+the final partition. (b) Composition of the six K-means-defined microenvironment (ME) zones
+across 3{,}493 Visium spots; ME6 Stromal matrix was the largest zone (927 spots, 26.5\%),
+followed by ME3 Mast cell zone (746, 21.4\%), ME5 T cell territory (613, 17.5\%), ME1
+Myeloid-enriched (580, 16.6\%), ME2 Epithelial-dominant (518, 14.8\%) and ME4 B cell niches
+(109, 3.1\%). (c) Expression of the 15 Tier 1 genes detected in Visium data across the six ME
+zones (colour: mean SCT-normalised expression per spot; this panel reports
+expression levels, not an enrichment score). Expression was not restricted to a
+single zone: across the six core candidates the between-zone fold range in mean
+expression was only 1.25--1.59, and UTP11, BMP2, LAMC1 and TMBIM1 each reached
+their lowest mean expression in the stromal ME6 zone (PNKD: ME6 second lowest).
+TMBIM1, which showed the strongest stromal association in the single-cell data,
+was highest in the epithelial-dominant ME2 zone. GPBAR1 was detected in a single
+epithelial ME2 spot (0.03\% of 3{,}493 spots).}
+\label{fig:S14}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{FigS22_finngen_replication_forest.pdf}
+\caption{\textbf{FinnGen replication Mendelian randomization forest.}
+eQTL-IVW estimates of CRC risk in FinnGen R13 for $n = 8$ genes, coloured by direction
+concordance with discovery SMR. Only LIMA1 achieved nominal significance (IVW $p = 0.0045$);
+5 of 8 genes (LAMC1, TMBIM1, PNKD, GPBAR1, LIMA1) were direction-concordant.}
+\label{fig:S22}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{FigS18_idg_druggability.pdf}
+\caption{\textbf{IDG druggability grading of Tier 1 genes.}
+Target Development Level (TDL) and tractability annotation (Pharos/DrugCentral). LAMC1 was the only
+Tclin gene (approved drug ocriplasmin); GPBAR1 and BMP2 were Tchem; UTP11 was Tchem with antibody
+tractability 0/3 (nuclear localization); TMBIM1 and PNKD were Tbio (no chemical probes or ligands).}
+\label{fig:S18}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{FigS19_phewas_safety_scores.pdf}
+\caption{\textbf{Composite PheWAS safety scores for Tier 1 genes.}
+Composite scores for the six non-MHC Tier 1 genes from the Open Targets Platform
+(2.0 $\times$ risk-category diversity + 1.5 $\times$ genetic evidence + 0.5 $\times$
+high-risk count); UTP11, PNKD and LAMC1 scored 10.0. The score is dominated by the number of
+genetic associations, so GPBAR1 (6.2) ranks below BMP2 (8.8) even though BMP2 has the narrower
+organ-system risk spectrum (2 categories and 2 high-risk phenotypes, versus 2 categories and 8
+high-risk phenotypes for GPBAR1). Table~1 reports the components separately and the
+main text uses those.}
+\label{fig:S19}
+\end{figure}
+
+
+%------------------------------------------------------------------
+\clearpage
+\setcounter{table}{0}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\tablename}{Supplementary Table}
+\subsection*{Supplementary Tables}
+
+\input{manuscript/tables/TableS1_smr_top10.tex}
+\input{manuscript/tables/TableS2_protein_coding.tex}
+\input{manuscript/tables/TableS3_susie_sensitivity.tex}
+\input{manuscript/tables/TableS4_ukbppp_pqtl_coloc.tex}
+\input{manuscript/tables/TableS5_decode_pqtl_coloc.tex}
+\input{manuscript/tables/TableS7_me_zone_characterization.tex}
+\clearpage
+\input{manuscript/tables/TableS9_spatial_crosscorrelation.tex}
+\input{manuscript/tables/TableS6_phewas_safety.tex}
+\clearpage
+\input{manuscript/tables/TableS8_chen2024_gene_list.tex}
+
+\end{document}

@@ -10,6 +10,11 @@ suppressPackageStartupMessages({
   library(patchwork)
 })
 
+theme_set(theme_gray(base_size = 9))
+# Every panel below is laid out at the width it finally occupies in the
+# supplementary PDF (0.70 x 6.30 in = 4.41 in), so nothing is down-scaled
+# and the type stays at or above 7 pt in print.
+
 set.seed(42)
 
 # ===== Config =====
@@ -72,11 +77,14 @@ for (g in intersect(coloc_pass$gene, found_genes)) {
   p <- SpatialFeaturePlot(vis, features = g, pt.size.factor = 1.6,
                            alpha = c(0.3, 1), stroke = 0) +
     ggtitle(sprintf("%s (coloc PPH4=%.3f)", g, coloc_pass$PPH4[coloc_pass$gene == g])) +
-    labs(fill = "SCT-normalized expression", color = "SCT-normalized expression") +
-    theme(plot.title = element_text(size = 11, face = "bold"))
+    labs(fill = "SCT expression") +
+    theme(plot.title = element_text(size = 9, face = "bold"),
+          legend.title = element_text(size = 8),
+          legend.text = element_text(size = 8),
+          legend.key.width = unit(0.7, "cm"))
 
   ggsave(file.path(OUT_DIR, sprintf("FigX_spatial_%s.pdf", g)),
-         p, width = 5, height = 4.5)
+         p, width = 4.41, height = 3.97)
 }
 
 # ===== 4. Multi-gene spatial panel =====
@@ -114,13 +122,17 @@ if (length(caf_genes_vis) >= 2) {
     p <- SpatialFeaturePlot(vis, features = g, pt.size.factor = 1.6,
                              alpha = c(0.3, 1), stroke = 0) +
       ggtitle(sprintf("%s (CAF-associated)", g)) +
-      labs(fill = "SCT-normalized expression", color = "SCT-normalized expression")
+      labs(fill = "SCT expression") +
+      theme(legend.title = element_text(size = 8),
+            legend.text = element_text(size = 8),
+            legend.key.width = unit(0.7, "cm"))
     ggsave(file.path(OUT_DIR, sprintf("FigX_spatial_CAF_%s.pdf", g)),
-           p, width = 5, height = 4.5)
+           p, width = 4.41, height = 3.97)
   }
 }
 
-# ===== 6. Correlation with meCAF score (if available) =====
+# ===== 6. Exploratory byproduct, not reported in the manuscript: correlation with
+# the meCAF (metabolic CAF) signature score of the separate CAF project =====
 cat("\nChecking meCAF score correlation...\n")
 
 mecaf_col <- grep("meCAF|mecaf", colnames(vis@meta.data), value = TRUE, ignore.case = TRUE)
@@ -146,6 +158,23 @@ if (length(mecaf_col) > 0) {
   print(cor_df)
 
   fwrite(cor_df, file.path(OUT_DIR, "TableS_spatial_mecaf_correlation.csv"))
+
+  # Exploratory byproduct, NOT reported in the manuscript. meCAF is the metabolic
+  # (HIF1A-driven, glycolysis/lactate/hypoxia) CAF state of the separate CAF project
+  # (Project01_meCAF); the score is the mean SCT-normalized expression of the unified
+  # 13-gene signature (LDHA, PKM, ENO1, PFKP, SLC16A3, SLC16A1, CA9, PDK1, SLC2A1,
+  # HIF1A, VEGFA, BNIP3, NDRG1), as set in scripts/unify_mecaf_signature.R.
+  p_mecaf <- SpatialFeaturePlot(vis, features = mecaf_score_col, pt.size.factor = 1.6,
+                                alpha = c(0.3, 1), stroke = 0) +
+    ggtitle("Metabolic CAF (meCAF) signature") +
+    labs(fill = "meCAF score") +
+    theme(plot.title = element_text(size = 9, face = "bold"),
+          legend.title = element_text(size = 8),
+          legend.text = element_text(size = 8),
+          legend.key.width = unit(0.7, "cm"))
+  ggsave(file.path(OUT_DIR, "FigX_spatial_meCAF_score.pdf"),
+         p_mecaf, width = 4.41, height = 3.97)
+  cat("  -> FigX_spatial_meCAF_score.pdf\n")
 
   # Plot top correlations
   top_cor_genes <- head(cor_df[abs(spearman_rho) > 0.1], 8)
@@ -208,3 +237,10 @@ fwrite(summary_vis, file.path(OUT_DIR, "TableS_spatial_expression_summary.csv"))
 
 cat(sprintf("\nAll Visium outputs saved to: %s\n", OUT_DIR))
 cat("Done.\n")
+
+# ===== 9. Export the two panels used in the manuscript =====
+# Supplementary Fig. S8 (TMBIM1 spatial map) and S9 (TMBIM1 vs meCAF score)
+fig_dir <- "/ifs1/User/zhouman/project9-v5-crc-atlas/results/figures"
+file.copy(file.path(OUT_DIR, "FigX_spatial_TMBIM1.pdf"),
+          file.path(fig_dir, "FigS8_spatial_TMBIM1.pdf"), overwrite = TRUE)
+cat("Supplementary Fig. S8 (TMBIM1 spatial map) exported at printed width (4.41 x 3.97 in).\n")
