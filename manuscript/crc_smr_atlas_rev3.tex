@@ -131,39 +131,43 @@ through drug target prioritization.
 \centering
 \begin{subfigure}{\textwidth}
 \centering
-\begin{tikzpicture}[
-  font=\sffamily,
-  box/.style={draw=black!60, rounded corners=1.5pt, align=center, inner sep=3pt,
-              text width=31mm, minimum height=8mm, font=\footnotesize},
-  head/.style={align=center, font=\footnotesize\bfseries, text width=40mm},
-  arw/.style={-{Latex[length=1.6mm,width=1.4mm]}, draw=black!70, line width=0.5pt}
-]
-\node[head] (hA) at (0,0)    {Genetic layer\\[1pt]{\mdseries\scriptsize blood cis-eQTL}};
-\node[head] (hB) at (5.6,0)  {Protein layer\\[1pt]{\mdseries\scriptsize plasma pQTL}};
-\node[head] (hC) at (11.2,0) {Interpretation};
-
-\node[box, fill=blue!7]     (a1) at (0,-1.1) {15{,}582 genes\\tested};
-\node[box, fill=blue!7]     (a2) at (0,-2.6) {75 probes significant\\$p<3.21\times10^{-6}$};
-\node[box, fill=blue!7]     (a3) at (0,-4.1) {\textbf{43/76 (57\%)}\\colocalised};
-\node[box, fill=blue!7]     (a4) at (0,-5.6) {19 genes Tier 1\\(SuSiE-converged)};
-\draw[arw] (a1)--(a2); \draw[arw] (a2)--(a3); \draw[arw] (a3)--(a4);
-
-\node[box, fill=orange!12]  (b1) at (5.6,-1.1) {62 protein-coding\\candidates};
-\node[box, fill=orange!12]  (b2) at (5.6,-2.6) {15 measured in plasma\\(17 with TNF pathway)};
-\node[box, fill=orange!12]  (b3) at (5.6,-4.1) {9 with cis-pQTL\\$p<5\times10^{-8}$};
-\node[box, fill=orange!12]  (b4) at (5.6,-5.6) {\textbf{1 colocalised}\\CCM2 (PPH4 = 0.95)};
-\draw[arw] (b1)--(b2); \draw[arw] (b2)--(b3); \draw[arw] (b3)--(b4);
-
-\draw[arw] (a1.east) -- (b1.west)
-  node[midway, above, font=\scriptsize, align=center] {protein-coding};
-\draw[arw, dashed] (a3.east) -- (b4.west)
-  node[midway, below, font=\scriptsize\itshape, align=center] {coverage collapse};
-
-\node[box, fill=gray!8, text width=40mm, minimum height=30mm] (c1) at (11.2,-3.35)
-  {\textbf{Limiting step}\\[3pt] protein-layer coverage,\\not genetic significance\\[5pt]
-   eQTL $\neq$ pQTL\\[3pt] 5 of 6 core candidates\\not measured in either panel};
-\draw[arw] (b3.east) -- (c1.west);
-\end{tikzpicture}
+\includegraphics[width=\linewidth]{Fig1a_conceptual_overview.pdf}
+% The diagram above is exported to Fig1a_conceptual_overview.pdf by
+% scripts/73_export_fig1a_panel.py. The TikZ source it was built from is kept
+% here, inactive, for future edits.
+% \begin{tikzpicture}[
+%   font=\sffamily,
+%   box/.style={draw=black!60, rounded corners=1.5pt, align=center, inner sep=3pt,
+%               text width=31mm, minimum height=8mm, font=\footnotesize},
+%   head/.style={align=center, font=\footnotesize\bfseries, text width=40mm},
+%   arw/.style={-{Latex[length=1.6mm,width=1.4mm]}, draw=black!70, line width=0.5pt}
+% ]
+% \node[head] (hA) at (0,0)    {Genetic layer\\[1pt]{\mdseries\scriptsize blood cis-eQTL}};
+% \node[head] (hB) at (5.6,0)  {Protein layer\\[1pt]{\mdseries\scriptsize plasma pQTL}};
+% \node[head] (hC) at (11.2,0) {Interpretation};
+%
+% \node[box, fill=blue!7]     (a1) at (0,-1.1) {15{,}582 genes\\tested};
+% \node[box, fill=blue!7]     (a2) at (0,-2.6) {75 probes significant\\$p<3.21\times10^{-6}$};
+% \node[box, fill=blue!7]     (a3) at (0,-4.1) {\textbf{43/76 (57\%)}\\colocalised};
+% \node[box, fill=blue!7]     (a4) at (0,-5.6) {19 genes Tier 1\\(SuSiE-converged)};
+% \draw[arw] (a1)--(a2); \draw[arw] (a2)--(a3); \draw[arw] (a3)--(a4);
+%
+% \node[box, fill=orange!12]  (b1) at (5.6,-1.1) {62 protein-coding\\candidates};
+% \node[box, fill=orange!12]  (b2) at (5.6,-2.6) {15 measured in plasma\\(17 with TNF pathway)};
+% \node[box, fill=orange!12]  (b3) at (5.6,-4.1) {9 with cis-pQTL\\$p<5\times10^{-8}$};
+% \node[box, fill=orange!12]  (b4) at (5.6,-5.6) {\textbf{1 colocalised}\\CCM2 (PPH4 = 0.95)};
+% \draw[arw] (b1)--(b2); \draw[arw] (b2)--(b3); \draw[arw] (b3)--(b4);
+%
+% \draw[arw] (a1.east) -- (b1.west)
+%   node[midway, above, font=\scriptsize, align=center] {protein-coding};
+% \draw[arw, dashed] (a3.east) -- (b4.west)
+%   node[midway, below, font=\scriptsize\itshape, align=center] {coverage collapse};
+%
+% \node[box, fill=gray!8, text width=40mm, minimum height=30mm] (c1) at (11.2,-3.35)
+%   {\textbf{Limiting step}\\[3pt] protein-layer coverage,\\not genetic significance\\[5pt]
+%    eQTL $\neq$ pQTL\\[3pt] 5 of 6 core candidates\\not measured in either panel};
+% \draw[arw] (b3.east) -- (c1.west);
+% \end{tikzpicture}
 \caption{Conceptual overview of the two evidence layers. The genetic layer (left) is
 saturated: 15{,}582 gene-level SMR tests yield 43 colocalising probe--gene pairs out of 76.
 The protein layer (centre) collapses: only 15 of the 62 protein-coding candidates have plasma
