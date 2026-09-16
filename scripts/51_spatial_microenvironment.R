@@ -166,8 +166,8 @@ elbow_plot <- ggplot(elbow_df, aes(x=k, y=wss)) +
   geom_point(size=1.6) +
   geom_line(linewidth=0.5) +
   geom_vline(xintercept=opt_k, linetype="dashed", color="darkred", linewidth=0.5) +
-  annotate("text", x=opt_k, y=max(wss), label=sprintf("k=%d", opt_k),
-           vjust=-0.5, color="darkred", fontface="bold", size=3) +
+  annotate("text", x=opt_k - 0.18, y=max(wss), label=sprintf("k = %d", opt_k),
+           hjust=1, vjust=0.5, color="darkred", fontface="bold", size=3) +
   labs(x="Number of clusters (k)", y="Total within-cluster sum of squares") +
   theme_minimal(base_size=9)
 

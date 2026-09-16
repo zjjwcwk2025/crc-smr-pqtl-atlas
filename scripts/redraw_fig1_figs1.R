@@ -152,7 +152,7 @@ threshold <- 0.05 / nrow(d)
 sig <- d[d$P.value < threshold, ]
 cat(sprintf("  n significant (p < %.3e) = %d\n", threshold, nrow(sig)))
 
-topN <- min(30, nrow(sig))
+topN <- min(12, nrow(sig))
 top_hits <- head(sig[order(sig$P.value), ], topN)
 cat("  Top-hit labels (gene symbol):\n")
 print(top_hits[, c("SNP","label","P.value")], row.names = FALSE)
@@ -175,18 +175,17 @@ CMplot(d_cm, plot.type = "m",
        amplify = TRUE, signal.col = "red3", signal.pch = 19, signal.cex = 0.8,
        highlight = top_hits$SNP, highlight.col = "red3", highlight.pch = 19,
        highlight.text = top_hits$label,
-       highlight.text.col = "black", highlight.text.cex = 0.65, highlight.text.font = 3,
-       main = "SMR eQTL to CRC Manhattan plot",
-       main.cex = 0.9, axis.cex = 0.7, lab.cex = 0.8, cex = 0.45,
+       highlight.text.col = "black", highlight.text.cex = 0.78, highlight.text.font = 3,
+       axis.cex = 0.7, lab.cex = 0.8, cex = 0.45,
        file.output = TRUE, file = "pdf",
        file.name = "FigS1a_manhattan",
-       dpi = 300, width = 6.3, height = 2.7,
+       dpi = 300, width = 6.3, height = 3.4,
        verbose = FALSE)
 
 # --- QQ ---
 CMplot(d_cm, plot.type = "q",
        conf.int = TRUE, conf.int.col = "grey80", box = FALSE,
-       main = paste0("QQ plot of SMR p-values (lambda = ", sprintf("%.3f", lam), ")"),
+       main = "",
        main.cex = 0.9, axis.cex = 0.7, lab.cex = 0.8,
        file.output = TRUE, file = "pdf",
        file.name = "FigS1b_qq_plot",

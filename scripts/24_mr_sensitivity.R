@@ -160,9 +160,8 @@ if (nrow(results_valid) > 0) {
                        name = "Sensitivity Tier") +
     labs(x = expression(-log[10](p[SMR])),
          y = expression(-log[10](p[HEIDI])),
-         title = "MR Sensitivity: HEIDI vs SMR Significance",
-         subtitle = sprintf("75 Bonferroni-significant genes")) +
-    theme_bw(base_size = 9)
+         ) +
+    theme_bw(base_size = 10.5)
 
   # Rendered at the final printed width (0.80 x 6.30 in = 5.04 in) so the type is
   # not down-scaled below 7 pt in the supplementary PDF.

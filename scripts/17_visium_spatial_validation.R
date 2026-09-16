@@ -76,7 +76,7 @@ for (g in intersect(coloc_pass$gene, found_genes)) {
 
   p <- SpatialFeaturePlot(vis, features = g, pt.size.factor = 1.6,
                            alpha = c(0.3, 1), stroke = 0) +
-    ggtitle(sprintf("%s (coloc PPH4=%.3f)", g, coloc_pass$PPH4[coloc_pass$gene == g])) +
+    ggtitle(g) +
     labs(fill = "SCT expression") +
     theme(plot.title = element_text(size = 9, face = "bold"),
           legend.title = element_text(size = 8),
@@ -103,8 +103,7 @@ if (length(panel_genes) >= 2) {
   nrow_panel <- ceiling(n_plots / ncol_panel)
 
   combined <- wrap_plots(plots, ncol = ncol_panel) +
-    plot_annotation(title = "Coloc-Passing Genes: Spatial Expression in CRC Tissue",
-                    theme = theme(plot.title = element_text(size = 13, face = "bold")))
+    plot_annotation(theme = theme(plot.title = element_blank()))
 
   ggsave(file.path(OUT_DIR, "FigX_spatial_coloc_panel.pdf"),
          combined, width = ncol_panel * 4.5, height = nrow_panel * 4)

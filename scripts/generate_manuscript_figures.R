@@ -29,8 +29,8 @@ theme_nc <- theme_classic(base_size=9, base_family="Liberation Sans") +
   theme(
     axis.title = element_text(size=10, face="bold"),
     axis.text  = element_text(size=8.5, color="black"),
-    plot.title = element_text(size=10, face="bold", hjust=0.5),
-    plot.subtitle = element_text(size=8, hjust=0.5, color="grey40"),
+    plot.title = element_blank(),
+    plot.subtitle = element_blank(),
     legend.title = element_text(size=9, face="bold"),
     legend.text = element_text(size=8),
     legend.position = "bottom",
@@ -151,8 +151,8 @@ p1 <- ggplot() +
        subtitle = "78K CRC GWAS + eQTL + pQTL + spatial transcriptomics + drug annotation") +
   theme_void() +
   theme(
-    plot.title = element_text(size = 14, face = "bold", hjust = 0.5),
-    plot.subtitle = element_text(size = 10, hjust = 0.5, color = "grey40"),
+    plot.title = element_blank(),
+    plot.subtitle = element_blank(),
     plot.margin = margin(15, 15, 15, 15)
   )
 
@@ -283,15 +283,15 @@ p2a_supp <- ggplot(smr_tier1, aes(x = OR, y = SYMBOL, color = direction)) +
   geom_errorbar(aes(xmin = OR_lower, xmax = OR_upper), width = 0.25, linewidth = 1.2) +
   geom_point(size = 4.5, shape = 18) +
   geom_text(aes(label = sprintf("OR=%.2f [%.2f, %.2f]", OR, OR_lower, OR_upper),
-                x = OR_upper + 0.04), size = 3.5, hjust = 0, color = "black") +
+                x = OR_upper + 0.04), size = 3.0, hjust = 0, color = "black") +
   scale_color_manual(values = c("Risk" = "#B2182B", "Protective" = "#2166AC"), guide = "none") +
-  scale_x_continuous(limits = c(min(smr_tier1$OR_lower) * 0.9, max(smr_tier1$OR_upper) * 1.25)) +
+  scale_x_continuous(limits = c(min(smr_tier1$OR_lower) * 0.9, max(smr_tier1$OR_upper) * 1.75)) +
   labs(x = "Odds Ratio (per 1 SD increase in gene expression)", y = "",
        title = "Tier 1 Gene Effects on CRC Risk",
        subtitle = paste0("SMR-derived OR with 95% CI; 6 non-MHC coloc+SuSiE-confirmed genes"),
        caption = "n = 6 Tier 1 genes; error bars = 95% CI from SMR standard error.") +
-  annotate("text", x = 1.05, y = length(tier1_non_mhc) + 0.5,
-           label = "OR = 1 (no effect)", color = "grey50", size = 3.2, hjust = 0) +
+  annotate("text", x = 1.32, y = 0.62, label = "OR = 1 (no effect)",
+           color = "grey50", size = 3.0, hjust = 1) +
   theme_nc + theme(panel.grid.major.x = element_line(color = "grey90", linewidth = 0.3),
                    panel.grid.major.y = element_blank())
 
@@ -586,11 +586,11 @@ cat("  -> Fig4b_phewas_safety_heatmap.pdf\n")
 p5b2 <- ggplot(phewas %>% mutate(gene=fct_reorder(gene, safety_concern_score)),
        aes(x=gene, y=safety_concern_score, fill=safety_tier)) +
   geom_col(width=0.6, color="black", linewidth=0.3) +
-  geom_text(aes(label=paste0(sprintf("%.1f",safety_concern_score),
-                             "\n[",n_genetic_diseases," genetic]")),
-            vjust=-0.2, size=3, lineheight=0.8) +
+    geom_text(aes(label=paste0(sprintf("%.1f", safety_concern_score),
+                             " (", n_genetic_diseases, " genetic)")),
+            hjust=-0.05, size=2.6) +
   scale_fill_manual(values=palette_safety, guide="none") +
-  scale_y_continuous(limits=c(0, max(phewas$safety_concern_score)*1.2), expand=c(0,0)) +
+  scale_y_continuous(limits=c(0, max(phewas$safety_concern_score)*1.45), expand=c(0,0)) +
   labs(x="", y="Safety Concern Score",
        title="PheWAS Safety Scores for Tier 1 Genes",
        subtitle=paste0(nrow(phewas)," Tier 1 genes assessed via Open Targets Platform; score integrates disease count, genetic evidence, and risk category diversity"),
@@ -695,23 +695,31 @@ cat("\n>>> Fig S3: SuSiE sensitivity\n")
 susie_sens <- read_csv("results/susie_sensitivity/susie_sensitivity_grid.csv", show_col_types=FALSE)
 if(nrow(susie_sens) > 0) {
   susie_sens <- susie_sens %>%
-    mutate(param_label = paste0("SNPs=", snp_cap, "\nL=", L_param, "\n±", window_kb, "kb"))
+    mutate(param_label = paste0("SNPs=", snp_cap, ", L=", L_param, ", ", window_kb, "kb"))
 
-  pS3 <- ggplot(susie_sens, aes(x=param_label, y=gene, fill=factor(n_cs))) +
-    geom_tile(color="white", linewidth=0.5) +
-    geom_text(aes(label=n_cs), size=3.5, fontface="bold") +
-    scale_fill_brewer(palette="Blues", name="N CS") +
-    labs(x="", y="",
-         title="SuSiE Sensitivity Analysis: Credible Set Counts",
-         subtitle="Parameter grid: SNP cap × L × cis window",
-         caption="All converged runs produced single-SNP credible sets (PIP = 1.0).") +
+  # Transposed grid: the parameter combinations sit on the y axis and the six genes
+  # on the x axis, so the long parameter labels stay legible instead of overlapping
+  # as rotated x tick labels. Cells with no converged run are drawn grey.
+  susie_grid <- expand.grid(gene = unique(susie_sens$gene),
+                            param_label = unique(susie_sens$param_label),
+                            stringsAsFactors = FALSE)
+  pS3 <- ggplot() +
+    geom_tile(data = susie_grid, aes(x = gene, y = param_label),
+              fill = "grey90", color = "white", linewidth = 0.5) +
+    geom_tile(data = susie_sens, aes(x = gene, y = param_label, fill = factor(n_cs)),
+              color = "white", linewidth = 0.5) +
+    geom_text(data = susie_sens, aes(x = gene, y = param_label, label = n_cs),
+              size = 3.0, fontface = "bold") +
+    scale_fill_brewer(palette = "Blues", name = "N CS") +
+    labs(x = "", y = "") +
     theme_nc + theme(
-      axis.text.x = element_text(size=7, hjust=1, angle=30),
+      axis.text.x = element_text(size = 8.5),
+      axis.text.y = element_text(size = 7.5),
       panel.grid = element_blank(),
       legend.position = "right"
     )
 
-  ggsave(file.path(outdir,"FigS3_susie_sensitivity.pdf"), pS3, width = 6.3, height = 2.63, device=cairo_pdf)
+  ggsave(file.path(outdir,"FigS3_susie_sensitivity.pdf"), pS3, width = 6.3, height = 2.95, device=cairo_pdf)
   cat("  -> FigS3_susie_sensitivity.pdf\n")
 }
 
@@ -736,12 +744,10 @@ if(nrow(ukb_coloc) > 0) {
 
   pS4 <- ggplot(ukb_coloc, aes(x=reorder(gene, PPH4), y=PPH4, fill=coloc_pass)) +
     geom_col(width=0.5, color="black", linewidth=0.3) +
-    geom_text(aes(label=pph4_label), vjust=-0.5, size=3.5, fontface="bold") +
+    geom_text(aes(label=pph4_label), hjust=-0.12, vjust=0.5, size=3.0, fontface="bold") +
     geom_hline(yintercept=0.8, linetype="dashed", color="#B2182B") +
-    annotate("text", x=nrow(ukb_coloc)+0.6, y=0.83, label="PPH4 > 0.8 threshold",
-             color="#B2182B", size=3.5, hjust=1) +
     scale_fill_manual(values=c("TRUE"="#2166AC", "FALSE"="grey80"), guide="none") +
-    scale_y_continuous(limits=c(0,1.1), expand=c(0,0)) +
+    scale_y_continuous(limits=c(0,1.30), expand=c(0,0)) +
     labs(x="", y="PPH4",
          title="UKB-PPP pQTL–GWAS Colocalization",
          subtitle=paste0(nrow(ukb_coloc)," UKB-PPP genes tested; 0/", nrow(ukb_coloc), " pass PPH4 > 0.8"),
@@ -770,12 +776,10 @@ if(nrow(decode_coloc) > 0) {
 
   pS5 <- ggplot(decode_coloc, aes(x=reorder(gene, PPH4), y=PPH4, fill=coloc_pass)) +
     geom_col(width=0.5, color="black", linewidth=0.3) +
-    geom_text(aes(label=pph4_label), vjust=-0.5, size=3.5) +
+    geom_text(aes(label=pph4_label), hjust=-0.12, vjust=0.5, size=3.0) +
     geom_hline(yintercept=0.8, linetype="dashed", color="#B2182B") +
-    annotate("text", x=4.5, y=0.83, label="PPH4 > 0.8 threshold",
-             color="#B2182B", size=3.5, hjust=1) +
     scale_fill_manual(values=c("TRUE"="#2166AC", "FALSE"="grey60"), guide="none") +
-    scale_y_continuous(limits=c(0,1), expand=c(0,0)) +
+    scale_y_continuous(limits=c(0,1.32), expand=c(0,0)) +
     labs(x="", y="PPH4",
          title="deCODE pQTL–GWAS Colocalization",
          subtitle=paste0(nrow(decode_coloc)," deCODE genes with cis-pQTL instruments; only CCM2 passes coloc"),
@@ -809,16 +813,18 @@ pS6a <- ggplot(me_chars, aes(x = me_label, y = n_spots, fill = top_ct1)) +
   scale_y_continuous(limits = c(0, max(me_chars$n_spots) * 1.06), expand = c(0, 0)) +
   labs(x = "", y = "Visium spots") +
   theme_nc +
-  theme(axis.text.x = element_text(size = 8.5),
+  theme(axis.text.x = element_text(size = 7.5),
+        axis.text.y = element_text(size = 7.0),
+        axis.title.y = element_text(size = 8, face = "bold"),
         legend.position = "bottom",
         legend.title = element_text(size = 7.5),
-        legend.text = element_text(size = 7.5),
+        legend.text = element_text(size = 7.0),
         legend.key.size = unit(0.22, "cm"),
         legend.spacing.x = unit(0.08, "cm"),
         legend.margin = margin(0, 0, 0, 0)) +
-  guides(fill = guide_legend(ncol = 3))
+  guides(fill = guide_legend(ncol = 2, title.position = "top", title.hjust = 0.5))
 
-ggsave(file.path(outdir, "FigS15_me_zone_barplot.pdf"), pS6a, width = 2.77, height = 2.60, device = cairo_pdf)
+ggsave(file.path(outdir, "FigS15_me_zone_barplot.pdf"), pS6a, width = 2.90, height = 2.60, device = cairo_pdf)
 cat("  -> FigS15_me_zone_barplot.pdf\n")
 
 # Panel B: Tier 1 gene expression heatmap across ME zones
@@ -842,7 +848,8 @@ pS6b <- ggplot(me_expr_plot, aes(x = microenvironment, y = gene, fill = mean_exp
        title = "Tier 1 Gene Expression Across Microenvironment Zones",
        subtitle = "Mean SCT-normalized expression per Visium spot",
        caption = "n = 15 genes across 6 zones; mean of SCT-normalized counts.") +
-  theme_nc + theme(panel.grid = element_blank(), axis.text.x = element_text(angle = 30, hjust = 1))
+  theme_nc + theme(panel.grid = element_blank(), axis.text.x = element_text(angle = 30, hjust = 1)) +
+  guides(fill = guide_colourbar(title.position = "top", title.hjust = 0.5))
 
 ggsave(file.path(outdir, "FigS16_me_tier1_heatmap.pdf"), pS6b, width = 5.54, height = 3.60, device = cairo_pdf)
 cat("  -> FigS16_me_tier1_heatmap.pdf\n")

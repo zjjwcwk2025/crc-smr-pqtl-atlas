@@ -175,7 +175,7 @@ pQTL evidence are not interchangeable.}
 
 \begin{subfigure}{\textwidth}
 \centering
-\includegraphics[width=\linewidth]{Fig1a_study_design.pdf}
+\includegraphics[width=\linewidth]{Fig1b_study_design.pdf}
 \caption{Study design and analytical pipeline. Multi-omics drug-target discovery workflow
 integrating eQTL SMR discovery, colocalization and SuSiE fine-mapping, pQTL Mendelian
 randomization, FinnGen replication, GTEx Colon tissue sensitivity, single-cell and Visium
@@ -200,7 +200,7 @@ genes characterized in detail.}
 
 \begin{subfigure}{\textwidth}
 \centering
-\includegraphics[width=\linewidth]{Fig1b_coloc_pph4.pdf}
+\includegraphics[width=\linewidth]{Fig1c_coloc_pph4.pdf}
 \caption{Bayesian colocalization of the 76 probe--gene pairs.
 Posterior probability of colocalization (PPH4, coloc.abf) shown for the 49 pairs with PPH4 $>$ 0.5:
 43 pairs (57\%) passed the colocalization threshold (PPH4 $>$ 0.8, dark blue) and 6 were marginal
@@ -513,9 +513,14 @@ $n = 3,493$ spots). Of the 75 SMR genes, 61 (81\%) were detected in the
 single-cell atlas; TMBIM1 showed fibroblast-enriched expression
 (Supplementary Fig.~\ref{fig:S7}) and broad detection in CRC tissue (57\% of
 3{,}493 Visium spots; Supplementary Fig.~\ref{fig:S8}). In contrast,
-GPBAR1 was detected in only 1 of 3,493 Visium spots (0.03\%). Partitioning
-Visium spots into $k=6$ spatial microenvironment (ME) zones showed no zone-restricted expression: mean expression of the six core
-candidates varied only 1.25--1.59-fold across the six zones, and UTP11, BMP2,
+GPBAR1 was detected in only 1 of 3,493 Visium spots (0.03\%). Across the six core
+Tier 1 candidates, therefore, five (UTP11, BMP2, PNKD, LAMC1 and TMBIM1) were
+detectable in this section (11--57\% of spots; Supplementary Fig.~\ref{fig:S8}),
+the mirror image of the protein layer, in which only BMP2 had a matching plasma
+measurement and none of the six carried cis-pQTL instruments (Fig.~\ref{fig:coverage_funnel}). Partitioning
+Visium spots into $k=6$ spatial microenvironment (ME) zones showed no zone-restricted expression: among the five core candidates with
+detectable tissue expression (all but GPBAR1, which was detected in a single spot),
+mean expression varied only 1.25--1.59-fold across the six zones, and UTP11, BMP2,
 LAMC1 and TMBIM1 each reached their lowest mean expression in the stromal ME6
 zone (PNKD: ME6 second lowest; Supplementary Fig.~\ref{fig:S14};
 Supplementary Table~\ref{tab:me_zones}). Pairwise spatial cross-correlation statistics for the
@@ -639,7 +644,7 @@ repositioning of an existing agent.
 \centering
 \begin{subfigure}{\textwidth}
 \centering
-\includegraphics[width=\linewidth]{Fig4b_phewas_safety.pdf}
+\includegraphics[width=\linewidth]{Fig4a_phewas_safety.pdf}
 \caption{PheWAS screening of the six core non-MHC Tier 1 genes.
 Heatmap of genetic disease associations across risk categories (Open Targets Platform).
 Darker blue = more genetic evidence in that category. Among the six genes, the associations of
@@ -665,7 +670,7 @@ uses those.}
 
 \begin{subfigure}{\textwidth}
 \centering
-\includegraphics[width=\linewidth]{Fig4a_drug_repurposing.pdf}
+\includegraphics[width=\linewidth]{Fig4b_drug_repurposing.pdf}
 \caption{Drug repurposing tier distribution.
 Of $n = 62$ protein-coding SMR-significant genes, 8 (13\%) have known pharmacological agents
 across DrugBank and Open Targets. Tier A: highest repurposing potential (coloc $+$ approved drug).}
@@ -747,7 +752,7 @@ itself is close to saturated, and the incremental value of further SMR or coloc
 screens therefore lies in the validation layers rather than in new gene lists.
 
 Our gene set showed 44.9\% overlap with Chen et al.~2024, the
-largest prior CRC genetic study (254K individuals, 290 genes), and
+largest prior CRC genetic study (254K individuals, 289 resolvable gene symbols), and
 17.4\% overlap with Hazelwood 2025 (52K meta-GWAS, 41 genes; Fig.~\ref{fig:competitor}).
 Overlap with four additional low-tier studies (Hong et al.~\cite{hong2025integrative}, Wang et al.~\cite{wang2025discovoncol},
 Xia and Wang~\cite{xia2025bmccancer}, Tian et al.~\cite{tian2025dbi}, based on
@@ -786,9 +791,11 @@ respectively.}
 
 \begin{subfigure}{\textwidth}
 \centering
-\includegraphics[width=\linewidth]{Fig5b_competitor_upset.pdf}
-\caption{UpSet plot of shared and unique genes between this study (69
-gene symbols), Chen 2024 (290 genes), and Hazelwood 2025 (41 genes).}
+\includegraphics[width=\linewidth]{Fig5b_gene_overlap_venn.pdf}
+\caption{Venn diagram of shared and unique gene symbols between this study (69 gene symbols),
+Chen 2024 (289 resolvable gene symbols) and Hazelwood 2025 (41 genes). Circle areas are not
+drawn to scale; every region is labelled with its exact symbol count and set sizes are given on
+the right. Of this study's 69 genes, 34 (49\%) are not present in either prior gene list.}
 \label{fig:competitor_upset}
 \end{subfigure}
 \caption{The genetic layer is largely saturated: overlap with prior CRC target-discovery studies (continued).}
@@ -941,6 +948,18 @@ the relevance of identified targets may differ across subtypes. Finally, while
 both their recent GWAS-based identification and their limited tractability;
 several top candidates (TMBIM1, PNKD) have no established chemical matter and
 would require de novo drug discovery programs.
+
+The tissue-localization layer carries additional limitations of its own. It rests on a
+single Visium section ($n = 3{,}493$ spots; GSE285505, which contains further CRC
+sections that were not analysed here) and a single single-cell reference
+($n = 50{,}214$ cells), so the observations above describe one tumour and were not tested
+for replication in an independent section or cohort. These analyses were designed to ask
+\emph{where} each candidate is expressed, not to estimate effect sizes: the
+spatial--microenvironment associations are unadjusted for multiple comparisons, and the
+TMBIM1--meCAF correlation noted above explains less than 1\% of the variance even though it
+is significant. We therefore treat the single-cell and spatial results as supporting
+tissue-localization evidence rather than causal or functional evidence, and no independent
+tissue validation (immunohistochemistry or in situ hybridization) was performed.
 
 The observed genomic inflation factor ($\lambda = 1.600$) is elevated but
 consistent with expectations for SMR/TWAS studies, where local LD structure
@@ -1099,13 +1118,14 @@ compared against six prior CRC genetic studies: four low-tier SMR/MR studies
 genes~\cite{wang2025discovoncol}; Xia and Wang, BMC Cancer, 6
 genes~\cite{xia2025bmccancer}; Tian et al.~2025, 8 genes~\cite{tian2025dbi}) and two high-tier Nature Communications studies (Hazelwood
 2025, 41 genes from multi-tissue TWAS~\cite{hazelwood2025multi}; Chen et
-al.~2024, 290 genes from 254K-individual GWAS + SMR + multi-tissue
+al.~2024, 290 published genes from 254K-individual GWAS + SMR + multi-tissue
 eQTL/mQTL~\cite{chen2024integrative}, the largest prior CRC fine-mapping study).
 Chen 2024 gene lists were extracted from Supplementary Data 20 (288 putative
 target genes from functional genomics + coloc), Supplementary Data 13 (154
 cis-eQTL-significant genes), and Supplementary Data 11--12 (48 + 22 in-silico
-predicted genes), merged and deduplicated to 290 unique gene symbols. Overlap
-was defined as identical or synonymous gene symbols. At the locus level, a v5
+predicted genes), merged and deduplicated to 290 entries, of which 289 could be resolved to a unique
+gene symbol; this 289-symbol set was used for all overlap calculations. Overlap
+was defined as identical or synonymous gene symbols. At the locus level, a
 locus was considered overlapping with Chen 2024 if it contained at least one gene
 from the Chen 2024 gene set. We note that SMR (blood eQTL) and TWAS (multi-tissue
 GTEx + sQTL) are methodologically distinct and their gene sets are not expected

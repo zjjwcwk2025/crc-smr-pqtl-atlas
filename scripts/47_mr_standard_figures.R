@@ -86,33 +86,34 @@ for (i in seq_len(nrow(tier1))) {
   region[, is_cs := SNP %in% cs]
 
   cs_in_region <- region[is_cs == TRUE]
-  lab <- if (nrow(cs_in_region) > 0) head(cs_in_region[order(-log10p)], 6) else region[0]
+  lab <- if (nrow(cs_in_region) > 0) head(cs_in_region[order(-log10p)], 2) else region[0]
 
   p <- ggplot(region, aes(x = pos / 1e6, y = log10p)) +
     geom_point(aes(color = is_cs), alpha = 0.55) +
     scale_color_manual(values = c("TRUE" = "#E41A1C", "FALSE" = "#377EB8")) +
     geom_vline(xintercept = pos_i / 1e6, linetype = "dashed",
                color = "darkgreen", linewidth = 0.7) +
-    annotate("text", x = pos_i / 1e6,
-             y = min(region$log10p) + diff(range(region$log10p)) * 0.93,
-             label = gene, color = "darkgreen", fontface = "bold", size = 3.2, hjust = -0.1) +
+    scale_x_continuous(n.breaks = 4) +
+    scale_y_continuous(expand = expansion(mult = c(0.02, 0.16))) +
     labs(x = paste0("Chr", chr_i, " pos (Mb)"), y = expression(-log[10](italic(p))),
-         title = sprintf("%s  (PPH4=%.3f)", gene, tier1$PPH4[i])) +
+         title = sprintf("%s\nPPH4 = %.3f", gene, tier1$PPH4[i])) +
     theme_nc
 
   if (nrow(lab) > 0) {
-    p <- p + geom_text_repel(data = lab, aes(label = SNP), size = 2.6,
-                             color = "#E41A1C", max.overlaps = 20,
-                             nudge_y = 0.3, segment.size = 0.2)
+    p <- p + geom_text_repel(data = lab, aes(label = SNP), size = 2.5,
+                             color = "#E41A1C", max.overlaps = Inf, seed = 11,
+                             direction = "y",
+                             nudge_y = 0.12 * diff(range(region$log10p)),
+                             segment.size = 0.2, box.padding = 0.35,
+                             min.segment.length = 0, force = 12)
   }
   p_list[[gene]] <- p
 }
 
-p23 <- wrap_plots(p_list, ncol = 3) +
-  plot_annotation(title = "Regional association plots — six non-MHC Tier 1 genes",
-                  subtitle = "CRC GWAS (-log10 p) with SuSiE credible-set SNPs (red); dashed line = gene position") &
-  theme(plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
-        plot.subtitle = element_text(size = 9, hjust = 0.5, color = "grey40"))
+p23 <- wrap_plots(p_list, ncol = 3) &
+  theme(strip.text = element_text(size = 7.5, face = "bold"),
+        plot.title = element_text(size = 9, face = "bold", hjust = 0.5),
+        axis.text.x = element_text(size = 7.5))
 
 ggsave(file.path(outdir, "FigS23_tier1_regional_plots.pdf"), p23,
        device = cairo_pdf, width = 6.30, height = 4.20)
@@ -182,9 +183,9 @@ p24 <- ggplot(scatter_tbl, aes(x = e_beta, y = o_beta)) +
   facet_wrap(~ gene, scales = "free", ncol = 3) +
   scale_color_manual(values = c("CCM2" = "#2166AC", "LIMA1" = "#B2182B", "STAT6" = "#1B7837",
                                 "CDKN1A" = "#9970AB", "TNF" = "#D6604D")) +
+  scale_x_continuous(n.breaks = 4) +
   labs(x = "SNP effect on protein level (exposure, pQTL beta)",
-       y = "SNP effect on CRC risk (outcome, GWAS beta)",
-       title = "pQTL MR — instrument scatter (slope = IVW estimate)") +
+       y = "SNP effect on CRC risk (outcome, GWAS beta)") +
   theme_nc + theme(strip.text = element_text(face = "bold"), legend.position = "none")
 
 ggsave(file.path(outdir, "FigS24_pqtl_mr_scatter.pdf"), p24,
@@ -192,6 +193,9 @@ ggsave(file.path(outdir, "FigS24_pqtl_mr_scatter.pdf"), p24,
 cat("  -> FigS24_pqtl_mr_scatter.pdf\n")
 
 ## --- FigS25: leave-one-out IVW (one facet per gene) ---
+## Labels: only the single most influential instrument per gene is reported, as a
+## corner annotation. Instrument rsIDs are unreadable at print size and are
+## supplied in results/phase5d_mr_methods_summary.csv instead.
 loo_rows <- list()
 for (g in c(decode_sig, ukb_sig)) {
   d <- instruments[gene == g]
@@ -210,20 +214,36 @@ for (g in c(decode_sig, ukb_sig)) {
 loo <- rbindlist(loo_rows)
 loo[, lo := b - 1.96 * se]
 loo[, hi := b + 1.96 * se]
+b_all <- loo[exclude == "ALL", .(gene, b_all = b)]
+loo_shift <- merge(copy(loo), b_all, by = "gene")[, shift := abs(b - b_all)]
+lab_rows <- loo_shift[exclude != "ALL"][order(-shift), head(.SD, 3), by = gene]
 loo[, exclude := factor(exclude, levels = rev(unique(exclude)))]
+lab_rows[, exclude := factor(exclude, levels = levels(loo$exclude))]
 loo[, gene := factor(gene, levels = c(decode_sig, ukb_sig))]
+
+loo[, n_inst := .N, by = gene]
+lab1 <- loo_shift[exclude != "ALL"][order(-shift), head(.SD, 1), by = gene]
+lab1[, txt := sprintf("max |db| = %.3f\n(%s)", shift, exclude)]
 
 p25 <- ggplot(loo, aes(x = b, y = exclude)) +
   geom_vline(xintercept = 0, linetype = 2, color = "grey40") +
-  geom_errorbarh(aes(xmin = lo, xmax = hi, color = gene), height = 0.25, linewidth = 0.55) +
-  geom_point(aes(shape = exclude == "ALL", color = gene), size = 1.6) +
+  geom_errorbarh(data = loo[exclude != "ALL" & n_inst <= 60],
+                 aes(xmin = lo, xmax = hi, color = gene), height = 0,
+                 linewidth = 0.30, alpha = 0.45) +
+  geom_point(aes(shape = exclude == "ALL", color = gene), size = 0.9, alpha = 0.55) +
   facet_wrap(~ gene, scales = "free", ncol = 3) +
   scale_color_manual(values = c("CCM2" = "#2166AC", "LIMA1" = "#B2182B", "STAT6" = "#1B7837",
                                 "CDKN1A" = "#9970AB", "TNF" = "#D6604D")) +
   scale_shape_manual(values = c("TRUE" = 17, "FALSE" = 16), guide = "none") +
-  labs(x = "IVW causal estimate (95% CI), leave-one-out", y = NULL,
-       title = "pQTL MR — leave-one-out sensitivity (red 'ALL' = all instruments)") +
-  theme_nc + theme(strip.text = element_text(face = "bold"))
+  geom_text(data = lab1, aes(x = Inf, y = -Inf, label = txt), inherit.aes = FALSE,
+            hjust = 1.05, vjust = -0.7, size = 2.5, colour = "grey20") +
+  scale_x_continuous(expand = expansion(mult = 0.06), guide = guide_axis(check.overlap = TRUE)) +
+  labs(x = "IVW causal estimate (95% CI), leave-one-out", y = NULL) +
+  theme_nc + theme(strip.text = element_text(size = 8, face = "bold"),
+                   axis.text.y = element_blank(), axis.ticks.y = element_blank(),
+                   panel.grid.major.y = element_blank(),
+                   panel.spacing = unit(1.3, "lines"),
+                   plot.margin = margin(3, 7, 3, 12))
 
 ggsave(file.path(outdir, "FigS25_pqtl_mr_loo.pdf"), p25,
        device = cairo_pdf, width = 6.30, height = 4.01)

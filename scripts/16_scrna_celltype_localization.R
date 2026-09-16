@@ -135,8 +135,6 @@ plot_genes <- intersect(plot_genes, top_genes)
 p_dot <- DotPlot(scrna, features = plot_genes, group.by = "CellType_Major",
                   assay = "RNA", dot.scale = 8) +
   RotatedAxis() +
-  # Short title: the gene / cell / cell-type counts live in the figure caption.
-  ggtitle("Cell-type expression of SMR genes") +
   labs(x = "Gene", y = "Cell type") +
   theme(axis.text.x = element_text(size = 7, angle = 45, hjust = 1),
         axis.text.y = element_text(size = 9))

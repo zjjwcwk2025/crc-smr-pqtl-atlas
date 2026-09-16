@@ -31,8 +31,8 @@ theme_nc <- theme_classic(base_size = 9, base_family = "Liberation Sans") +
   theme(
     axis.title = element_text(size = 10, face = "bold"),
     axis.text  = element_text(size = 8.5, color = "black"),
-    plot.title = element_text(size = 14, face = "bold", hjust = 0.5),
-    plot.subtitle = element_text(size = 10, hjust = 0.5, color = "grey40"),
+    plot.title = element_blank(),
+    plot.subtitle = element_blank(),
     legend.title = element_text(size = 11, face = "bold"),
     legend.text  = element_text(size = 10),
     legend.position = "bottom",
@@ -156,8 +156,9 @@ p_fg <- ggplot(fg_plot, aes(x = ivw_b, y = gene, color = concord)) +
   geom_errorbarh(aes(xmin = ci_low, xmax = ci_high), height = 0.22, linewidth = 0.9) +
   geom_point(size = 2.6, shape = 16) +
   scale_color_manual(values = palette_direction,
-                     limits = c("concordant", "discordant", "not_significant"),
-                     name = "Direction vs discovery", labels = c("Concordant", "Discordant", "n.s.")) +
+                     name = "Direction vs discovery",
+                     labels = c("concordant" = "Concordant", "discordant" = "Discordant",
+                                "not_significant" = "n.s.")) +
   labs(x = "IVW effect on CRC risk (b, 95% CI)", y = NULL,
        title = "FinnGen replication — eQTL instrument MR",
        subtitle = subtitle_fg) +

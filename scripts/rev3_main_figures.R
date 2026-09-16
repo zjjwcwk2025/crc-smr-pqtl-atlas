@@ -19,7 +19,7 @@ palette_safety <- c("High alert" = "#B2182B", "Moderate" = "#F4A582", "Low" = "#
 # ==============================================================
 #  Fig 2a — coloc PPH4 barplot (phase3_coloc_all75.csv)
 # ==============================================================
-cat("\n>>> Fig 2a: coloc PPH4 barplot (all 76 probe-gene pairs)\n")
+cat("\n>>> Figure 1c: coloc PPH4 barplot (all 76 probe-gene pairs)\n")
 coloc <- read_csv("results/phase3_coloc_all75.csv", show_col_types=FALSE)
 # Handle column name variants
 if("SYMBOL" %in% names(coloc)) {
@@ -112,12 +112,12 @@ p2a <- ggplot(coloc_show, aes(x = PPH4_plot, y = gene_label)) +
     plot.caption = element_blank()
   )
 
-ggsave(file.path(outdir, "Fig2b_coloc_pph4.pdf"), p2a, width = 6.30, height = 7.0, device = cairo_pdf)
-cat("  -> Fig2a_coloc_pph4_barplot.pdf\n")
+ggsave(file.path(outdir, "Fig1c_coloc_pph4.pdf"), p2a, width = 6.30, height = 7.0, device = cairo_pdf)
+cat("  -> Fig1c_coloc_pph4.pdf\n")
 # ==============================================================
 #  Fig 2b — eQTL/pQTL discordance classification bar
 # ==============================================================
-cat("\n>>> Fig 2b: eQTL/pQTL classification bar\n")
+cat("\n>>> Figure 2b: eQTL/pQTL classification bar\n")
 contrast <- read_csv("results/phase2_decode/eqtl_pqtl_contrast_matrix.csv", show_col_types=FALSE)
 # Remove TNFRSF1A, TNFRSF1B (no eQTL SMR data in this table)
 contrast <- contrast %>% filter(!is.na(SYMBOL) & SYMBOL != "")
@@ -146,12 +146,12 @@ p2b <- ggplot(class_counts, aes(x=reorder(class_label, n), y=n, fill=class_label
   coord_flip() +
   theme_nc
 
-ggsave(file.path(outdir, "Fig2c_eqtl_pqtl_classification.pdf"), p2b, width = 6.30, height = 2.9, device = cairo_pdf)
+ggsave(file.path(outdir, "Fig2b_eqtl_pqtl_classification.pdf"), p2b, width = 6.30, height = 2.9, device = cairo_pdf)
 cat("  -> Fig2b_eqtl_pqtl_classification.pdf\n")
 # ==============================================================
 #  Fig 2c — eQTL/pQTL effect size scatter
 # ==============================================================
-cat("\n>>> Fig 2c: eQTL vs pQTL effect size scatter\n")
+cat("\n>>> Figure 2c: eQTL vs pQTL effect size scatter\n")
 # Use genes that have both eQTL and pQTL betas
 contrast_both <- contrast %>%
   filter(!is.na(b_SMR) & !is.na(pqtl_wald_b) & !is.na(pqtl_wald_p))
@@ -186,7 +186,9 @@ p2c <- ggplot(contrast_both, aes(x=b_SMR, y=pqtl_wald_b)) +
   geom_hline(yintercept=0, linetype="dashed", color="grey60") +
   geom_vline(xintercept=0, linetype="dashed", color="grey60") +
   geom_point(aes(fill=dir_status, size=point_size), shape=21, alpha=0.85) +
-  geom_text_repel(aes(label=SYMBOL), size=3.2, max.overlaps=20, force=2, box.padding=0.5) +
+  geom_text_repel(aes(label=SYMBOL), size=2.9, max.overlaps=Inf, force=8, box.padding=0.7,
+                  point.padding=0.35, min.segment.length=0, seed=5,
+                  segment.size=0.25, segment.colour="grey40") +
   scale_fill_manual(values=palette_direction, name="Direction") +
   scale_size_identity() +
   labs(x="eQTL SMR b (blood)", y="pQTL Wald b",
@@ -195,12 +197,12 @@ p2c <- ggplot(contrast_both, aes(x=b_SMR, y=pqtl_wald_b)) +
        caption=stats_label) +
   theme_nc
 
-ggsave(file.path(outdir, "Fig2d_eqtl_pqtl_scatter.pdf"), p2c, width = 6.30, height = 5.4, device = cairo_pdf)
+ggsave(file.path(outdir, "Fig2c_eqtl_pqtl_scatter.pdf"), p2c, width = 6.30, height = 5.4, device = cairo_pdf)
 cat("  -> Fig2c_eqtl_pqtl_scatter.pdf\n")
 # ==============================================================
 #  Fig 3 — GTEx Colon vs Blood SMR scatter
 # ==============================================================
-cat("\n>>> Fig 3: GTEx Colon SMR sensitivity\n")
+cat("\n>>> Figure 3b/3c: GTEx Colon SMR sensitivity\n")
 gtex <- read_tsv("results/gtex_colon_transverse_smr.smr", show_col_types=FALSE)
 # Read blood SMR for matched genes (Gene column = Ensembl ID here)
 e1 <- read_tsv("results/phase1_eqtl_smr.smr", show_col_types=FALSE)
@@ -236,7 +238,10 @@ p3 <- ggplot(merged, aes(x=b_SMR_blood, y=b_SMR)) +
   geom_vline(xintercept=0, linetype="dashed", color="grey60") +
   geom_smooth(method="lm", se=TRUE, color="grey40", linewidth=0.8, alpha=0.15) +
   geom_point(aes(fill=sig_status), shape=21, size=3.5, alpha=0.85) +
-  geom_text_repel(aes(label=Gene), size=2.8, max.overlaps=15, force=2, box.padding=0.3) +
+  geom_text_repel(aes(label=Gene), size=2.7, max.overlaps=Inf, force=8, box.padding=0.7,
+                  point.padding=0.35, min.segment.length=0, seed=7,
+                  segment.size=0.25, segment.colour="grey40") +
+  scale_x_continuous(expand = expansion(mult = 0.10)) +
   scale_fill_manual(values=c("Sig in both"="#2166AC", "Sig in GTEx only"="#F4A582",
                                "Sig in eQTLGen only"="#92C5DE", "Neither sig"="grey80"),
                     name="Significance") +
@@ -248,7 +253,7 @@ p3 <- ggplot(merged, aes(x=b_SMR_blood, y=b_SMR)) +
   theme_nc
 
 ggsave(file.path(outdir, "Fig3b_gtex_colon_scatter.pdf"), p3, width = 6.30, height = 5.0, device = cairo_pdf)
-cat("  -> Fig3_gtex_colon_scatter.pdf\n")
+cat("  -> Fig3b_gtex_colon_scatter.pdf\n")
 # ==============================================================
 #  Fig 3 — forest plot (companion panel)
 # ==============================================================
@@ -271,7 +276,7 @@ if(nrow(merged_sorted) > 0) {
   p3f <- ggplot(forest_data, aes(x=b, y=Gene, color=source)) +
     geom_vline(xintercept=0, linetype="dashed", color="grey60") +
     geom_errorbar(data=forest_ci,
-                   aes(xmin=ci_low, xmax=ci_high), width=0.3, linewidth=1.0) +
+                   aes(xmin=ci_low, xmax=ci_high), width=0.12, linewidth=0.6) +
     geom_point(aes(shape=source), size=3) +
     scale_shape_manual(values=c("GTEx Colon"=16, "eQTLGen Blood"=17)) +
     scale_color_manual(values=c("GTEx Colon"="#CA0020", "eQTLGen Blood"="#2166AC")) +
@@ -284,12 +289,12 @@ if(nrow(merged_sorted) > 0) {
                      panel.grid.major.y=element_line(color="grey90", linewidth=0.3))
 
   ggsave(file.path(outdir, "Fig3c_gtex_colon_forest.pdf"), p3f, width = 6.30, height = 4.2, device = cairo_pdf)
-  cat("  -> Fig3_gtex_colon_forest.pdf\n")
+  cat("  -> Fig3c_gtex_colon_forest.pdf\n")
 }
 # ==============================================================
 #  Fig 4a — Drug annotation dot plot  (phase5b_deep_drug_annotation.csv)
 # ==============================================================
-cat("\n>>> Fig 4a: Drug annotation summary\n")
+cat("\n>>> Figure 4b: Drug annotation summary\n")
 drug <- read_csv("results/phase5b_deep_drug_annotation.csv", show_col_types=FALSE) %>%
   filter(!is.na(gene)) %>%
   mutate(
@@ -322,12 +327,12 @@ p5a <- ggplot(drug_top, aes(x=gene, y=repurposing_score)) +
   coord_flip() +
   theme_nc
 
-ggsave(file.path(outdir, "Fig4a_drug_repurposing.pdf"), p5a, width = 6.30, height = 4.9, device = cairo_pdf)
-cat("  -> Fig4a_drug_repurposing.pdf\n")
+ggsave(file.path(outdir, "Fig4b_drug_repurposing.pdf"), p5a, width = 6.30, height = 4.9, device = cairo_pdf)
+cat("  -> Fig4b_drug_repurposing.pdf\n")
 # ==============================================================
 #  Fig 4b — PheWAS safety heatmap  (phase5c_phewas_safety.csv)
 # ==============================================================
-cat("\n>>> Fig 4b: PheWAS safety heatmap\n")
+cat("\n>>> Figure 4a: PheWAS safety heatmap\n")
 phewas <- read_csv("results/phase5c_phewas_safety.csv", show_col_types=FALSE)
 
 # Build risk category matrix
@@ -350,18 +355,36 @@ p5b <- ggplot(risk_cat_long, aes(x=category_name, y=gene, fill=category_count)) 
        subtitle="Tier 1 genes: Open Targets Platform disease associations by category",
        caption="n = 6 Tier 1 genes; tile value = number of associated diseases per category.") +
   theme_nc + theme(
-    axis.text.x = element_text(angle=45, hjust=1, size=10),
+    axis.text.x = element_text(angle=45, hjust=1, size=8.5),
+    plot.margin = margin(5, 6, 3, 30),
     panel.grid = element_blank(),
     legend.position = "right"
   )
 
-ggsave(file.path(outdir, "Fig4b_phewas_safety.pdf"), p5b, width = 6.30, height = 3.2, device = cairo_pdf)
-cat("  -> Fig4b_phewas_safety.pdf\n")
+ggsave(file.path(outdir, "Fig4a_phewas_safety.pdf"), p5b, width = 6.30, height = 3.2, device = cairo_pdf)
+cat("  -> Fig4a_phewas_safety.pdf\n")
 # ==============================================================
 #  Fig 4c — Competitor overlap  (competitor_overlap.tsv + UpSet)
 # ==============================================================
-cat("\n>>> Fig 4c: Competitor overlap\n")
+cat("\n>>> Figure 5a: Competitor overlap\n")
 comp <- read_csv("results/competitor_overlap.tsv", show_col_types=FALSE)
+
+# Chen 2024 is absent from competitor_overlap.tsv. Add it from Table S8 (the
+# authoritative cross-reference) so the bar matches the 44.9% quoted in the text.
+v5_sym <- unique(read_tsv("results/phase1_bonferroni_significant_annotated.tsv",
+                          show_col_types = FALSE)$SYMBOL)
+v5_sym <- v5_sym[!is.na(v5_sym) & v5_sym != ""]
+chen_lines_all <- readLines("manuscript/tables/TableS8_chen2024_gene_list.tex")
+chen_lines_all <- chen_lines_all[grepl("^\\s*[A-Za-z0-9][A-Za-z0-9._-]*\\s*&", chen_lines_all)]
+chen_sym_all <- unique(sub("^\\s*([A-Za-z0-9._-]+)\\s*&.*$", "\\1", chen_lines_all))
+chen_sym_all <- chen_sym_all[chen_sym_all != "Gene"]
+n_chen_ov <- sum(v5_sym %in% chen_sym_all)
+comp <- bind_rows(comp, tibble(
+  study = "Chen_2024_NatCommun", journal_IF = "16",
+  total_genes = length(chen_sym_all), overlap_n = n_chen_ov,
+  overlap_rate = sprintf("%.1f%%", 100 * n_chen_ov / length(v5_sym)),
+  overlapping_genes = ""))
+cat(sprintf("  Chen 2024 added: %d/%d overlap\n", n_chen_ov, length(v5_sym)))
 
 # Barplot of overlap rates
 comp_plot <- comp %>%
@@ -371,7 +394,8 @@ comp_plot <- comp %>%
     grepl("Wang_2025", study) ~ "Wang 2025\nDisc Oncol",
     grepl("Wang_suppl", study) ~ "Wang suppl\nBMC Cancer",
     grepl("Tian", study) ~ "Tian 2025\nBiomedicines",
-    grepl("Hazelwood", study) ~ "Hazelwood 2025\nNat Commun"
+    grepl("Chen", study) ~ "Chen 2024\nNat Commun",
+    grepl("Hazelwood", study) ~ "Hazelwood 2025\nNat Commun",
   ),
   study_short = fct_reorder(study_short, overlap_n),
   journal_if_num = as.numeric(journal_IF))
@@ -382,68 +406,26 @@ p5c_bar <- ggplot(comp_plot, aes(y=study_short, x=overlap_n)) +
             hjust=-0.12, size=3.5, fontface="bold") +
   scale_fill_gradient(low="#FDDBC7", high="#2166AC", name="Journal IF") +
   scale_x_continuous(limits=c(0, max(comp_plot$overlap_n)*1.35), expand=c(0,0)) +
-  labs(x="Overlapping genes with v5", y="",
+  labs(x="Overlapping genes with this study", y="",
        title="Overlap with prior CRC target-discovery studies",
-       subtitle=paste0("v5 total: 69 unique genes. ",comp$overlap_n[comp$study=="ALL_COMBINED"],
+       subtitle=paste0("This study: 69 unique genes. ",comp$overlap_n[comp$study=="ALL_COMBINED"],
                        " overlap (", comp$overlap_rate[comp$study=="ALL_COMBINED"],")"),
        caption="Overlap counts are gene-symbol based; journal impact factor shown by fill.") +
   theme_nc +
   theme(panel.grid.major.y = element_blank(),
         panel.grid.major.x = element_line(color = "grey90", linewidth = 0.3))
 
-ggsave(file.path(outdir, "Fig4c_competitor_overlap.pdf"), p5c_bar, width = 6.30, height = 3.5, device = cairo_pdf)
-cat("  -> Fig4c_competitor_overlap.pdf\n")
+ggsave(file.path(outdir, "Fig5a_competitor_overlap.pdf"), p5c_bar, width = 6.30, height = 3.5, device = cairo_pdf)
+cat("  -> Fig5a_competitor_overlap.pdf\n")
 
-# UpSet plot: v5 vs Chen 2024 vs Hazelwood 2025 (3 sets, intersections computed programmatically)
-cat("  Building UpSet plot...\n")
-v5_genes <- unique(read_tsv("results/phase1_bonferroni_significant_annotated.tsv", show_col_types=FALSE)$SYMBOL)
-v5_genes <- v5_genes[v5_genes != "" & !is.na(v5_genes)]
-
-# Chen 2024 gene list parsed from Table S8 (exclude the literal "Gene" artifact row)
-chen_lines <- readLines("manuscript/tables/TableS8_chen2024_gene_list.tex")
-chen_rows <- grepl("^\\s*\\S+\\s*&\\s*(\\\\textbf\\{Yes\\}|---)\\s*\\\\\\\\", chen_lines)
-chen_genes <- sub("^\\s*(\\S+)\\s*&.*$", "\\1", chen_lines[chen_rows])
-chen_genes <- chen_genes[chen_genes != "Gene"]
-
-hazelwood_all <- c("AAMP","ABCC2","AC087392.1","AC144831.1","AL121832.3","ARPC2","ATF1","CCM2","CENPBD2P","COLCA1","COX14","COX15","DACT1","EPM2AIP1","FADS1","FEN1","GPATCH1","KLF5","LAMC1","LAMC1-AS1","LIMA1","LRRFIP2","METRNL","MLH1","MZF1","MZF1-AS1","PLEKHG6","PNKD","POU2AF2","POU2AF3","POU5F1B","RBBP8NL","RP11-129K12.1","RPS21-DT","SEMA4D","TCF19","TMBIM1","GPBAR1","LTBR","PDCD1","PTGER3")
-
-# Programmatic intersection counts (canonical: v5∩Chen=31, v5∩Hazelwood=12, triple=8)
-v5_chen <- sum(v5_genes %in% chen_genes)
-v5_haz  <- sum(v5_genes %in% hazelwood_all)
-triple  <- sum(v5_genes %in% chen_genes & v5_genes %in% hazelwood_all)
-v5_only <- sum(!(v5_genes %in% c(chen_genes, hazelwood_all)))
-cat(sprintf("    v5=%d  v5&Chen=%d  v5&Hazelwood=%d  triple=%d  v5-only=%d\n",
-            length(v5_genes), v5_chen, v5_haz, triple, v5_only))
-
-all_genes <- unique(c(v5_genes, chen_genes, hazelwood_all))
-upset_df <- data.frame(
-  gene = all_genes,
-  "v5 (this study)" = all_genes %in% v5_genes,
-  "Chen 2024" = all_genes %in% chen_genes,
-  "Hazelwood 2025" = all_genes %in% hazelwood_all,
-  check.names = FALSE
-)
-
-p4c_upset <- upset(
-  upset_df,
-  intersect = c("v5 (this study)", "Chen 2024", "Hazelwood 2025"),
-  name = "Gene set membership",
-  width_ratio = 0.3,
-  sort_intersections_by = "cardinality"
-) +
-  labs(title = "Gene Overlap: v5 vs Chen 2024 vs Hazelwood 2025",
-       subtitle = sprintf("v5 = %d  |  v5 & Chen = %d  |  v5 & Hazelwood = %d  |  triple = %d",
-                          length(v5_genes), v5_chen, v5_haz, triple)) +
-  theme(plot.title = element_blank(),
-        plot.subtitle = element_blank())
-
-ggsave(file.path(outdir, "Fig4d_competitor_upset.pdf"), p4c_upset, width = 6.30, height = 5.5, device = cairo_pdf)
-cat("  -> Fig4c_competitor_upset.pdf\n")
+# Fig 5b (UpSet) is generated by scripts/63_fig5b_upset.R, which reads Table S8
+# directly. The previous ComplexUpset version parsed only the highlighted rows and
+# drew background ribbons that did not line up with the dot matrix.
 
 # ==============================================================
 #  Fig 1 - study design (print size, no in-figure title)
 # ==============================================================
-cat("\n>>> Fig 1: study design\n")
+cat("\n>>> Figure 1b: study design\n")
 rows <- c(4.85, 2.95, 1.05)
 bands <- data.frame(
   ymin = rows - 0.85, ymax = rows + 0.85,
@@ -472,8 +454,10 @@ boxes <- data.frame(
 boxes$w <- 3.3; boxes$h <- 1.2
 boxes$xmin <- boxes$x - boxes$w/2; boxes$xmax <- boxes$x + boxes$w/2
 boxes$ymin <- boxes$y - boxes$h/2; boxes$ymax <- boxes$y + boxes$h/2
-arrows <- data.frame(x = c(5.95, 9.55, 5.95, 9.55), y = c(rows[1], rows[1], rows[2], rows[2]),
-                     xend = c(6.25, 9.85, 6.25, 9.85), yend = c(rows[1], rows[1], rows[2], rows[2]))
+arrows <- data.frame(x = rep(c(5.95, 9.55), 3),
+                     y = rep(rows, each = 2),
+                     xend = rep(c(6.25, 9.85), 3),
+                     yend = rep(rows, each = 2))
 p1 <- ggplot() +
   geom_rect(data = bands, aes(xmin = 0.10, xmax = 13.70, ymin = ymin, ymax = ymax, fill = fill), color = NA) +
   scale_fill_identity() +
@@ -485,16 +469,16 @@ p1 <- ggplot() +
             size = 2.75, color = "grey10", fontface = "bold", lineheight = 1.15) +
   geom_segment(data = arrows, aes(x = x, y = y, xend = xend, yend = yend),
                arrow = arrow(length = unit(0.10, "cm"), type = "closed"), color = "grey45", linewidth = 0.5) +
-  annotate("text", x = 6.90, y = 0.18, hjust = 0.5, size = 2.6, color = "grey35",
+  annotate("text", x = 6.90, y = -0.22, hjust = 0.5, size = 2.6, color = "grey35",
            label = "Data: 78,473-case CRC GWAS (GCST90255675); eQTLGen (n = 31,684); deCODE and UKB-PPP plasma proteomes;\nFinnGen R13; TCGA-COAD and READ; Visium spatial transcriptomics.") +
-  coord_cartesian(xlim = c(0, 13.8), ylim = c(0, 5.7), expand = FALSE) +
+  coord_cartesian(xlim = c(0, 13.8), ylim = c(-0.78, 5.7), expand = FALSE) +
   theme_void() + theme(plot.margin = margin(4, 4, 4, 4))
-ggsave(file.path(outdir, "Fig1_study_design.pdf"), p1, width = TEXTW, height = 3.15, device = cairo_pdf)
+ggsave(file.path(outdir, "Fig1b_study_design.pdf"), p1, width = TEXTW, height = 3.56, device = cairo_pdf)
 
 # ==============================================================
 #  Fig 2a - evidence funnel: 62 -> 15 (measured) -> 7 of 15 / 9 of 17 (cis-pQTL instruments) -> 1
 # ==============================================================
-cat("\n>>> Fig 2a: evidence funnel\n")
+cat("\n>>> Figure 2a: evidence funnel\n")
 bio  <- fread("results/phase1_ensg_biotype.tsv")
 n_coding <- sum(bio$gene_type == "protein_coding")
 dec  <- unique(sub("^([0-9]+_[0-9]+_)([^_]+)_.*$", "\\2", list.files("data/decode", pattern = "\\.txt\\.gz$")))
@@ -525,7 +509,7 @@ funnel <- data.frame(
 wrap_lab <- function(x, width = 66) paste(strwrap(x, width = width), collapse = "\n")
 funnel$detail <- vapply(funnel$detail, wrap_lab, character(1))
 note_2a <- wrap_lab("Of the six core Tier 1 genes, five have no protein measurement in either panel; BMP2 is measured but carries no cis-pQTL instruments.", width = 100)
-funnel$bar <- 0.38 * log10(funnel$n) / log10(62)
+funnel$bar <- pmax(0.38 * funnel$n / 62, 0.020)
 funnel$fill <- c("#08519C", "#2171B5", "#4393C3", "#B2182B")
 p2a <- ggplot(funnel) +
   geom_rect(aes(xmin = 0, xmax = bar, ymin = y - 0.30, ymax = y + 0.30, fill = fill), color = NA) +
@@ -542,7 +526,7 @@ ggsave(file.path(outdir, "Fig2a_coverage_funnel.pdf"), p2a, width = TEXTW, heigh
 # ==============================================================
 #  Fig 3a - pQTL convergence: MR effect and colocalization, aligned
 # ==============================================================
-cat("\n>>> Fig 3a: pQTL convergence panel\n")
+cat("\n>>> Figure 3a: pQTL convergence panel\n")
 mr <- fread("results/phase2_decode/phase2_decode_pqtl_mr_combined.csv")
 co <- fread("results/phase2_decode/phase2_decode_pqtl_coloc.csv")
 dd <- merge(mr[, .(gene, wald_b, wald_se, wald_pval, n_instruments)], co[, .(gene, PPH4)], by = "gene")
@@ -557,7 +541,7 @@ pL <- ggplot(dd, aes(x = wald_b, y = gene)) +
   geom_point(aes(colour = hl), size = 2.2) +
   scale_colour_manual(values = cols, guide = "none") +
   labs(x = "pQTL effect on CRC (Wald ratio b, 95% CI)", y = NULL) +
-  theme_nc + theme(legend.position = "none")
+  theme_nc + theme(legend.position = "none", plot.margin = margin(4, 6, 2, 16))
 pR <- ggplot(dd, aes(x = PPH4, y = gene)) +
   geom_vline(xintercept = 0.8, linetype = "dashed", colour = "#B2182B", linewidth = 0.4) +
   geom_segment(aes(x = 0, xend = PPH4, y = gene, yend = gene), colour = "grey85", linewidth = 0.4) +
@@ -572,22 +556,53 @@ ggsave(file.path(outdir, "Fig3a_ccm2_convergence.pdf"), p3a, width = TEXTW, heig
 
 
 # ==============================================================
-#  Final panel file names used by the manuscript.
-#  Kept here so the figure pipeline is self-contained: previously these
-#  copies were made by a separate shell step, which silently went stale
-#  when the figures were regenerated (the LaTeX then picked up old panels).
+#  Final panel file names.
+#  Every delivered panel is named after the figure number it carries in
+#  the manuscript (Figure 1b -> Fig1b_*.pdf ... Figure S19 -> FigS19_*.pdf),
+#  so the file name can never drift away from the printed figure number.
+#  The main panels are written directly under their final names above;
+#  the supplementary panels are produced by other scripts and are
+#  collected into results/figures_rev3/ by the table below.
 # ==============================================================
 panel_names <- c(
-  "Fig1_study_design.pdf"              = "Fig1a_study_design.pdf",
-  "Fig2b_coloc_pph4.pdf"               = "Fig1b_coloc_pph4.pdf",
-  "Fig2c_eqtl_pqtl_classification.pdf" = "Fig2b_eqtl_pqtl_classification.pdf",
-  "Fig2d_eqtl_pqtl_scatter.pdf"        = "Fig2c_eqtl_pqtl_scatter.pdf",
-  "Fig4c_competitor_overlap.pdf"       = "Fig5a_competitor_overlap.pdf",
-  "Fig4d_competitor_upset.pdf"         = "Fig5b_competitor_upset.pdf"
+  "../figures/FigS1a_manhattan.pdf"                    = "FigS1a_manhattan.pdf",
+  "../figures/FigS1b_qq_plot.pdf"                      = "FigS1b_qq_plot.pdf",
+  "../figures/FigS23_tier1_regional_plots.pdf"         = "FigS2_tier1_regional_plots.pdf",
+  "../figures/FigS3_susie_sensitivity.pdf"             = "FigS3_susie_sensitivity.pdf",
+  "../figures/FigS2_smr_or_forest.pdf"                 = "FigS4_smr_or_forest.pdf",
+  "../figures/FigS6_mr_sensitivity.pdf"                = "FigS5_mr_sensitivity.pdf",
+  "../figures/FigS4_ukbppp_pqtl_coloc.pdf"             = "FigS6_ukbppp_pqtl_coloc.pdf",
+  "../figures/FigS5_decode_pqtl_coloc.pdf"             = "FigS7_decode_pqtl_coloc.pdf",
+  "../figures/FigS20_pqtl_mr_decode_forest.pdf"        = "FigS8_pqtl_mr_decode_forest.pdf",
+  "../figures/FigS21_pqtl_mr_ukbppp_forest.pdf"        = "FigS9_pqtl_mr_ukbppp_forest.pdf",
+  "../figures/FigS24_pqtl_mr_scatter.pdf"              = "FigS10_pqtl_mr_scatter.pdf",
+  "../figures/FigS25_pqtl_mr_loo.pdf"                  = "FigS11_pqtl_mr_loo.pdf",
+  "../figures/FigS26_pqtl_mr_methods_forest.pdf"       = "FigS12_pqtl_mr_methods_forest.pdf",
+  "../figures/FigS27_pqtl_mr_funnel_pleiotropy.pdf"    = "FigS13_pqtl_mr_funnel_pleiotropy.pdf",
+  "../figures/FigS7_celltype_dotplot.pdf"              = "FigS14_celltype_dotplot.pdf",
+  "../figures/FigS8_spatial_tier1_genes.pdf"           = "FigS15_spatial_tier1_genes.pdf",
+  "../phase6_scrna/FigS14_microenvironment_elbow_plot.pdf" = "FigS16a_microenvironment_elbow_plot.pdf",
+  "../figures/FigS15_me_zone_barplot.pdf"              = "FigS16b_me_zone_barplot.pdf",
+  "../figures/FigS16_me_tier1_heatmap.pdf"             = "FigS16c_me_tier1_heatmap.pdf",
+  "../figures/FigS22_finngen_replication_forest.pdf"   = "FigS17_finngen_replication_forest.pdf",
+  "../figures/FigS18_idg_druggability.pdf"             = "FigS18_idg_druggability.pdf",
+  "../figures/FigS19_phewas_safety_scores.pdf"         = "FigS19_phewas_safety_scores.pdf"
 )
+
+main_panels <- c(
+  "Fig1b_study_design.pdf", "Fig1c_coloc_pph4.pdf",
+  "Fig2a_coverage_funnel.pdf", "Fig2b_eqtl_pqtl_classification.pdf", "Fig2c_eqtl_pqtl_scatter.pdf",
+  "Fig3a_ccm2_convergence.pdf", "Fig3b_gtex_colon_scatter.pdf", "Fig3c_gtex_colon_forest.pdf",
+  "Fig4a_phewas_safety.pdf", "Fig4b_drug_repurposing.pdf",
+  "Fig5a_competitor_overlap.pdf", "Fig5b_gene_overlap_venn.pdf"
+)
+miss <- main_panels[!file.exists(file.path(outdir, main_panels))]
+if (length(miss)) stop("main panel not produced: ", paste(miss, collapse = ", "))
+
 cat("\n-> final panel names\n")
 for (nm in names(panel_names)) {
   a <- file.path(outdir, nm); b <- file.path(outdir, panel_names[[nm]])
+  if (identical(normalizePath(a, mustWork = FALSE), normalizePath(b, mustWork = FALSE))) next
   if (!file.exists(a)) {
     if (file.exists(b)) { cat(sprintf("   %-36s (source missing, keeping existing %s)\n", nm, panel_names[[nm]])); next }
     stop("figure not produced: ", a)
