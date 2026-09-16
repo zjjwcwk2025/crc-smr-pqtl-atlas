@@ -1,4 +1,4 @@
-% CRC Multi-Omics Drug-Target Atlas (v5)
+% CRC Multi-Omics Drug-Target Atlas (main text)
 % Target tier (rev1): Briefings in Bioinformatics / Journal of Translational Medicine
 \documentclass[11pt,a4paper]{article}
 
@@ -892,31 +892,6 @@ despite strong colocalization and SuSiE evidence. The HEIDI test was
 significant for PNKD ($p_{\text{HEIDI}} = 7.22 \times 10^{-4}$), indicating
 residual heterogeneity in the causal signal.
 
-This study shows that when CRC drug-target prioritization is driven by blood
-eQTL-based SMR, the limiting step is protein-layer coverage rather than genetic
-significance: of 15,582 genes tested, 75 reached SMR significance and 19 reached
-Tier 1 status, yet only 15 of the 62 protein-coding genes were measured in either
-plasma proteomic panel and only one colocalized at the protein layer. The
-distinct contribution of this study
-lies in analytical resolution (SuSiE fine-mapping producing single-SNP credible
-sets at loci where prior coloc-only approaches could not separate causal
-signals), multi-omic integration (the first systematic documentation of eQTL/pQTL
-colocalization discordance in CRC, with CCM2 as the sole triple-convergent
-gene), and biological contextualization (spatial transcriptomics characterizing
-tumor microenvironment zones and gene-level spatial independence at the complex
-chr2:219Mb locus). The eQTL/pQTL discordance suggests that current proteomic
-GWAS datasets, while valuable, are insufficient for high-confidence
-protein-level colocalization at most loci, and expanded proteomic resources
-will be needed.
-Once the coverage constraint is stated explicitly, the candidates that remain
-defensible are CCM2 and BMP2: CCM2 carries the only triple-convergent evidence in
-this study, and BMP2 combines the strongest genetic support with an existing
-pharmacological precedent (a TGF-$\beta$ receptor-inhibitor class) and the
-narrowest organ-system risk spectrum of the six core candidates (cardiovascular
-and neurological phenotypes only; Table~\ref{tab:tier1}). We recommend that
-cis-pQTL coverage be reported alongside any eQTL-derived target list, so that
-readers can see where protein-level validation was possible and where it was not.
-
 \subsection*{Limitations and methodological considerations}
 
 Several limitations should be noted. First, our eQTL data derive from whole
@@ -975,6 +950,35 @@ that the underlying GWAS (GCST90255675) has a large sample size
 propagate to SMR test statistics through shared LD architecture. The Bonferroni
 correction we applied is conservative and controls the family-wise error rate
 at the stated threshold, even in the presence of test correlation from local LD.
+
+%==========================================================================
+\section{Conclusions}
+%==========================================================================
+
+This study shows that when CRC drug-target prioritization is driven by blood
+eQTL-based SMR, the limiting step is protein-layer coverage rather than genetic
+significance: of 15,582 genes tested, 75 reached SMR significance and 19 reached
+Tier 1 status, yet only 15 of the 62 protein-coding genes were measured in either
+plasma proteomic panel and only one colocalized at the protein layer. The
+distinct contribution of this study
+lies in analytical resolution (SuSiE fine-mapping producing single-SNP credible
+sets at loci where prior coloc-only approaches could not separate causal
+signals), multi-omic integration (the first systematic documentation of eQTL/pQTL
+colocalization discordance in CRC, with CCM2 as the sole triple-convergent
+gene), and biological contextualization (spatial transcriptomics characterizing
+tumor microenvironment zones and gene-level spatial independence at the complex
+chr2:219Mb locus). The eQTL/pQTL discordance suggests that current proteomic
+GWAS datasets, while valuable, are insufficient for high-confidence
+protein-level colocalization at most loci, and expanded proteomic resources
+will be needed.
+Once the coverage constraint is stated explicitly, the candidates that remain
+defensible are CCM2 and BMP2: CCM2 carries the only triple-convergent evidence in
+this study, and BMP2 combines the strongest genetic support with an existing
+pharmacological precedent (a TGF-$\beta$ receptor-inhibitor class) and the
+narrowest organ-system risk spectrum of the six core candidates (cardiovascular
+and neurological phenotypes only; Table~\ref{tab:tier1}). We recommend that
+cis-pQTL coverage be reported alongside any eQTL-derived target list, so that
+readers can see where protein-level validation was possible and where it was not.
 
 %==========================================================================
 \section{Methods}
