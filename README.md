@@ -69,13 +69,20 @@ R 4.4.3; Python 3.11; Poppler (pdftoppm, pdftotext). Genomic coordinates are hg3
   (`submission/figures/tif_figures/`) and of every individual panel
   (`submission/figures/tif_panels/`, 35 panels including Fig 1a). Resolution steps down
   through 500/400/300 dpi when a file would exceed the 10 MB upload limit.
+- `scripts/75_build_upload_pack.py` - writes `submission/upload_pack/main_text/` and
+  `submission/upload_pack/supplementary/`. Each directory is flat (no subdirectories)
+  and carries its own copies of the .tex, .bib, .bbl, tables and figure panels, so it
+  compiles on its own inside the single directory that a journal's LaTeX service uses.
+  `manuscript/...` input paths are rewritten to plain file names for this.
 
 The generated PDFs and TIFFs are not tracked here; both scripts recreate them from the
 figure sources.
 
 ## Reproducing the build
 
-Figures, then the documents (the main text cross-references the supplement):
+Figures, then the two documents. They are independent: the main text quotes the
+supplementary item numbers literally (Supplementary Fig. S1-S19, Table S1-S9) instead of
+reading the supplement's .aux file, so either document can be compiled on its own.
 
 1. `Rscript scripts/rev3_main_figures.R`
 2. `python3 scripts/91_build_submission_figures.py`
@@ -83,6 +90,7 @@ Figures, then the documents (the main text cross-references the supplement):
    `pdflatex -interaction=nonstopmode manuscript/crc_smr_supplementary.tex` (twice)
 4. `pdflatex -interaction=nonstopmode manuscript/crc_smr_atlas_rev3.tex` ;
    `bibtex crc_smr_atlas_rev3` ; `pdflatex` twice
+5. `python3 scripts/75_build_upload_pack.py` - assembles the flat upload pack
 
 Figures are resolved through
 `\graphicspath{{results/figures_rev3/}{results/figures/}{results/phase6_scrna/}}`.

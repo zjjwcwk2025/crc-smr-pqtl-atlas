@@ -28,3 +28,6 @@ __pycache__/
 *.blg
 submission/figures/*.tif
 submission/figures/src/
+
+# Generated submission pack (needs the figure sources; see README)
+submission/upload_pack/
