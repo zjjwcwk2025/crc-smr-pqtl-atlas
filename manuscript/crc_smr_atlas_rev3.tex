@@ -10,7 +10,7 @@
 \usepackage{longtable}
 \usepackage{lineno}
 \usepackage[hidelinks]{hyperref}
-\usepackage{natbib}
+\usepackage[numbers,sort&compress]{natbib}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{subcaption}
@@ -24,8 +24,8 @@
 \title{Limited plasma proteomic coverage constrains genetic\\drug-target prioritization in colorectal cancer}
 
 \author{Jiajie Zhou\textsuperscript{1,*}\\[0.4em]
-\normalsize\textsuperscript{1}The Affiliated Huaian No.1 People's Hospital of Nanjing Medical University, Huaian, Jiangsu, China\\[0.3em]
-\normalsize\textsuperscript{*}Corresponding author: Jiajie Zhou, MD. E-mail: zjjwcwk2025@njmu.edu.cn; Tel: +86-15805233415}
+\normalsize\textsuperscript{1}The Affiliated Huaian No.1 People's Hospital of\\ Nanjing Medical University,\\ Huaian, Jiangsu, China\\[0.3em]
+\normalsize\textsuperscript{*}Corresponding author: Jiajie Zhou, MD.\\[0.15em] E-mail: zjjwcwk2025@njmu.edu.cn; Tel: +86-15805233415}
 
 \begin{document}
 \linenumbers
@@ -77,12 +77,12 @@ pQTL, drug repurposing, spatial transcriptomics
 %==========================================================================
 
 Colorectal cancer (CRC) accounts for approximately 1.9 million new cases and
-935,000 deaths annually worldwide, ranking third in incidence and second in
-mortality among all cancers~\cite{sung2021global, bray2024global, siegel2023colorectal}.  Large-scale GWAS have
+935,000 deaths annually worldwide~\cite{sung2021global}, ranking third in incidence
+and second in mortality among all cancers~\cite{bray2024global, siegel2026colorectal}.  Large-scale GWAS have
 identified over 100 CRC susceptibility loci~\cite{huyghe2019discovery,
 law2019association, fernandez2023deciphering}, yet the functional interpretation of
 these loci and their translation into therapeutic targets remain significant
-challenges~\cite{hazelwood2025multi, finan2017druggable, ochoa2021opentargets}.
+challenges~\cite{hazelwood2025multi, finan2017druggable, buniello2025opentargets}.
 
 Summary-based Mendelian randomization (SMR) combined with Bayesian
 colocalization has emerged as a powerful framework for prioritizing causal
@@ -866,7 +866,7 @@ and bone morphogenesis, classified as Tchem by IDG with FDA-approved
 recombinant protein therapy (Infuse) for bone regeneration. BMP2 showed the
 largest per-SD CRC risk effect among all tested genes (OR = 1.38, 95\% CI:
 1.27--1.50), exceeding the magnitude of established modifiable CRC risk
-factors such as BMI and processed meat intake~\cite{chan2010primary}. BMP2 had
+factors such as BMI and processed meat intake~\cite{papadimitriou2021umbrella}. BMP2 had
 no HEIDI result because its probe was absent from the HEIDI output, a data gap,
 not a passed heterogeneity test. In the context of
 CRC, BMP2 signaling through the SMAD pathway intersects with the TGF-$\beta$
@@ -1003,7 +1003,7 @@ grading and PheWAS safety screening.
 
 CRC GWAS summary statistics were obtained from GCST90255675 (78,473 cases,
 107,143 controls, European ancestry), accessed through the NHGRI-EBI GWAS
-Catalog~\cite{buniello2019gwas}. All genomic coordinates are reported
+Catalog~\cite{sollis2023gwas}. All genomic coordinates are reported
 in hg38.
 
 \subsection{eQTL data and SMR analysis}
@@ -1100,7 +1100,7 @@ correlation decay across spot-to-spot distances in 30 bins of 100 $\mu$m.
 \subsection{Drug annotation and PheWAS}
 
 Drug-target associations, target tractability and safety annotations were
-retrieved from the Open Targets Platform~\cite{ochoa2021opentargets} and
+retrieved from the Open Targets Platform~\cite{buniello2025opentargets} and
 Pharos~\cite{kelleher2023pharos}, with druggable-genome classification
 following Finan et al.~\cite{finan2017druggable} and phenome-wide association
 results interpreted following Denny et al.~\cite{denny2010phewas}.
@@ -1141,7 +1141,7 @@ to fully overlap, a consideration acknowledged in the interpretation of overlap
 statistics.
 
 %==========================================================================
-\bibliographystyle{plainnat}
+\bibliographystyle{unsrtnat}
 \bibliography{manuscript/crc_smr_atlas}
 
 %==========================================================================
@@ -1216,7 +1216,7 @@ reference panel is available from
 were accessed via UCSC Xena (\url{https://xenabrowser.net/}). Single-cell
 RNA-seq and Visium spatial transcriptomics data are available from GEO
 (GSE285505). Chen et al.~2024 supplementary data were obtained from the
-Nature Communications article supplement (41467\_2024\_47399\_MOESM4\_ESM.xlsx).
+Nature Communications article supplement (\\allowbreak 41467\_2024\_47399\_MOESM4\_ESM.xlsx).
 
 %==========================================================================
 \section*{Code Availability}

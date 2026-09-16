@@ -5,7 +5,7 @@ import xml.etree.ElementTree as ET
 
 PMIDS = {
  "bray2024global": "38572751",
- "siegel2023colorectal": "36856579",
+ "siegel2026colorectal": "41769777",
  "sudlow2015ukbiobank": "25826379",
  "wu2018integrative": "29500431",
  "vosa2021eqtlgen": "34475573",
@@ -20,7 +20,7 @@ PMIDS = {
  "skrivankova2021strobe": "34698778",
  "zheng2020phenome": "32895551",
  "schmidt2020drugtarget": "32591531",
- "ochoa2021opentargets": "33196847",
+ "buniello2025opentargets": "39657122",
  "kelleher2023pharos": "36624666",
  "finan2017druggable": "28356508",
  "kurki2023finngen": "36653562",
@@ -29,7 +29,7 @@ PMIDS = {
  "kleshchevnikov2022cell2location": "35027729",
  "stahl2016spatial": "27365449",
  "weinstein2013tcga": "24071849",
- "buniello2019gwas": "30445434",
+ "sollis2023gwas": "36350656",
  "denny2010phewas": "20335276",
  "hong2025integrative": "40496862",
  "tian2025dbi": "40426943",
