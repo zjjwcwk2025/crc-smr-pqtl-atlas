@@ -255,74 +255,6 @@ Yansheng Liu, Andreas Beyer, and Ruedi Aebersold.
 \newblock \emph{Cell}, 165\penalty0 (3):\penalty0 535--550, 2016.
 \newblock \doi{10.1016/j.cell.2016.03.014}.
 
-\bibitem[Wainberg et~al.(2019)Wainberg, Sinnott-Armstrong, Mancuso, Barbeira,
-  Knowles, Golan, Ermel, Ruusalepp, Quertermous, Hao, et~al.]{wainberg2019}
-Michael Wainberg, Nasa Sinnott-Armstrong, Nicholas Mancuso, Alvaro~N Barbeira,
-  David~A Knowles, David Golan, Raili Ermel, Arno Ruusalepp, Thomas
-  Quertermous, Ke~Hao, et~al.
-\newblock Opportunities and challenges for transcriptome-wide association
-  studies.
-\newblock \emph{Nature Genetics}, 51\penalty0 (4):\penalty0 592--599, 2019.
-\newblock \doi{10.1038/s41588-019-0385-z}.
-
-\bibitem[Network et~al.(2013)Network, Weinstein, Collisson, Mills, Shaw,
-  Ozenberger, Ellrott, Shmulevich, Sander, and Stuart]{weinstein2013tcga}
-Cancer Genome Atlas~Research Network, JN~Weinstein, EA~Collisson, GB~Mills,
-  KR~Shaw, BA~Ozenberger, K~Ellrott, I~Shmulevich, C~Sander, and JM~Stuart.
-\newblock {The Cancer Genome Atlas Pan-Cancer analysis project.}
-\newblock \emph{Nature genetics}, 45\penalty0 (10):\penalty0 1113--20, 2013.
-\newblock \doi{10.1038/ng.2764}.
-
-\bibitem[Hong et~al.(2025)Hong, Li, Xu, Shu, Chen, Mi, Geng, and
-  Li]{hong2025integrative}
-Y~Hong, J~Li, N~Xu, W~Shu, F~Chen, Y~Mi, H~Geng, and Q~Li.
-\newblock {Integrative genomic and single-cell framework identifies druggable
-  targets for colorectal cancer precision therapy.}
-\newblock \emph{Frontiers in immunology}, 16:\penalty0 1604154, 2025.
-\newblock \doi{10.3389/fimmu.2025.1604154}.
-
-\bibitem[Wang et~al.(2025)Wang, Yao, Li, Wang, Huang, Zhou, Li, Wen, Lan,
-  Huang, Li, Sun, Zhao, Chen, Han, Zhu, Zhang, and Zhang]{wang2025discovoncol}
-S~Wang, X~Yao, S~Li, S~Wang, X~Huang, J~Zhou, X~Li, J~Wen, W~Lan, Y~Huang,
-  H~Li, Y~Sun, X~Zhao, Q~Chen, X~Han, Z~Zhu, X~Zhang, and T~Zhang.
-\newblock {Integrating single-cell with transcriptome-proteome Mendelian
-  randomization reveals colorectal cancer targets.}
-\newblock \emph{Discover oncology}, 16\penalty0 (1):\penalty0 794, 2025.
-\newblock \doi{10.1007/s12672-025-02636-7}.
-
-\bibitem[Xia et~al.(2025)Xia, Wang, Gao, Cui, Song, Ding, and
-  Zhang]{xia2025bmccancer}
-L~Xia, J~Wang, J~Gao, X~Cui, M~Song, W~Ding, and J~Zhang.
-\newblock {Integrative multi-omics analysis identifies key genes and
-  colocalized signals associated with colorectal cancer risk.}
-\newblock \emph{BMC cancer}, 25\penalty0 (1):\penalty0 1372, 2025.
-\newblock \doi{10.1186/s12885-025-14798-2}.
-
-\bibitem[Tian et~al.(2025)Tian, Han, Huang, Ma, and Ran]{tian2025dbi}
-T~Tian, H~Han, J~Huang, J~Ma, and R~Ran.
-\newblock {DBI as a Novel Immunotherapeutic Candidate in Colorectal Cancer:
-  Dissecting Genetic Risk and the Immune Landscape via GWAS, eQTL, and pQTL.}
-\newblock \emph{Biomedicines}, 13\penalty0 (5):\penalty0 1115, 2025.
-\newblock \doi{10.3390/biomedicines13051115}.
-
-\bibitem[Chen et~al.(2024)Chen, Guo, Tao, Huyghe, Law, Fernandez-Rozadilla,
-  et~al.]{chen2024integrative}
-Zhishan Chen, Xingyi Guo, Ran Tao, Jeroen~R Huyghe, Philip~J Law, Ceres
-  Fernandez-Rozadilla, et~al.
-\newblock Fine-mapping analysis including over 254,000 east asian and european
-  descendants identifies 136 putative colorectal cancer susceptibility genes.
-\newblock \emph{Nature Communications}, 15:\penalty0 3557, 2024.
-\newblock \doi{10.1038/s41467-024-47399-x}.
-
-\bibitem[Papadimitriou et~al.(2021)Papadimitriou, Markozannes, Kanellopoulou,
-  Critselis, Alhardan, Karafousia, et~al.]{papadimitriou2021umbrella}
-N~Papadimitriou, G~Markozannes, A~Kanellopoulou, E~Critselis, S~Alhardan,
-  V~Karafousia, et~al.
-\newblock An umbrella review of the evidence associating diet and cancer risk
-  at 11 anatomical sites.
-\newblock \emph{Nature communications}, 12\penalty0 (1):\penalty0 4579, 2021.
-\newblock \doi{10.1038/s41467-021-24861-8}.
-
 \bibitem[Sollis et~al.(2023)Sollis, Mosaku, Abid, Buniello, Cerezo, Gil,
   et~al.]{sollis2023gwas}
 E~Sollis, A~Mosaku, A~Abid, A~Buniello, M~Cerezo, L~Gil, et~al.
@@ -506,5 +438,73 @@ JC~Denny, MD~Ritchie, MA~Basford, JM~Pulley, L~Bastarache, K~Brown-Gentry,
 \newblock \emph{Bioinformatics (Oxford, England)}, 26\penalty0 (9):\penalty0
   1205--10, 2010.
 \newblock \doi{10.1093/bioinformatics/btq126}.
+
+\bibitem[Hong et~al.(2025)Hong, Li, Xu, Shu, Chen, Mi, Geng, and
+  Li]{hong2025integrative}
+Y~Hong, J~Li, N~Xu, W~Shu, F~Chen, Y~Mi, H~Geng, and Q~Li.
+\newblock {Integrative genomic and single-cell framework identifies druggable
+  targets for colorectal cancer precision therapy.}
+\newblock \emph{Frontiers in immunology}, 16:\penalty0 1604154, 2025.
+\newblock \doi{10.3389/fimmu.2025.1604154}.
+
+\bibitem[Wang et~al.(2025)Wang, Yao, Li, Wang, Huang, Zhou, Li, Wen, Lan,
+  Huang, Li, Sun, Zhao, Chen, Han, Zhu, Zhang, and Zhang]{wang2025discovoncol}
+S~Wang, X~Yao, S~Li, S~Wang, X~Huang, J~Zhou, X~Li, J~Wen, W~Lan, Y~Huang,
+  H~Li, Y~Sun, X~Zhao, Q~Chen, X~Han, Z~Zhu, X~Zhang, and T~Zhang.
+\newblock {Integrating single-cell with transcriptome-proteome Mendelian
+  randomization reveals colorectal cancer targets.}
+\newblock \emph{Discover oncology}, 16\penalty0 (1):\penalty0 794, 2025.
+\newblock \doi{10.1007/s12672-025-02636-7}.
+
+\bibitem[Xia et~al.(2025)Xia, Wang, Gao, Cui, Song, Ding, and
+  Zhang]{xia2025bmccancer}
+L~Xia, J~Wang, J~Gao, X~Cui, M~Song, W~Ding, and J~Zhang.
+\newblock {Integrative multi-omics analysis identifies key genes and
+  colocalized signals associated with colorectal cancer risk.}
+\newblock \emph{BMC cancer}, 25\penalty0 (1):\penalty0 1372, 2025.
+\newblock \doi{10.1186/s12885-025-14798-2}.
+
+\bibitem[Tian et~al.(2025)Tian, Han, Huang, Ma, and Ran]{tian2025dbi}
+T~Tian, H~Han, J~Huang, J~Ma, and R~Ran.
+\newblock {DBI as a Novel Immunotherapeutic Candidate in Colorectal Cancer:
+  Dissecting Genetic Risk and the Immune Landscape via GWAS, eQTL, and pQTL.}
+\newblock \emph{Biomedicines}, 13\penalty0 (5):\penalty0 1115, 2025.
+\newblock \doi{10.3390/biomedicines13051115}.
+
+\bibitem[Chen et~al.(2024)Chen, Guo, Tao, Huyghe, Law, Fernandez-Rozadilla,
+  et~al.]{chen2024integrative}
+Zhishan Chen, Xingyi Guo, Ran Tao, Jeroen~R Huyghe, Philip~J Law, Ceres
+  Fernandez-Rozadilla, et~al.
+\newblock Fine-mapping analysis including over 254,000 east asian and european
+  descendants identifies 136 putative colorectal cancer susceptibility genes.
+\newblock \emph{Nature Communications}, 15:\penalty0 3557, 2024.
+\newblock \doi{10.1038/s41467-024-47399-x}.
+
+\bibitem[Wainberg et~al.(2019)Wainberg, Sinnott-Armstrong, Mancuso, Barbeira,
+  Knowles, Golan, Ermel, Ruusalepp, Quertermous, Hao, et~al.]{wainberg2019}
+Michael Wainberg, Nasa Sinnott-Armstrong, Nicholas Mancuso, Alvaro~N Barbeira,
+  David~A Knowles, David Golan, Raili Ermel, Arno Ruusalepp, Thomas
+  Quertermous, Ke~Hao, et~al.
+\newblock Opportunities and challenges for transcriptome-wide association
+  studies.
+\newblock \emph{Nature Genetics}, 51\penalty0 (4):\penalty0 592--599, 2019.
+\newblock \doi{10.1038/s41588-019-0385-z}.
+
+\bibitem[Network et~al.(2013)Network, Weinstein, Collisson, Mills, Shaw,
+  Ozenberger, Ellrott, Shmulevich, Sander, and Stuart]{weinstein2013tcga}
+Cancer Genome Atlas~Research Network, JN~Weinstein, EA~Collisson, GB~Mills,
+  KR~Shaw, BA~Ozenberger, K~Ellrott, I~Shmulevich, C~Sander, and JM~Stuart.
+\newblock {The Cancer Genome Atlas Pan-Cancer analysis project.}
+\newblock \emph{Nature genetics}, 45\penalty0 (10):\penalty0 1113--20, 2013.
+\newblock \doi{10.1038/ng.2764}.
+
+\bibitem[Papadimitriou et~al.(2021)Papadimitriou, Markozannes, Kanellopoulou,
+  Critselis, Alhardan, Karafousia, et~al.]{papadimitriou2021umbrella}
+N~Papadimitriou, G~Markozannes, A~Kanellopoulou, E~Critselis, S~Alhardan,
+  V~Karafousia, et~al.
+\newblock An umbrella review of the evidence associating diet and cancer risk
+  at 11 anatomical sites.
+\newblock \emph{Nature communications}, 12\penalty0 (1):\penalty0 4579, 2021.
+\newblock \doi{10.1038/s41467-021-24861-8}.
 
 \end{thebibliography}
