@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,urlcolor=blue}
+\emergencystretch=3em
 
 \begin{document}
 
@@ -12,23 +13,23 @@
 
 \opening{Dear Editors,}
 
-We are pleased to submit our manuscript, ``\textbf{Limited plasma proteomic coverage constrains genetic drug-target prioritization in colorectal cancer}'', for consideration as a Research article in \textit{Journal of Translational Medicine}.
+I am pleased to submit my manuscript, ``\textbf{Limited plasma proteomic coverage constrains genetic drug-target prioritization in colorectal cancer}'', for consideration as a Research article in \textit{Journal of Translational Medicine}.
 
-\textbf{What we did.} We built an end-to-end post-GWAS target-prioritization pipeline for colorectal cancer (CRC) that links blood cis-eQTL evidence (eQTLGen, $n = 31{,}684$) to a 78,473-case CRC GWAS, and then attempts to validate the resulting targets at the protein layer using two independent plasma proteomic panels (deCODE SomaScan and UKB-PPP Olink, about 35,000 participants each). We added tissue-level context (single-cell and Visium spatial transcriptomics of CRC), drug-tractability annotation, and PheWAS safety screening.
+\textbf{What I did.} I built an end-to-end post-GWAS target-prioritization pipeline for colorectal cancer (CRC) that links blood cis-eQTL evidence (eQTLGen, $n = 31{,}684$) to a 78,473-case CRC GWAS, and then attempted to validate the resulting targets at the protein layer using two independent plasma proteomic panels (deCODE SomaScan and UKB-PPP Olink, about 35,000 participants each). I added tissue-level context (single-cell and Visium spatial transcriptomics of CRC), drug-tractability annotation, and PheWAS safety screening.
 
-\textbf{What we found.} Of 15,582 genes tested, 75 passed Bonferroni-corrected SMR and 19 reached Tier~1 status, and 43 of 76 probe--gene pairs (57\%) colocalized at the eQTL layer. At the protein layer, however, the target list could barely be tested: of the 62 protein-coding genes, only 15 had matching plasma protein measurements (17 in the analysis set once two TNF-pathway genes are included), only \textbf{nine} had genome-wide significant cis-pQTL instruments available for Mendelian randomization, and only \textbf{one} (CCM2, PPH4 $= 0.9514$) colocalized with the CRC GWAS signal. Five of the six core non-MHC Tier~1 candidates have no protein measurement in either panel at all. The bottleneck for translating CRC GWAS loci into drug targets is therefore protein-layer coverage, not genetic significance.
+\textbf{What I found.} Of 15,582 genes tested, 75 passed Bonferroni-corrected SMR and 19 reached Tier~1 status, and 43 of 76 probe--gene pairs (57\%) colocalized at the eQTL layer. At the protein layer, however, the target list could barely be tested: of the 62 protein-coding genes, only 15 had matching plasma protein measurements (17 in the analysis set once two TNF-pathway genes are included), only \textbf{nine} had genome-wide significant cis-pQTL instruments available for Mendelian randomization, and only \textbf{one} (CCM2, PPH4 $= 0.9514$) colocalized with the CRC GWAS signal. Five of the six core non-MHC Tier~1 candidates have no protein measurement in either panel at all. The bottleneck for translating CRC GWAS loci into drug targets is therefore protein-layer coverage, not genetic significance.
 
-\textbf{Why we believe this fits \textit{Journal of Translational Medicine}.} Our message is directly translational: we show that a widely used class of target-prioritization pipelines is limited by the resources used to validate it, and we turn that observation into a concrete reporting recommendation---report cis-pQTL coverage alongside any eQTL-derived target list, so that readers can see how much of the list was actually testable. We also provide the positive residue that survives this constraint: CCM2, the only gene with convergent eQTL fine-mapping, pQTL Mendelian randomization and pQTL colocalization evidence, and BMP2, which combines genetic support with the narrowest organ-system risk spectrum and a pre-existing pharmacological basis.
+\textbf{Why this fits \textit{Journal of Translational Medicine}.} The message is directly translational: I show that a widely used class of target-prioritization pipelines is limited by the resources used to validate it, and I turn that observation into a concrete reporting recommendation---report cis-pQTL coverage alongside any eQTL-derived target list, so that readers can see how much of the list was actually testable. I also provide the positive residue that survives this constraint: CCM2, the only gene with convergent eQTL fine-mapping, pQTL Mendelian randomization and pQTL colocalization evidence, and BMP2, which combines genetic support with the narrowest organ-system risk spectrum and a pre-existing pharmacological basis.
 
-\textbf{Why the analysis is defensible.} All instrument sets were checked for strength (minimum $F = 18.2$, median $F$ 30.4--326.3), and we report heterogeneity and pleiotropy diagnostics rather than hiding them: Cochran's $Q$ indicates substantial heterogeneity for all five genes with multi-instrument estimates, and the MR-Egger intercept is non-significant for CCM2 ($p = 0.55$) and LIMA1 ($p = 0.11$) but significant for STAT6, CDKN1A and TNF. While preparing this manuscript we noticed that the MR-PRESSO outlier test is not resolvable at its default \texttt{NbDistribution = 1000} for instrument sets of this size (resolution $n/1000 = 0.061$--$0.228$, above the 0.05 threshold); we therefore re-ran it at \texttt{NbDistribution = 5000} (resolution at most 0.046) and report outlier counts together with the distortion test. We also report a power calculation explaining our FinnGen replication rate, and we report the 0-of-6 TCGA survival result rather than omitting it.
+\textbf{Why the analysis is defensible.} All instrument sets were checked for strength (minimum $F = 18.2$, median $F$ 30.4--326.3), and I report heterogeneity and pleiotropy diagnostics rather than hiding them: Cochran's $Q$ indicates substantial heterogeneity for all five genes with multi-instrument estimates, and the MR-Egger intercept is non-significant for CCM2 ($p = 0.55$) and LIMA1 ($p = 0.11$) but significant for STAT6, CDKN1A and TNF. While preparing this manuscript I noticed that the MR-PRESSO outlier test is not resolvable at its default \texttt{NbDistribution = 1000} for instrument sets of this size (resolution $n/1000 = 0.061$--$0.228$, above the 0.05 threshold); I therefore re-ran it at \texttt{NbDistribution = 5000} (resolution at most 0.046) and report outlier counts together with the distortion test. I also report a power calculation explaining the FinnGen replication rate, and I report the 0-of-6 TCGA survival result rather than omitting it.
 
-\textbf{Position relative to prior work.} We deliberately frame this study as an extension of, not a replacement for, existing CRC TWAS and colocalization work. Our genetic-layer findings overlap substantially with prior reports (44.9\% with Chen et~al., 2024; 17.4\% with Hazelwood et~al., 2025), and we say so explicitly. Our contribution is the quantification of the transcript-to-protein validation gap, not a new list of associated genes.
+\textbf{Position relative to prior work.} I deliberately frame this study as an extension of, not a replacement for, existing CRC TWAS and colocalization work. The genetic-layer findings overlap substantially with prior reports (44.9\% with Chen et~al., 2024; 17.4\% with Hazelwood et~al., 2025), and I say so explicitly. The contribution is the quantification of the transcript-to-protein validation gap, not a new list of associated genes.
 
-\textbf{Declarations.} This manuscript has not been published and is not under consideration elsewhere. All authors have approved the manuscript and agree with its submission to \textit{Journal of Translational Medicine}. Data availability and code availability statements are included. The authors declare no competing interests.
+\textbf{Declarations.} This manuscript has not been published and is not under consideration elsewhere. The author has approved the manuscript and agrees with its submission to \textit{Journal of Translational Medicine}. Data availability and code availability statements are included. The author declares no competing interests.
 
-We would be glad to suggest reviewers with expertise in CRC genetics, statistical genetics and proteogenomic drug-target discovery; names can be supplied on request, or we are happy to leave the choice entirely to the editorial office.
+I would be glad to suggest reviewers with expertise in CRC genetics, statistical genetics and proteogenomic drug-target discovery; names can be supplied on request, or I am happy to leave the choice entirely to the editorial office.
 
-Thank you for considering our manuscript.
+Thank you for considering this manuscript.
 
 \closing{Sincerely,}
 
@@ -36,7 +37,6 @@ Thank you for considering our manuscript.
 Jiajie Zhou, MD \\
 The Affiliated Huaian No.1 People's Hospital of Nanjing Medical University, Huaian, Jiangsu, China \\[0.4em]
 E-mail: zjjwcwk2025@njmu.edu.cn; Tel: +86-15805233415 \\[0.4em]
-On behalf of all co-authors
 
 \end{letter}
 \end{document}
