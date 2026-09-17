@@ -1,0 +1,510 @@
+\begin{thebibliography}{45}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Sung et~al.(2021)Sung, Ferlay, Siegel, Laversanne, Soerjomataram,
+  Jemal, and Bray]{sung2021global}
+Hyuna Sung, Jacques Ferlay, Rebecca~L Siegel, Mathieu Laversanne, Isabelle
+  Soerjomataram, Ahmedin Jemal, and Freddie Bray.
+\newblock Global cancer statistics 2020: Globocan estimates of incidence and
+  mortality worldwide for 36 cancers in 185 countries.
+\newblock \emph{CA: A Cancer Journal for Clinicians}, 71\penalty0 (3):\penalty0
+  209--249, 2021.
+\newblock \doi{10.3322/caac.21660}.
+
+\bibitem[Bray et~al.(2024)Bray, Laversanne, Sung, Ferlay, Siegel,
+  Soerjomataram, and Jemal]{bray2024global}
+F~Bray, M~Laversanne, H~Sung, J~Ferlay, RL~Siegel, I~Soerjomataram, and
+  A~Jemal.
+\newblock {Global cancer statistics 2022: GLOBOCAN estimates of incidence and
+  mortality worldwide for 36 cancers in 185 countries.}
+\newblock \emph{CA: a cancer journal for clinicians}, 74\penalty0 (3):\penalty0
+  229--263, 2024.
+\newblock \doi{10.3322/caac.21834}.
+
+\bibitem[Siegel et~al.(2026)Siegel, Wagle, Star, Kratzer, Smith, and
+  Jemal]{siegel2026colorectal}
+RL~Siegel, NS~Wagle, J~Star, TB~Kratzer, RA~Smith, and A~Jemal.
+\newblock {Colorectal cancer statistics, 2026.}
+\newblock \emph{CA: a cancer journal for clinicians}, 76\penalty0 (2):\penalty0
+  e70067, 2026.
+\newblock \doi{10.3322/caac.70067}.
+
+\bibitem[Huyghe et~al.(2019)Huyghe, Bien, Harrison, Kang, Chen, Schmit,
+  et~al.]{huyghe2019discovery}
+Jeroen~R Huyghe, Stephanie~A Bien, Tabitha~A Harrison, Hyun~Min Kang, Sai Chen,
+  Stephanie~L Schmit, et~al.
+\newblock Discovery of common and rare genetic risk variants for colorectal
+  cancer.
+\newblock \emph{Nature Genetics}, 51\penalty0 (1):\penalty0 76--87, 2019.
+\newblock \doi{10.1038/s41588-018-0286-6}.
+
+\bibitem[Law et~al.(2019)Law, Timofeeva, Fernandez-Rozadilla, Broderick, Studd,
+  Fernandez-Tajes, et~al.]{law2019association}
+Philip~J Law, Maria Timofeeva, Ceres Fernandez-Rozadilla, Peter Broderick,
+  James Studd, Juan Fernandez-Tajes, et~al.
+\newblock Association analyses identify 31 new risk loci for colorectal cancer
+  susceptibility.
+\newblock \emph{Nature Communications}, 10\penalty0 (1):\penalty0 2154, 2019.
+\newblock \doi{10.1038/s41467-019-09775-w}.
+
+\bibitem[Fernandez-Rozadilla et~al.(2023)Fernandez-Rozadilla, Timofeeva, Chen,
+  Law, Thomas, Schmit, et~al.]{fernandez2023deciphering}
+Ceres Fernandez-Rozadilla, Maria Timofeeva, Zhishan Chen, Philip Law, Minta
+  Thomas, Stephanie~L Schmit, et~al.
+\newblock Deciphering colorectal cancer genetics through multi-omic analysis of
+  100,204 cases and 154,587 controls of european and east asian ancestries.
+\newblock \emph{Nature Genetics}, 55\penalty0 (1):\penalty0 89--99, 2023.
+\newblock \doi{10.1038/s41588-022-01222-9}.
+
+\bibitem[Hazelwood et~al.(2025)]{hazelwood2025multi}
+Emma Hazelwood et~al.
+\newblock Multi-tissue expression and splicing data prioritise anatomical
+  subsite- and sex-specific colorectal cancer susceptibility genes.
+\newblock \emph{Nature Communications}, 16:\penalty0 5043, 2025.
+\newblock \doi{10.1038/s41467-025-60275-6}.
+
+\bibitem[Finan et~al.(2017)Finan, Gaulton, Kruger, Lumbers, Shah, Engmann,
+  Galver, Kelley, Karlsson, Santos, Overington, Hingorani, and
+  Casas]{finan2017druggable}
+C~Finan, A~Gaulton, FA~Kruger, RT~Lumbers, T~Shah, J~Engmann, L~Galver,
+  R~Kelley, A~Karlsson, R~Santos, JP~Overington, AD~Hingorani, and JP~Casas.
+\newblock {The druggable genome and support for target identification and
+  validation in drug development.}
+\newblock \emph{Science translational medicine}, 9\penalty0 (383):\penalty0
+  eaag1166, 2017.
+\newblock \doi{10.1126/scitranslmed.aag1166}.
+
+\bibitem[Buniello et~al.(2025)Buniello, Suveges, Cruz-Castillo, Llinares,
+  Cornu, Lopez, et~al.]{buniello2025opentargets}
+A~Buniello, D~Suveges, C~Cruz-Castillo, MB~Llinares, H~Cornu, I~Lopez, et~al.
+\newblock {Open Targets Platform: facilitating therapeutic hypotheses building
+  in drug discovery.}
+\newblock \emph{Nucleic acids research}, 53\penalty0 (D1):\penalty0
+  D1467--D1475, 2025.
+\newblock \doi{10.1093/nar/gkae1128}.
+
+\bibitem[Zhu et~al.(2016)Zhu, Zhang, Hu, Bakshi, Robinson, Powell, Montgomery,
+  Goddard, Wray, Visscher, et~al.]{zhu2016integration}
+Zhihong Zhu, Futao Zhang, Han Hu, Andrew Bakshi, Matthew~R Robinson, Joseph~E
+  Powell, Grant~W Montgomery, Michael~E Goddard, Naomi~R Wray, Peter~M
+  Visscher, et~al.
+\newblock Integration of summary data from gwas and eqtl studies predicts
+  complex trait gene targets.
+\newblock \emph{Nature Genetics}, 48\penalty0 (5):\penalty0 481--487, 2016.
+\newblock \doi{10.1038/ng.3538}.
+
+\bibitem[Wu et~al.(2018)Wu, Zeng, Zhang, Zhu, Qi, Zheng, Lloyd-Jones, Marioni,
+  Martin, Montgomery, Deary, Wray, Visscher, McRae, and
+  Yang]{wu2018integrative}
+Y~Wu, J~Zeng, F~Zhang, Z~Zhu, T~Qi, Z~Zheng, LR~Lloyd-Jones, RE~Marioni,
+  NG~Martin, GW~Montgomery, IJ~Deary, NR~Wray, PM~Visscher, AF~McRae, and
+  J~Yang.
+\newblock {Integrative analysis of omics summary data reveals putative
+  mechanisms underlying complex traits.}
+\newblock \emph{Nature communications}, 9\penalty0 (1):\penalty0 918, 2018.
+\newblock \doi{10.1038/s41467-018-03371-0}.
+
+\bibitem[Gusev et~al.(2016)Gusev, Ko, Shi, Bhatia, Chung, Penninx, Jansen,
+  de~Geus, Boomsma, Wright, et~al.]{gusev2016integrative}
+Alexander Gusev, Arthur Ko, Huwenbo Shi, Gaurav Bhatia, Wonil Chung, Brenda~WJH
+  Penninx, Rick Jansen, Eco~JC de~Geus, Dorret~I Boomsma, Fred~A Wright, et~al.
+\newblock Integrative approaches for large-scale transcriptome-wide association
+  studies.
+\newblock \emph{Nature Genetics}, 48\penalty0 (3):\penalty0 245--252, 2016.
+\newblock \doi{10.1038/ng.3506}.
+
+\bibitem[Giambartolomei et~al.(2014)Giambartolomei, Vukcevic, Schadt, Franke,
+  Hingorani, Wallace, and Plagnol]{giambartolomei2014}
+Claudia Giambartolomei, Damjan Vukcevic, Eric~E Schadt, Lude Franke, Aroon~D
+  Hingorani, Chris Wallace, and Vincent Plagnol.
+\newblock Bayesian test for colocalisation between pairs of genetic association
+  studies using summary statistics.
+\newblock \emph{PLoS Genetics}, 10\penalty0 (5):\penalty0 e1004383, 2014.
+\newblock \doi{10.1371/journal.pgen.1004383}.
+
+\bibitem[Võsa et~al.(2021)Võsa, Claringbould, Westra, Bonder, Deelen, Zeng,
+  Kirsten, Saha, Kreuzhuber, Yazar, Brugge, Oelen, de~Vries, van~der Wijst,
+  Kasela, Pervjakova, Alves, Favé, Agbessi, Christiansen, Jansen, Seppälä,
+  Tong, Teumer, Schramm, Hemani, Verlouw, Yaghootkar, Sönmez~Flitman, Brown,
+  Kukushkina, Kalnapenkis, Rüeger, Porcu, Kronberg, Kettunen, Lee, Zhang, Qi,
+  Hernandez, Arindrarto, Beutner, Consortium, i2QTL Consortium, Dmitrieva,
+  Elansary, Fairfax, Georges, Heijmans, Hewitt, Kähönen, Kim, Knight, Kovacs,
+  Krohn, Li, Loeffler, Marigorta, Mei, Momozawa, Müller-Nurasyid, Nauck,
+  Nivard, Penninx, Pritchard, Raitakari, Rotzschke, Slagboom, Stehouwer,
+  Stumvoll, Sullivan, 't~Hoen, Thiery, Tönjes, van Dongen, van Iterson,
+  Veldink, Völker, Warmerdam, Wijmenga, Swertz, Andiappan, Montgomery,
+  Ripatti, Perola, Kutalik, Dermitzakis, Bergmann, Frayling, van Meurs,
+  Prokisch, Ahsan, Pierce, Lehtimäki, Boomsma, Psaty, Gharib, Awadalla,
+  Milani, Ouwehand, Downes, Stegle, Battle, Visscher, Yang, Scholz, Powell,
+  Gibson, Esko, and Franke]{vosa2021eqtlgen}
+U~Võsa, A~Claringbould, HJ~Westra, MJ~Bonder, P~Deelen, B~Zeng, H~Kirsten,
+  A~Saha, R~Kreuzhuber, S~Yazar, H~Brugge, R~Oelen, DH~de~Vries, MGP van~der
+  Wijst, S~Kasela, N~Pervjakova, I~Alves, MJ~Favé, M~Agbessi, MW~Christiansen,
+  R~Jansen, I~Seppälä, L~Tong, A~Teumer, K~Schramm, G~Hemani, J~Verlouw,
+  H~Yaghootkar, R~Sönmez~Flitman, A~Brown, V~Kukushkina, A~Kalnapenkis,
+  S~Rüeger, E~Porcu, J~Kronberg, J~Kettunen, B~Lee, F~Zhang, T~Qi,
+  JA~Hernandez, W~Arindrarto, F~Beutner, BIOS Consortium, i2QTL Consortium,
+  J~Dmitrieva, M~Elansary, BP~Fairfax, M~Georges, BT~Heijmans, AW~Hewitt,
+  M~Kähönen, Y~Kim, JC~Knight, P~Kovacs, K~Krohn, S~Li, M~Loeffler,
+  UM~Marigorta, H~Mei, Y~Momozawa, M~Müller-Nurasyid, M~Nauck, MG~Nivard, BWJH
+  Penninx, JK~Pritchard, OT~Raitakari, O~Rotzschke, EP~Slagboom, CDA Stehouwer,
+  M~Stumvoll, P~Sullivan, PAC 't~Hoen, J~Thiery, A~Tönjes, J~van Dongen, M~van
+  Iterson, JH~Veldink, U~Völker, R~Warmerdam, C~Wijmenga, M~Swertz,
+  A~Andiappan, GW~Montgomery, S~Ripatti, M~Perola, Z~Kutalik, E~Dermitzakis,
+  S~Bergmann, T~Frayling, J~van Meurs, H~Prokisch, H~Ahsan, BL~Pierce,
+  T~Lehtimäki, DI~Boomsma, BM~Psaty, SA~Gharib, P~Awadalla, L~Milani,
+  WH~Ouwehand, K~Downes, O~Stegle, A~Battle, PM~Visscher, J~Yang, M~Scholz,
+  J~Powell, G~Gibson, T~Esko, and L~Franke.
+\newblock {Large-scale cis- and trans-eQTL analyses identify thousands of
+  genetic loci and polygenic scores that regulate blood gene expression.}
+\newblock \emph{Nature genetics}, 53\penalty0 (9):\penalty0 1300--1310, 2021.
+\newblock \doi{10.1038/s41588-021-00913-z}.
+
+\bibitem[Consortium(2020)]{gtex2020}
+GTEx Consortium.
+\newblock {The GTEx Consortium atlas of genetic regulatory effects across human
+  tissues.}
+\newblock \emph{Science (New York, N.Y.)}, 369\penalty0 (6509):\penalty0
+  1318--1330, 2020.
+\newblock \doi{10.1126/science.aaz1776}.
+
+\bibitem[Sun et~al.(2023)Sun, Chiou, Traylor, Benner, Hsu, Richardson,
+  Surendran, Mahajan, Robins, Vasquez-Grinnell, et~al.]{sun2023plasma}
+Benjamin~B Sun, Joshua Chiou, Matthew Traylor, Christian Benner, Yi-Hsiang Hsu,
+  Tom~G Richardson, Praveen Surendran, Anubha Mahajan, Chloe Robins, Steven~G
+  Vasquez-Grinnell, et~al.
+\newblock Plasma proteomic associations with genetics and health in the uk
+  biobank.
+\newblock \emph{Nature}, 622\penalty0 (7982):\penalty0 329--338, 2023.
+\newblock \doi{10.1038/s41586-023-06592-6}.
+
+\bibitem[Ferkingstad et~al.(2021)Ferkingstad, Sulem, Atlason, Sveinbjornsson,
+  Magnusson, Styrmisdottir, Gunnarsdottir, Helgason, Oddsson, Halldorsson,
+  et~al.]{ferkingstad2021large}
+Egil Ferkingstad, Patrick Sulem, Bjarni~A Atlason, Gardar Sveinbjornsson,
+  Magnus~I Magnusson, Edda~L Styrmisdottir, Kristbjorg Gunnarsdottir, Agnar
+  Helgason, Asmundur Oddsson, Bjarni~V Halldorsson, et~al.
+\newblock Large-scale integration of the plasma proteome with genetics and
+  disease.
+\newblock \emph{Nature Genetics}, 53\penalty0 (12):\penalty0 1712--1721, 2021.
+\newblock \doi{10.1038/s41588-021-00978-w}.
+
+\bibitem[Pietzner et~al.(2021)Pietzner, Wheeler, Carrasco-Zanini, Cortes,
+  Koprulu, Wörheide, Oerton, Cook, Stewart, Kerrison, Luan, Raffler, Arnold,
+  Arlt, O'Rahilly, Kastenmüller, Gamazon, Hingorani, Scott, Wareham, and
+  Langenberg]{pietzner2021mapping}
+M~Pietzner, E~Wheeler, J~Carrasco-Zanini, A~Cortes, M~Koprulu, MA~Wörheide,
+  E~Oerton, J~Cook, ID~Stewart, ND~Kerrison, J~Luan, J~Raffler, M~Arnold,
+  W~Arlt, S~O'Rahilly, G~Kastenmüller, ER~Gamazon, AD~Hingorani, RA~Scott,
+  NJ~Wareham, and C~Langenberg.
+\newblock {Mapping the proteo-genomic convergence of human diseases.}
+\newblock \emph{Science (New York, N.Y.)}, 374\penalty0 (6569):\penalty0
+  eabj1541, 2021.
+\newblock \doi{10.1126/science.abj1541}.
+
+\bibitem[Zheng et~al.(2020)Zheng, Haberland, Baird, Walker, Haycock, Hurle,
+  Gutteridge, Erola, Liu, Luo, Robinson, Richardson, Staley, Elsworth, Burgess,
+  Sun, Danesh, Runz, Maranville, Martin, Yarmolinsky, Laurin, Holmes, Liu,
+  Estrada, Santos, McCarthy, Waterworth, Nelson, Smith, Butterworth, Hemani,
+  Scott, and Gaunt]{zheng2020phenome}
+J~Zheng, V~Haberland, D~Baird, V~Walker, PC~Haycock, MR~Hurle, A~Gutteridge,
+  P~Erola, Y~Liu, S~Luo, J~Robinson, TG~Richardson, JR~Staley, B~Elsworth,
+  S~Burgess, BB~Sun, J~Danesh, H~Runz, JC~Maranville, HM~Martin, J~Yarmolinsky,
+  C~Laurin, MV~Holmes, JZ~Liu, K~Estrada, R~Santos, L~McCarthy, D~Waterworth,
+  MR~Nelson, GD~Smith, AS~Butterworth, G~Hemani, RA~Scott, and TR~Gaunt.
+\newblock {Phenome-wide Mendelian randomization mapping the influence of the
+  plasma proteome on complex diseases.}
+\newblock \emph{Nature genetics}, 52\penalty0 (10):\penalty0 1122--1131, 2020.
+\newblock \doi{10.1038/s41588-020-0682-6}.
+
+\bibitem[Schmidt et~al.(2020)Schmidt, Finan, Gordillo-Marañón, Asselbergs,
+  Freitag, Patel, Tyl, Chopade, Faraway, Zwierzyna, and
+  Hingorani]{schmidt2020drugtarget}
+AF~Schmidt, C~Finan, M~Gordillo-Marañón, FW~Asselbergs, DF~Freitag, RS~Patel,
+  B~Tyl, S~Chopade, R~Faraway, M~Zwierzyna, and AD~Hingorani.
+\newblock {Genetic drug target validation using Mendelian randomisation.}
+\newblock \emph{Nature communications}, 11\penalty0 (1):\penalty0 3255, 2020.
+\newblock \doi{10.1038/s41467-020-16969-0}.
+
+\bibitem[Hemani et~al.(2018)Hemani, Zheng, Elsworth, Wade, Haberland, Baird,
+  Laurin, Burgess, Bowden, Langdon, Tan, Yarmolinsky, Shihab, Timpson, Evans,
+  Relton, Martin, Davey~Smith, Gaunt, and Haycock]{hemani2018mrbase}
+G~Hemani, J~Zheng, B~Elsworth, KH~Wade, V~Haberland, D~Baird, C~Laurin,
+  S~Burgess, J~Bowden, R~Langdon, VY~Tan, J~Yarmolinsky, HA~Shihab, NJ~Timpson,
+  DM~Evans, C~Relton, RM~Martin, G~Davey~Smith, TR~Gaunt, and PC~Haycock.
+\newblock {The MR-Base platform supports systematic causal inference across the
+  human phenome.}
+\newblock \emph{eLife}, 7:\penalty0 e34408, 2018.
+\newblock \doi{10.7554/eLife.34408}.
+
+\bibitem[Vogel and Marcotte(2012)]{vogel2012insights}
+Christine Vogel and Edward~M Marcotte.
+\newblock Insights into the regulation of protein abundance from proteomic and
+  transcriptomic analyses.
+\newblock \emph{Nature Reviews Genetics}, 13\penalty0 (4):\penalty0 227--232,
+  2012.
+\newblock \doi{10.1038/nrg3185}.
+
+\bibitem[Liu et~al.(2016)Liu, Beyer, and Aebersold]{liu2016impact}
+Yansheng Liu, Andreas Beyer, and Ruedi Aebersold.
+\newblock On the dependency of cellular protein levels on mrna abundance.
+\newblock \emph{Cell}, 165\penalty0 (3):\penalty0 535--550, 2016.
+\newblock \doi{10.1016/j.cell.2016.03.014}.
+
+\bibitem[Wainberg et~al.(2019)Wainberg, Sinnott-Armstrong, Mancuso, Barbeira,
+  Knowles, Golan, Ermel, Ruusalepp, Quertermous, Hao, et~al.]{wainberg2019}
+Michael Wainberg, Nasa Sinnott-Armstrong, Nicholas Mancuso, Alvaro~N Barbeira,
+  David~A Knowles, David Golan, Raili Ermel, Arno Ruusalepp, Thomas
+  Quertermous, Ke~Hao, et~al.
+\newblock Opportunities and challenges for transcriptome-wide association
+  studies.
+\newblock \emph{Nature Genetics}, 51\penalty0 (4):\penalty0 592--599, 2019.
+\newblock \doi{10.1038/s41588-019-0385-z}.
+
+\bibitem[Network et~al.(2013)Network, Weinstein, Collisson, Mills, Shaw,
+  Ozenberger, Ellrott, Shmulevich, Sander, and Stuart]{weinstein2013tcga}
+Cancer Genome Atlas~Research Network, JN~Weinstein, EA~Collisson, GB~Mills,
+  KR~Shaw, BA~Ozenberger, K~Ellrott, I~Shmulevich, C~Sander, and JM~Stuart.
+\newblock {The Cancer Genome Atlas Pan-Cancer analysis project.}
+\newblock \emph{Nature genetics}, 45\penalty0 (10):\penalty0 1113--20, 2013.
+\newblock \doi{10.1038/ng.2764}.
+
+\bibitem[Hong et~al.(2025)Hong, Li, Xu, Shu, Chen, Mi, Geng, and
+  Li]{hong2025integrative}
+Y~Hong, J~Li, N~Xu, W~Shu, F~Chen, Y~Mi, H~Geng, and Q~Li.
+\newblock {Integrative genomic and single-cell framework identifies druggable
+  targets for colorectal cancer precision therapy.}
+\newblock \emph{Frontiers in immunology}, 16:\penalty0 1604154, 2025.
+\newblock \doi{10.3389/fimmu.2025.1604154}.
+
+\bibitem[Wang et~al.(2025)Wang, Yao, Li, Wang, Huang, Zhou, Li, Wen, Lan,
+  Huang, Li, Sun, Zhao, Chen, Han, Zhu, Zhang, and Zhang]{wang2025discovoncol}
+S~Wang, X~Yao, S~Li, S~Wang, X~Huang, J~Zhou, X~Li, J~Wen, W~Lan, Y~Huang,
+  H~Li, Y~Sun, X~Zhao, Q~Chen, X~Han, Z~Zhu, X~Zhang, and T~Zhang.
+\newblock {Integrating single-cell with transcriptome-proteome Mendelian
+  randomization reveals colorectal cancer targets.}
+\newblock \emph{Discover oncology}, 16\penalty0 (1):\penalty0 794, 2025.
+\newblock \doi{10.1007/s12672-025-02636-7}.
+
+\bibitem[Xia et~al.(2025)Xia, Wang, Gao, Cui, Song, Ding, and
+  Zhang]{xia2025bmccancer}
+L~Xia, J~Wang, J~Gao, X~Cui, M~Song, W~Ding, and J~Zhang.
+\newblock {Integrative multi-omics analysis identifies key genes and
+  colocalized signals associated with colorectal cancer risk.}
+\newblock \emph{BMC cancer}, 25\penalty0 (1):\penalty0 1372, 2025.
+\newblock \doi{10.1186/s12885-025-14798-2}.
+
+\bibitem[Tian et~al.(2025)Tian, Han, Huang, Ma, and Ran]{tian2025dbi}
+T~Tian, H~Han, J~Huang, J~Ma, and R~Ran.
+\newblock {DBI as a Novel Immunotherapeutic Candidate in Colorectal Cancer:
+  Dissecting Genetic Risk and the Immune Landscape via GWAS, eQTL, and pQTL.}
+\newblock \emph{Biomedicines}, 13\penalty0 (5):\penalty0 1115, 2025.
+\newblock \doi{10.3390/biomedicines13051115}.
+
+\bibitem[Chen et~al.(2024)Chen, Guo, Tao, Huyghe, Law, Fernandez-Rozadilla,
+  et~al.]{chen2024integrative}
+Zhishan Chen, Xingyi Guo, Ran Tao, Jeroen~R Huyghe, Philip~J Law, Ceres
+  Fernandez-Rozadilla, et~al.
+\newblock Fine-mapping analysis including over 254,000 east asian and european
+  descendants identifies 136 putative colorectal cancer susceptibility genes.
+\newblock \emph{Nature Communications}, 15:\penalty0 3557, 2024.
+\newblock \doi{10.1038/s41467-024-47399-x}.
+
+\bibitem[Papadimitriou et~al.(2021)Papadimitriou, Markozannes, Kanellopoulou,
+  Critselis, Alhardan, Karafousia, et~al.]{papadimitriou2021umbrella}
+N~Papadimitriou, G~Markozannes, A~Kanellopoulou, E~Critselis, S~Alhardan,
+  V~Karafousia, et~al.
+\newblock An umbrella review of the evidence associating diet and cancer risk
+  at 11 anatomical sites.
+\newblock \emph{Nature communications}, 12\penalty0 (1):\penalty0 4579, 2021.
+\newblock \doi{10.1038/s41467-021-24861-8}.
+
+\bibitem[Sollis et~al.(2023)Sollis, Mosaku, Abid, Buniello, Cerezo, Gil,
+  et~al.]{sollis2023gwas}
+E~Sollis, A~Mosaku, A~Abid, A~Buniello, M~Cerezo, L~Gil, et~al.
+\newblock {The NHGRI-EBI GWAS Catalog: knowledgebase and deposition resource.}
+\newblock \emph{Nucleic acids research}, 51\penalty0 (D1):\penalty0 D977--D985,
+  2023.
+\newblock \doi{10.1093/nar/gkac1010}.
+
+\bibitem[Wang et~al.(2020)Wang, Sarkar, Carbonetto, and
+  Stephens]{wang2020susie}
+Gao Wang, Abhishek Sarkar, Peter Carbonetto, and Matthew Stephens.
+\newblock A simple new approach to variable selection in regression, with
+  application to genetic fine mapping.
+\newblock \emph{Journal of the Royal Statistical Society: Series B (Statistical
+  Methodology)}, 82\penalty0 (5):\penalty0 1273--1300, 2020.
+\newblock \doi{10.1111/rssb.12388}.
+
+\bibitem[Sudlow et~al.(2015)Sudlow, Gallacher, Allen, Beral, Burton, Danesh,
+  Downey, Elliott, Green, Landray, Liu, Matthews, Ong, Pell, Silman, Young,
+  Sprosen, Peakman, and Collins]{sudlow2015ukbiobank}
+C~Sudlow, J~Gallacher, N~Allen, V~Beral, P~Burton, J~Danesh, P~Downey,
+  P~Elliott, J~Green, M~Landray, B~Liu, P~Matthews, G~Ong, J~Pell, A~Silman,
+  A~Young, T~Sprosen, T~Peakman, and R~Collins.
+\newblock {UK biobank: an open access resource for identifying the causes of a
+  wide range of complex diseases of middle and old age.}
+\newblock \emph{PLoS medicine}, 12\penalty0 (3):\penalty0 e1001779, 2015.
+\newblock \doi{10.1371/journal.pmed.1001779}.
+
+\bibitem[Burgess et~al.(2013)Burgess, Butterworth, and
+  Thompson]{burgess2013ivw}
+S~Burgess, A~Butterworth, and SG~Thompson.
+\newblock {Mendelian randomization analysis with multiple genetic variants
+  using summarized data.}
+\newblock \emph{Genetic epidemiology}, 37\penalty0 (7):\penalty0 658--65, 2013.
+\newblock \doi{10.1002/gepi.21758}.
+
+\bibitem[Bowden et~al.(2016)Bowden, Davey~Smith, Haycock, and
+  Burgess]{bowden2016median}
+J~Bowden, G~Davey~Smith, PC~Haycock, and S~Burgess.
+\newblock {Consistent Estimation in Mendelian Randomization with Some Invalid
+  Instruments Using a Weighted Median Estimator.}
+\newblock \emph{Genetic epidemiology}, 40\penalty0 (4):\penalty0 304--14, 2016.
+\newblock \doi{10.1002/gepi.21965}.
+
+\bibitem[Hartwig et~al.(2017)Hartwig, Davey~Smith, and Bowden]{hartwig2017mode}
+FP~Hartwig, G~Davey~Smith, and J~Bowden.
+\newblock {Robust inference in summary data Mendelian randomization via the
+  zero modal pleiotropy assumption.}
+\newblock \emph{International journal of epidemiology}, 46\penalty0
+  (6):\penalty0 1985--1998, 2017.
+\newblock \doi{10.1093/ije/dyx102}.
+
+\bibitem[Bowden et~al.(2015)Bowden, Davey~Smith, and Burgess]{bowden2015egger}
+J~Bowden, G~Davey~Smith, and S~Burgess.
+\newblock {Mendelian randomization with invalid instruments: effect estimation
+  and bias detection through Egger regression.}
+\newblock \emph{International journal of epidemiology}, 44\penalty0
+  (2):\penalty0 512--25, 2015.
+\newblock \doi{10.1093/ije/dyv080}.
+
+\bibitem[Verbanck et~al.(2018)Verbanck, Chen, Neale, and
+  Do]{verbanck2018presso}
+M~Verbanck, CY~Chen, B~Neale, and R~Do.
+\newblock {Detection of widespread horizontal pleiotropy in causal
+  relationships inferred from Mendelian randomization between complex traits
+  and diseases.}
+\newblock \emph{Nature genetics}, 50\penalty0 (5):\penalty0 693--698, 2018.
+\newblock \doi{10.1038/s41588-018-0099-7}.
+
+\bibitem[Skrivankova et~al.(2021)Skrivankova, Richmond, Woolf, Yarmolinsky,
+  Davies, Swanson, VanderWeele, Higgins, Timpson, Dimou, Langenberg, Golub,
+  Loder, Gallo, Tybjaerg-Hansen, Davey~Smith, Egger, and
+  Richards]{skrivankova2021strobe}
+VW~Skrivankova, RC~Richmond, BAR Woolf, J~Yarmolinsky, NM~Davies, SA~Swanson,
+  TJ~VanderWeele, JPT Higgins, NJ~Timpson, N~Dimou, C~Langenberg, RM~Golub,
+  EW~Loder, V~Gallo, A~Tybjaerg-Hansen, G~Davey~Smith, M~Egger, and
+  JB~Richards.
+\newblock {Strengthening the Reporting of Observational Studies in Epidemiology
+  Using Mendelian Randomization: The STROBE-MR Statement.}
+\newblock \emph{JAMA}, 326\penalty0 (16):\penalty0 1614--1621, 2021.
+\newblock \doi{10.1001/jama.2021.18236}.
+
+\bibitem[Kurki et~al.(2023)Kurki, Karjalainen, Palta, Sipilä, Kristiansson,
+  Donner, Reeve, Laivuori, Aavikko, Kaunisto, Loukola, Lahtela, Mattsson,
+  Laiho, Della Briotta~Parolo, Lehisto, Kanai, Mars, Rämö, Kiiskinen, Heyne,
+  Veerapen, Rüeger, Lemmelä, Zhou, Ruotsalainen, Pärn, Hiekkalinna,
+  Koskelainen, Paajanen, Llorens, Gracia-Tabuenca, Siirtola, Reis, Elnahas,
+  Sun, Foley, Aalto-Setälä, Alasoo, Arvas, Auro, Biswas, Bizaki-Vallaskangas,
+  Carpen, Chen, Dada, Ding, Ehm, Eklund, Färkkilä, Finucane, Ganna, Ghazal,
+  Graham, Green, Hakanen, Hautalahti, Hedman, Hiltunen, Hinttala, Hovatta, Hu,
+  Huertas-Vazquez, Huilaja, Hunkapiller, Jacob, Jensen, Joensuu, John,
+  Julkunen, Jung, Junttila, Kaarniranta, Kähönen, Kajanne, Kallio,
+  Kälviäinen, Kaprio, FinnGen, Kerimov, Kettunen, Kilpeläinen, Kilpi,
+  Klinger, Kosma, Kuopio, Kurra, Laisk, Laukkanen, Lawless, Liu, Longerich,
+  Mägi, Mäkelä, Mäkitie, Malarstig, Mannermaa, Maranville, Matakidou,
+  Meretoja, Mozaffari, Niemi, Niemi, Niiranen, O~Donnell, Obeidat, Okafo,
+  Ollila, Palomäki, Palotie, Partanen, Paul, Pelkonen, Pendergrass, Petrovski,
+  Pitkäranta, Platt, Pulford, Punkka, Pussinen, Raghavan, Rahimov, Rajpal,
+  Renaud, Riley-Gillis, Rodosthenous, Saarentaus, Salminen, Salminen, Salomaa,
+  Schleutker, Serpi, Shen, Siegel, Silander, Siltanen, Soini, Soininen, Sul,
+  Tachmazidou, Tasanen, Tienari, Toppila-Salmi, Tukiainen, Tuomi, Turunen,
+  Ulirsch, Vaura, Virolainen, Waring, Waterworth, Yang, Nelis, Reigo, Metspalu,
+  Milani, Esko, Fox, Havulinna, Perola, Ripatti, Jalanko, Laitinen, Mäkelä,
+  Plenge, McCarthy, Runz, Daly, and Palotie]{kurki2023finngen}
+MI~Kurki, J~Karjalainen, P~Palta, TP~Sipilä, K~Kristiansson, KM~Donner,
+  MP~Reeve, H~Laivuori, M~Aavikko, MA~Kaunisto, A~Loukola, E~Lahtela,
+  H~Mattsson, P~Laiho, P~Della Briotta~Parolo, AA~Lehisto, M~Kanai, N~Mars,
+  J~Rämö, T~Kiiskinen, HO~Heyne, K~Veerapen, S~Rüeger, S~Lemmelä, W~Zhou,
+  S~Ruotsalainen, K~Pärn, T~Hiekkalinna, S~Koskelainen, T~Paajanen, V~Llorens,
+  J~Gracia-Tabuenca, H~Siirtola, K~Reis, AG~Elnahas, B~Sun, CN~Foley,
+  K~Aalto-Setälä, K~Alasoo, M~Arvas, K~Auro, S~Biswas, A~Bizaki-Vallaskangas,
+  O~Carpen, CY~Chen, OA~Dada, Z~Ding, MG~Ehm, K~Eklund, M~Färkkilä,
+  H~Finucane, A~Ganna, A~Ghazal, RR~Graham, EM~Green, A~Hakanen, M~Hautalahti,
+  ÅK Hedman, M~Hiltunen, R~Hinttala, I~Hovatta, X~Hu, A~Huertas-Vazquez,
+  L~Huilaja, J~Hunkapiller, H~Jacob, JN~Jensen, H~Joensuu, S~John, V~Julkunen,
+  M~Jung, J~Junttila, K~Kaarniranta, M~Kähönen, R~Kajanne, L~Kallio,
+  R~Kälviäinen, J~Kaprio, FinnGen, N~Kerimov, J~Kettunen, E~Kilpeläinen,
+  T~Kilpi, K~Klinger, VM~Kosma, T~Kuopio, V~Kurra, T~Laisk, J~Laukkanen,
+  N~Lawless, A~Liu, S~Longerich, R~Mägi, J~Mäkelä, A~Mäkitie, A~Malarstig,
+  A~Mannermaa, J~Maranville, A~Matakidou, T~Meretoja, SV~Mozaffari, MEK Niemi,
+  M~Niemi, T~Niiranen, CJ~O~Donnell, ME~Obeidat, G~Okafo, HM~Ollila,
+  A~Palomäki, T~Palotie, J~Partanen, DS~Paul, M~Pelkonen, RK~Pendergrass,
+  S~Petrovski, A~Pitkäranta, A~Platt, D~Pulford, E~Punkka, P~Pussinen,
+  N~Raghavan, F~Rahimov, D~Rajpal, NA~Renaud, B~Riley-Gillis, R~Rodosthenous,
+  E~Saarentaus, A~Salminen, E~Salminen, V~Salomaa, J~Schleutker, R~Serpi,
+  HY~Shen, R~Siegel, K~Silander, S~Siltanen, S~Soini, H~Soininen, JH~Sul,
+  I~Tachmazidou, K~Tasanen, P~Tienari, S~Toppila-Salmi, T~Tukiainen, T~Tuomi,
+  JA~Turunen, JC~Ulirsch, F~Vaura, P~Virolainen, J~Waring, D~Waterworth,
+  R~Yang, M~Nelis, A~Reigo, A~Metspalu, L~Milani, T~Esko, C~Fox, AS~Havulinna,
+  M~Perola, S~Ripatti, A~Jalanko, T~Laitinen, TP~Mäkelä, R~Plenge,
+  M~McCarthy, H~Runz, MJ~Daly, and A~Palotie.
+\newblock {FinnGen provides genetic insights from a well-phenotyped isolated
+  population.}
+\newblock \emph{Nature}, 613\penalty0 (7944):\penalty0 508--518, 2023.
+\newblock \doi{10.1038/s41586-022-05473-8}.
+
+\bibitem[Hao et~al.(2021)Hao, Hao, Andersen-Nissen, Mauck, Zheng, Butler, Lee,
+  Wilk, Darby, Zager, Hoffman, Stoeckius, Papalexi, Mimitou, Jain, Srivastava,
+  Stuart, Fleming, Yeung, Rogers, McElrath, Blish, Gottardo, Smibert, and
+  Satija]{hao2021seurat}
+Y~Hao, S~Hao, E~Andersen-Nissen, WM~Mauck, S~Zheng, A~Butler, MJ~Lee, AJ~Wilk,
+  C~Darby, M~Zager, P~Hoffman, M~Stoeckius, E~Papalexi, EP~Mimitou, J~Jain,
+  A~Srivastava, T~Stuart, LM~Fleming, B~Yeung, AJ~Rogers, JM~McElrath,
+  CA~Blish, R~Gottardo, P~Smibert, and R~Satija.
+\newblock {Integrated analysis of multimodal single-cell data.}
+\newblock \emph{Cell}, 184\penalty0 (13):\penalty0 3573--3587.e29, 2021.
+\newblock \doi{10.1016/j.cell.2021.04.048}.
+
+\bibitem[Ståhl et~al.(2016)Ståhl, Salmén, Vickovic, Lundmark, Navarro,
+  Magnusson, Giacomello, Asp, Westholm, Huss, Mollbrink, Linnarsson, Codeluppi,
+  Borg, Pontén, Costea, Sahlén, Mulder, Bergmann, Lundeberg, and
+  Frisén]{stahl2016spatial}
+PL~Ståhl, F~Salmén, S~Vickovic, A~Lundmark, JF~Navarro, J~Magnusson,
+  S~Giacomello, M~Asp, JO~Westholm, M~Huss, A~Mollbrink, S~Linnarsson,
+  S~Codeluppi, Å~Borg, F~Pontén, PI~Costea, P~Sahlén, J~Mulder, O~Bergmann,
+  J~Lundeberg, and J~Frisén.
+\newblock {Visualization and analysis of gene expression in tissue sections by
+  spatial transcriptomics.}
+\newblock \emph{Science (New York, N.Y.)}, 353\penalty0 (6294):\penalty0
+  78--82, 2016.
+\newblock \doi{10.1126/science.aaf2403}.
+
+\bibitem[Kelleher et~al.(2023)Kelleher, Sheils, Mathias, Yang, Metzger,
+  Siramshetty, Nguyen, Jensen, Vidović, Schürer, Holmes, Sharma, Pillai,
+  Bologa, Edwards, Mathé, and Oprea]{kelleher2023pharos}
+KJ~Kelleher, TK~Sheils, SL~Mathias, JJ~Yang, VT~Metzger, VB~Siramshetty,
+  DT~Nguyen, LJ~Jensen, D~Vidović, SC~Schürer, J~Holmes, KR~Sharma, A~Pillai,
+  CG~Bologa, JS~Edwards, EA~Mathé, and TI~Oprea.
+\newblock {Pharos 2023: an integrated resource for the understudied human
+  proteome.}
+\newblock \emph{Nucleic acids research}, 51\penalty0 (D1):\penalty0
+  D1405--D1416, 2023.
+\newblock \doi{10.1093/nar/gkac1033}.
+
+\bibitem[Denny et~al.(2010)Denny, Ritchie, Basford, Pulley, Bastarache,
+  Brown-Gentry, Wang, Masys, Roden, and Crawford]{denny2010phewas}
+JC~Denny, MD~Ritchie, MA~Basford, JM~Pulley, L~Bastarache, K~Brown-Gentry,
+  D~Wang, DR~Masys, DM~Roden, and DC~Crawford.
+\newblock {PheWAS: demonstrating the feasibility of a phenome-wide scan to
+  discover gene-disease associations.}
+\newblock \emph{Bioinformatics (Oxford, England)}, 26\penalty0 (9):\penalty0
+  1205--10, 2010.
+\newblock \doi{10.1093/bioinformatics/btq126}.
+
+\end{thebibliography}
