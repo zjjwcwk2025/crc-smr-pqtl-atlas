@@ -26,6 +26,31 @@
 \setcounter{figure}{0}
 \renewcommand{\thefigure}{S\arabic{figure}}
 \renewcommand{\figurename}{Supplementary Figure}
+\subsection*{Supplementary Methods}
+
+\paragraph{S1. Replication power approximation.}
+The FinnGen directional-consistency analysis was not powered to replicate the
+discovery associations, and a nominal $p<0.05$ in FinnGen should therefore not be
+read as evidence against the prioritised genes. To quantify what the observed
+replication rate implies, per-locus replication power was approximated as the
+probability that the FinnGen inverse-variance-weighted test statistic reaches the
+two-sided significance threshold, given a true effect equal to the discovery SMR
+estimate:
+\[
+P_{\mathrm{repl}} \;=\; \Phi\!\left(\frac{|b_{\mathrm{discovery}}|}{SE_{\mathrm{FinnGen}}}-1.96\right)
+\;+\; \Phi\!\left(-\frac{|b_{\mathrm{discovery}}|}{SE_{\mathrm{FinnGen}}}-1.96\right),
+\]
+where $b_{\mathrm{discovery}}$ is the discovery SMR effect and $SE_{\mathrm{FinnGen}}$
+is the standard error of the inverse-variance-weighted replication estimate obtained
+from the same cis instruments. Applied to the eight non-MHC Tier 1 loci, this gives a
+mean expected replication proportion of 0.39 (per-locus range 0.05--0.86): PNKD 0.86,
+GPBAR1 0.73, TMBIM1 0.59, COX14 0.43, CASC8 0.32, LAMC1 0.07, LIMA1 0.05 and
+UTP23 0.05. The observed 1/8 nominal significance is therefore compatible with the
+expected replication rate under a true-positive model, and the low FinnGen replication
+rate is better attributed to the smaller replication sample than to absence of effect.
+The calculation is reproduced by \texttt{scripts/supp\_replication\_power.py} from
+\texttt{results/phase4\_finngen\_replication.csv}.
+
 \subsection*{Supplementary Figures}
 
 \begin{figure}[htbp]
