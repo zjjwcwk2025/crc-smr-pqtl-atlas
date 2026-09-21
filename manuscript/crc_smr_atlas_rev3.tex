@@ -43,7 +43,7 @@ level has not been quantified.
 \noindent\textbf{Methods:} We integrated blood cis-eQTL from eQTLGen
 ($n=31,684$), two plasma pQTL panels (UKB-PPP and deCODE, $n\approx35,000$ each),
 a 78,473-case CRC GWAS, single-cell and spatial transcriptomics, and drug-safety
-annotation into a single target-prioritization pipeline.
+annotation into a single target-prioritization pipeline built on Mendelian randomization.
 
 \noindent\textbf{Results:} From 15,582 gene-level
 SMR tests, 75 probes surpassed Bonferroni significance ($p<3.21\times10^{-6}$)
@@ -206,6 +206,27 @@ TwoSampleMR~\cite{hemani2018mrbase} used for implementation. Reporting follows
 the STROBE-MR guidance~\cite{skrivankova2021strobe}. For colocalization with quantitative pQTL data, minor
 allele frequency from the pQTL dataset was supplied to estimate the trait
 variance (sdY) as required by coloc v5.2.3.
+
+The three core instrumental-variable assumptions were addressed as follows:
+relevance was met by restricting instruments to cis variants associated with the
+exposure at $p < 5\times10^{-8}$ in the source pQTL study; independence and the
+exclusion restriction cannot be tested directly, so instruments were restricted
+to cis regions to limit the scope for trans-acting pleiotropy, and we applied
+HEIDI for the eQTL layer and MR-Egger, weighted median, weighted mode and
+MR-PRESSO for the pQTL layer. This study was a secondary analysis of publicly
+available summary statistics and was not pre-registered. Variants present in the exposure but not in the outcome dataset (or vice versa) were excluded rather than imputed. Because the UKB-PPP panel and the CRC GWAS both include UK Biobank participants, the exposure and outcome samples may partially overlap, which can bias two-sample MR estimates towards the confounded observational estimate.
+
+Directionality was assessed with the Steiger test~\cite{hemani2017steiger}. For
+every cis-pQTL instrument we compared the variance in plasma protein level
+explained by the variant ($r^2$ derived from the pQTL effect size and standard
+error at the panel sample size; $n = 35{,}278$ for deCODE and $n = 33{,}533$ for
+UKB-PPP) with the variance in CRC risk explained by the same variant
+($N = 185{,}616$), and we additionally ran the per-gene aggregate test
+implemented in \texttt{TwoSampleMR::directionality\_test}. Because the aggregate
+statistic sums $r^2$ across correlated variants and can exceed unity, a second
+per-gene test restricted to the lead cis-pQTL variant was also performed
+(Supplementary Table~S10).
+
 
 \subsection{FinnGen directional consistency assessment}
 
@@ -607,6 +628,17 @@ The sole colocalizing protein, CCM2, is a distinct member of the 13-gene
 non-MHC Tier 1 set, not one of the six core Tier 1 genes. The protein layer
 therefore provides a systematic readout of transcript--protein divergence,
 not direct orthogonal confirmation of the six core Tier 1 genes.
+
+Steiger directionality testing across all nine genes with pQTL instruments
+supported the instrument-to-protein direction. All 13,080 instrument-level
+comparisons showed greater variance explained in plasma protein level than in
+CRC risk, and the lead cis-pQTL variant was correctly oriented for every gene
+(Steiger $P$ from $1.3\times10^{-4}$ for CCM2 to $P < 1\times10^{-300}$ for LTA;
+Supplementary Table~S10). Directionality was therefore equally supported for the
+single colocalizing gene and for the genes that did not colocalize, indicating
+that the eQTL--pQTL discordance is not explained by reversed instrument
+orientation.
+
 
 \begin{figure}[htbp]
 \centering
@@ -1073,7 +1105,7 @@ pQTL colocalization analysis was limited to genes with available matching
 protein measurements (15 of 62 protein-coding genes); the PheWAS safety
 screening used Open Targets Genetics associations, which reflect general
 population GWAS signals, not drug-exposed adverse events, and should
-not be interpreted as regulatory-grade safety assessment. Fifth, we did not
+not be interpreted as regulatory-grade safety assessment. Steiger testing supported the instrument-to-protein direction for every protein-layer instrument, but it cannot exclude reverse causation or horizontal pleiotropy; for LTA and TNF the aggregated test statistic was not numerically defined because thousands of correlated MHC-region variants were summed, so the direction call for those two genes rests on the per-instrument comparison. Fifth, we did not
 stratify our analysis by CRC molecular subtype (CMS1--4, MSI/MSS status), and
 the relevance of identified targets may differ across subtypes. Finally, while
 87\% of protein-coding genes lacked known pharmacological agents, this reflects

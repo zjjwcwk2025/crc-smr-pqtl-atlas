@@ -1,0 +1,40 @@
+\begin{table}[htbp]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\caption{Steiger directionality analysis of the protein-layer cis-pQTL instruments.}\label{tab:steiger}
+\resizebox{\ifdim\width>\linewidth \linewidth\else\width\fi}{!}{%
+\begin{tabular}{@{}llrrrrrr@{}}
+\toprule
+Gene & Panel & $n$ & Correct, $n$ (\%) & Median $r^2$ pQTL & Median $r^2$ CRC & $P$ (lead) & $P$ (all)\\
+\midrule
+CCM2 & deCODE & 94 & 94 (100) & $8.61\times10^{-4}$ & $1.69\times10^{-4}$ & $1.3\times10^{-4}$ & $7.6\times10^{-256}$ \\
+LIMA1 & deCODE & 70 & 70 (100) & $9.28\times10^{-4}$ & $2.06\times10^{-4}$ & $4.9\times10^{-5}$ & $3.3\times10^{-119}$ \\
+STAT6 & deCODE & 61 & 61 (100) & $1.87\times10^{-3}$ & $6.43\times10^{-6}$ & $2.9\times10^{-69}$ & $<10^{-300}$ \\
+TNFRSF1A & deCODE & 25 & 25 (100) & $1.53\times10^{-3}$ & $1.68\times10^{-5}$ & $7.8\times10^{-39}$ & $4.6\times10^{-217}$ \\
+TNFRSF1B & deCODE & 73 & 73 (100) & $3.60\times10^{-3}$ & $3.94\times10^{-6}$ & $5.6\times10^{-32}$ & $<10^{-300}$ \\
+CDKN1A & UKB-PPP & 228 & 228 (100) & $1.99\times10^{-3}$ & $4.86\times10^{-6}$ & $6.7\times10^{-53}$ & $<10^{-300}$ \\
+LTA & UKB-PPP & 10213 & 10213 (100) & $5.20\times10^{-3}$ & $1.93\times10^{-5}$ & $<10^{-300}$ & not defined \\
+NCF2 & UKB-PPP & 28 & 28 (100) & $1.86\times10^{-3}$ & $2.05\times10^{-6}$ & $1.4\times10^{-125}$ & $<10^{-300}$ \\
+TNF & UKB-PPP & 2288 & 2288 (100) & $1.46\times10^{-3}$ & $1.48\times10^{-5}$ & $1.7\times10^{-21}$ & not defined \\
+\bottomrule
+\end{tabular}}
+
+\vspace{0.6em}
+\begin{minipage}{0.98\textwidth}
+\footnotesize
+Notes: For every cis-pQTL instrument the variance explained in plasma protein
+level ($r^2$ pQTL, from the pQTL effect size and standard error at the panel
+sample size, $n = 35278$ for deCODE and $n = 33533$ for UKB-PPP) was compared
+with the variance explained in CRC risk ($r^2$ CRC, $N = 185616$). ``Correct,
+$n$ (\%)'' counts instruments with $r^2$ pQTL $> r^2$ CRC. ``$P$ (lead)'' is the
+Steiger test applied to the lead cis-pQTL variant alone. ``$P$ (all)'' is the
+aggregate test implemented in \texttt{TwoSampleMR::directionality\_test}, in
+which $r^2$ is summed across the instrument set; for LTA and TNF this sum exceeds
+unity (LTA aggregate $r^2 = 93.6$) because thousands of correlated MHC-region
+variants are included, so the aggregate statistic is not numerically defined and
+the direction call for those two genes rests on the per-instrument comparison.
+All nine genes were correctly oriented. All values are reproduced in
+\texttt{results/phase6\_steiger/} in the analysis repository.
+\end{minipage}
+\end{table}

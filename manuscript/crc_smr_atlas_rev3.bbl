@@ -1,4 +1,4 @@
-\begin{thebibliography}{45}
+\begin{thebibliography}{46}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -336,6 +336,14 @@ VW~Skrivankova, RC~Richmond, BAR Woolf, J~Yarmolinsky, NM~Davies, SA~Swanson,
   Using Mendelian Randomization: The STROBE-MR Statement.}
 \newblock \emph{JAMA}, 326\penalty0 (16):\penalty0 1614--1621, 2021.
 \newblock \doi{10.1001/jama.2021.18236}.
+
+\bibitem[Hemani et~al.(2017)Hemani, Tilling, and
+  Davey~Smith]{hemani2017steiger}
+G~Hemani, K~Tilling, and G~Davey~Smith.
+\newblock {Orienting the causal relationship between imprecisely measured
+  traits using GWAS summary data.}
+\newblock \emph{PLoS genetics}, 13\penalty0 (11):\penalty0 e1007081, 2017.
+\newblock \doi{10.1371/journal.pgen.1007081}.
 
 \bibitem[Kurki et~al.(2023)Kurki, Karjalainen, Palta, Sipilä, Kristiansson,
   Donner, Reeve, Laivuori, Aavikko, Kaunisto, Loukola, Lahtela, Mattsson,

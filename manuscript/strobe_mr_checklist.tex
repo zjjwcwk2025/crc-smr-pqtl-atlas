@@ -1,0 +1,128 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=18mm]{geometry}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}
+\begin{document}
+{\Large\bfseries STROBE-MR checklist}\\[0.4em]
+{\large Limited plasma proteomic coverage constrains genetic drug-target prioritization in colorectal cancer}\\[0.2em]
+Jiajie Zhou, MD --- The Affiliated Huaian No.1 People's Hospital of Nanjing Medical University\\[0.8em]
+This checklist follows the STROBE-MR statement (Skrivankova VW, et al. JAMA 2021;326:1614--1621) and its explanation and elaboration document (Skrivankova VW, et al. BMJ 2021;375:n2233). Item numbering and wording follow the official checklist. The recommendation text is reproduced from the guideline; the right-hand column gives the location of each item in the submitted manuscript.
+\vspace{0.8em}
+
+\begin{longtable}{@{}p{7mm}p{32mm}p{52mm}p{68mm}@{}}
+\toprule
+\textbf{No.} & \textbf{Item} & \textbf{STROBE-MR recommendation} & \textbf{Where addressed in this manuscript} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{No.} & \textbf{Item} & \textbf{STROBE-MR recommendation} & \textbf{Where addressed in this manuscript} \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+\textbf{1} & \textbf{Title and abstract} & Indicate MR as the study's design in the title and/or the abstract if that is a main purpose of the study. & Title: ``Limited plasma proteomic coverage constrains genetic drug-target prioritization in colorectal cancer''. Abstract, Methods: the pipeline is described as ``a single target-prioritization pipeline built on Mendelian randomization''; ``Mendelian randomization'' is also listed among the keywords. \\
+\midrule
+\textbf{2} & \textbf{Background} & Explain the scientific background and rationale for the reported study. What is the exposure? Is causality between exposure and outcome plausible? Justify why MR is a helpful method to answer the study question. & Introduction, paragraphs 1--3. The exposure is plasma protein level (cis-pQTL) for the protein-coding CRC susceptibility genes; the outcome is CRC risk. The rationale for using genetic instruments in place of observational protein--CRC associations is given in paragraph 3. \\
+\midrule
+\textbf{3} & \textbf{Objectives} & State specific objectives clearly, including prespecified causal hypotheses (if any). State that MR is a method that, under specific assumptions, intends to estimate causal effects. & Introduction, final paragraph; Methods, ``Study design overview''. \\
+\midrule
+\textbf{4} & \textbf{Study design and data sources} & Present key elements of the study design early in the article. Consider including a table listing sources of data for all phases of the study. & Methods, ``Study design overview''; Fig. 1B. Data sources for every phase are listed in the Methods subsections and in Supplementary Table S2. \\
+\midrule
+\textbf{4a} & \textbf{Setting} & Describe the study design and the underlying population, if possible. Describe the setting, locations, and relevant dates, including periods of recruitment, exposure, follow-up, and data collection, when available. & Methods, ``Study design overview'': a two-sample summary-data design using published genome-wide association and proteomic datasets; no new recruitment. Each contributing dataset, including its population and ancestry, is described in its own Methods subsection. \\
+\midrule
+\textbf{4b} & \textbf{Participants} & Give the eligibility criteria, and the sources and methods of selection of participants. Report the sample size, and whether any power or sample size calculations were carried out before the main analysis. & Methods, ``GWAS summary statistics'' (78,473 cases and 107,143 controls of European ancestry); ``eQTL data and SMR analysis'' (eQTLGen, n = 31,684); ``pQTL data and Mendelian randomization'' (UKB-PPP and deCODE, n $\approx$ 35,000 each); ``FinnGen directional consistency assessment'' (10,500 cases). Sample sizes are stated for every source. A formal replication power calculation is given in the Supplementary Methods. \\
+\midrule
+\textbf{4c} & \textbf{Genetic variants} & Describe measurement, quality control and selection of genetic variants. & Methods, ``eQTL data and SMR analysis'' (cis window ±1 Mb, cis-eQTL at p $<$ 5$\times$10$^{-8}$); ``pQTL data and Mendelian randomization'' (cis-pQTL instruments at p $<$ 5$\times$10$^{-8}$ within ±1 Mb of the transcription start site); ``Independent locus definition''. \\
+\midrule
+\textbf{4d} & \textbf{Assessment and diagnostic criteria for diseases} & For each exposure, outcome, and other relevant variables, describe methods of assessment and diagnostic criteria for diseases. & Methods, ``GWAS summary statistics'' and ``FinnGen directional consistency assessment'': colorectal cancer case--control status as defined in the contributing GWAS. The exposure is the plasma protein level measured by SomaScan (deCODE) or Olink (UKB-PPP). \\
+\midrule
+\textbf{4e} & \textbf{Ethical approval and informed consent} & Provide details of ethics committee approval and participant informed consent, if relevant. & ``Ethics Approval and Consent to Participate'': only de-identified, publicly available summary-level and previously published data were used; no new participants were recruited and institutional ethics approval was therefore not required. \\
+\midrule
+\textbf{5} & \textbf{Assumptions} & Explicitly state the three core instrumental variable assumptions for the main analysis (relevance, independence, and exclusion restriction) as well as assumptions for any additional or sensitivity analysis. & Methods, ``pQTL data and Mendelian randomization'': relevance, independence and the exclusion restriction are stated explicitly, together with the cis restriction, HEIDI testing, and the MR-Egger, weighted median, weighted mode and MR-PRESSO sensitivity estimators. \\
+\midrule
+\textbf{6} & \textbf{Statistical methods: main analysis} & Describe statistical methods and statistics used. & Methods, ``eQTL data and SMR analysis'', ``Bayesian colocalization and SuSiE fine-mapping'' and ``pQTL data and Mendelian randomization''. \\
+\midrule
+\textbf{6a} & \textbf{Quantitative variables} & Describe how quantitative variables were handled in the analyses (that is, scale, units, model). & Methods, ``eQTL data and SMR analysis'': SMR b coefficients were converted to odds ratios per standard deviation of genetically predicted exposure; pQTL and CRC effects are on the log-odds scale per effect allele. \\
+\midrule
+\textbf{6b} & \textbf{Genetic variants} & Describe how genetic variants were handled in the analyses and, if applicable, how their weights were selected. & Methods, ``pQTL data and Mendelian randomization'': instruments were selected at p $<$ 5$\times$10$^{-8}$ within the cis window; a Wald ratio was used for a single instrument and inverse-variance weighting for multiple instruments. \\
+\midrule
+\textbf{6c} & \textbf{MR estimator} & Describe the MR estimator (e.g. two stage least squares, Wald ratio) and related statistics. Detail the included covariates and, for two sample MR studies, whether the same covariate set was used for adjustment in the two samples. & Methods, ``pQTL data and Mendelian randomization'': Wald ratio and inverse-variance weighted (IVW) regression were the main estimators, with weighted median, weighted mode, MR-Egger and MR-PRESSO as sensitivity estimators, implemented in TwoSampleMR. The design uses published summary statistics, so no covariate adjustment is applied; this is stated in the same subsection. \\
+\midrule
+\textbf{6d} & \textbf{Missing data} & Explain how missing data were addressed. & Methods, ``pQTL data and Mendelian randomization'': variants present in only one of the two datasets were excluded rather than imputed. \\
+\midrule
+\textbf{6e} & \textbf{Multiple testing} & If applicable, indicate how multiple testing was addressed. & Methods, ``eQTL data and SMR analysis'': Bonferroni-corrected threshold p $<$ 3.21$\times$10$^{-6}$ (0.05/15,582 tests). Colocalization used a PPH4 $>$ 0.8 threshold; the Tier 1 set is defined in ``Independent locus definition''. \\
+\midrule
+\textbf{7} & \textbf{Assessment of assumptions} & Describe any methods or previous knowledge used to assess the assumptions or justify their validity. & Methods, ``eQTL data and SMR analysis'' (HEIDI test) and ``pQTL data and Mendelian randomization'' (MR-Egger intercept, MR-PRESSO, weighted median and mode); Results, ``The protein layer does not corroborate the genetic layer'' (instrument strength; all F $>$ 10). \\
+\midrule
+\textbf{8} & \textbf{Sensitivity analyses and additional analyses} & Describe any sensitivity analyses or additional analyses performed (e.g. comparison of effect estimates from different approaches, independent replication, bias analytical techniques, validation of instruments, and simulations). & Methods, ``pQTL data and Mendelian randomization'' (alternative estimators), ``Independent locus definition'', ``FinnGen directional consistency assessment'', ``Competitor comparison''; Results; Table 3; Supplementary Tables S3 and S10. \\
+\midrule
+\textbf{9} & \textbf{Software and pre-registration} & Name statistical software and package(s), including version and setting used. & Methods, ``eQTL data and SMR analysis'' (SMR v1.4.2), ``Bayesian colocalization and SuSiE fine-mapping'' (coloc v5.2.3), ``pQTL data and Mendelian randomization'' (TwoSampleMR, MR-PRESSO). The complete software list with versions is distributed with the analysis code (``Code Availability''). \\
+\midrule
+\textbf{9b} & \textbf{Pre-registration} & State whether the study protocol and details were pre-registered (as well as when and where). & Methods, ``pQTL data and Mendelian randomization'': this study is a secondary analysis of publicly available summary statistics and was not pre-registered. \\
+\midrule
+\textbf{10} & \textbf{Descriptive data} & Number of participants (item 10a); summary statistics (item 10b); heterogeneity (item 10c); two-sample similarity and overlap (item 10d). & See items 10a--10d below. \\
+\midrule
+\textbf{10a} & \textbf{Numbers at each stage} & Report the numbers of individuals at each stage of included studies and reasons for exclusion. Consider the use of a flow diagram. & Methods: sample size of every contributing dataset. Results and Fig. 2A: 62 protein-coding genes passing Bonferroni-corrected SMR → 15 with a matching plasma protein measurement (17 including the two TNF-pathway genes) → 9 with genome-wide significant cis-pQTL instruments → 1 with pQTL--GWAS colocalization. \\
+\midrule
+\textbf{10b} & \textbf{Summary statistics} & Report summary statistics for phenotypic exposure(s), outcome(s), and other relevant variables (e.g. means, standard deviations, proportions). & Results, ``The protein layer does not corroborate the genetic layer''; Table 2 (pQTL coverage); Table 3 (MR sensitivity); Supplementary Tables S2, S4 and S5. \\
+\midrule
+\textbf{10c} & \textbf{Heterogeneity across contributing studies} & If the data sources include meta-analyses of previous studies, provide the assessments of heterogeneity across these studies. & The CRC GWAS is a meta-analysis whose between-study heterogeneity is reported in the source publication. Heterogeneity across the genetic instruments used here is reported in Table 3 and Supplementary Table S5. \\
+\midrule
+\textbf{10d} & \textbf{Two-sample similarity and overlap} & For two sample MR, authors should (1) provide justification of the similarity of the genetic variant--exposure associations between the exposure and outcome samples, and (2) provide information on the number of individuals who were in both samples for the exposure and for the outcome. & Methods, ``pQTL data and Mendelian randomization'': both samples are of European ancestry. The UKB-PPP panel and the CRC GWAS both include UK Biobank participants, so partial sample overlap cannot be excluded; this is stated in the manuscript together with its expected direction of bias. \\
+\midrule
+\textbf{11} & \textbf{Main results} & Genetic variant associations (11a); MR estimates (11b); absolute risk (11c); plots (11d). & See items 11a--11d below. \\
+\midrule
+\textbf{11a} & \textbf{Genetic variant associations} & Report the associations between genetic variant and exposure, and between genetic variant and outcome, preferably on an interpretable scale. & Results; Fig. 2C (eQTL SMR versus pQTL MR effect sizes per gene); Supplementary Tables S4 and S5. \\
+\midrule
+\textbf{11b} & \textbf{MR estimates} & Report MR estimates of the association between exposure and outcome, and the measures of uncertainty from the MR analysis, on an interpretable scale, such as odds ratio or relative risk per standard deviation difference. & Results; Table 3 (Wald ratio b with 95\% confidence intervals, and sensitivity estimators); Fig. 3A; Fig. 3C; Table 1 (per-SD odds ratios for the Tier 1 genes). \\
+\midrule
+\textbf{11c} & \textbf{Absolute risk} & If relevant, consider translating estimates of relative risk into absolute risk for a meaningful time period. & Not reported. The exposures are plasma protein levels with no established modifiable contrast, so translation into absolute risk over a defined time period would not be meaningful; per-SD odds ratios are given in Table 1 instead. \\
+\midrule
+\textbf{11d} & \textbf{Plots} & Consider plots to visualise results (e.g. forest plot, scatterplot of associations between genetic variants and outcome versus associations between genetic variants and exposure). & Fig. 1C (colocalization posteriors); Fig. 2A (coverage funnel); Fig. 2C (effect-size scatter); Fig. 3A (pQTL effect estimates and colocalization posteriors); Fig. 3C (forest plot); Supplementary Fig. S17 (FinnGen forest plots). \\
+\midrule
+\textbf{12} & \textbf{Assessment of assumptions (results)} & Report the assessment of the validity of the assumptions (12a) and any additional statistics (12b). & See items 12a--12b below. \\
+\midrule
+\textbf{12a} & \textbf{Validity of the assumptions} & Report the assessment of the validity of the assumptions. & Results: instrument strength (all F $>$ 10); HEIDI p-values (Supplementary Table S2, Fig. S5); MR-Egger intercepts and MR-PRESSO outlier tests (Table 3); Steiger directionality testing (Supplementary Table S10). \\
+\midrule
+\textbf{12b} & \textbf{Additional statistics} & Report any additional statistics (e.g. assessments of heterogeneity across genetic variants, such as I$^{2}$, Q statistic, or E value). & Results; Table 3 (heterogeneity statistics); Supplementary Table S5. \\
+\midrule
+\textbf{13} & \textbf{Sensitivity analyses and additional analyses (results)} & Sensitivity analyses (13a); other additional analyses (13b); direction of causality (13c); comparison with non-MR estimates (13d); additional plots (13e). & See items 13a--13e below. \\
+\midrule
+\textbf{13a} & \textbf{Sensitivity analyses} & Report any sensitivity analyses to assess the robustness of the main results to violations of the assumptions. & Results; Table 3 (weighted median, weighted mode, MR-Egger and MR-PRESSO); Supplementary Fig. S6. \\
+\midrule
+\textbf{13b} & \textbf{Other additional analyses} & Report results from other sensitivity analyses or additional analyses. & Results: FinnGen directional consistency assessment; GTEx Colon Transverse sensitivity analysis; comparison with six prior CRC target-discovery studies; Supplementary Tables S3 and S9. \\
+\midrule
+\textbf{13c} & \textbf{Direction of causality} & Report any assessment of direction of causality (e.g. bidirectional MR). & Methods and Results: the Steiger test was applied to every cis-pQTL instrument and to the lead cis-pQTL variant of each gene; all 13,080 instrument-level comparisons and all nine per-gene tests were correctly oriented (Supplementary Table S10). \\
+\midrule
+\textbf{13d} & \textbf{Comparison with non-MR estimates} & When relevant, report and compare with estimates from non-MR analyses. & Results, ``Competitor comparison'' and Fig. 5: overlap of the prioritised gene set with six prior CRC target-discovery studies that used colocalization-only or non-MR designs; Supplementary Table S9. \\
+\midrule
+\textbf{13e} & \textbf{Additional plots} & Consider additional plots to visualise results (e.g. leave-one-out analyses). & Fig. 2C; Fig. 3A--3C; Supplementary Figs. S3--S5 and S17. \\
+\midrule
+\textbf{14} & \textbf{Key results} & Summarise key results with reference to study objectives. & Abstract; Conclusions; Discussion, opening paragraph. \\
+\midrule
+\textbf{15} & \textbf{Limitations} & Discuss limitations of the study, taking into account the validity of the instrumental variable assumptions, other sources of potential bias, and imprecision. Discuss both direction and magnitude of any potential biases and your efforts to resolve them. & Discussion, ``Limitations and methodological considerations'', including the limits of the Steiger test and the MHC-region instrument set added for this submission. \\
+\midrule
+\textbf{16} & \textbf{Interpretation} & Cautious interpretation (16a); biological mechanisms and causal language (16b); clinical or policy relevance (16c). & See items 16a--16c below. \\
+\midrule
+\textbf{16a} & \textbf{Cautious overall interpretation} & Give a cautious overall interpretation of results in the context of their limitations and in comparison to other studies. & Discussion, ``Three explanations for the eQTL--pQTL gap''; Conclusions. \\
+\midrule
+\textbf{16b} & \textbf{Mechanisms and causal language} & Discuss underlying biological mechanisms that could drive a potential causal association between the investigated exposure and the outcome, and whether the gene--environment equivalence assumption is reasonable. Use causal language carefully, clarifying that instrumental variable estimates might provide causal effects only under certain assumptions. & Discussion, ``Three explanations for the eQTL--pQTL gap'' (limited statistical power, post-transcriptional buffering, tissue mismatch); causal language is qualified throughout, and the tissue-localization layer is explicitly described as supporting rather than causal evidence. \\
+\midrule
+\textbf{16c} & \textbf{Clinical or policy relevance} & Discuss whether the results have clinical or public policy relevance, and to what extent they inform effect sizes of possible interventions. & Discussion, ``What remains actionable''; Conclusions (CCM2 and BMP2 as the defensible candidates; recommendation to report cis-pQTL coverage alongside eQTL-derived target lists). \\
+\midrule
+\textbf{17} & \textbf{Generalisability} & Discuss the generalisability of the study results (a) to other populations, (b) across other exposure periods or timings, and (c) across other levels of exposure. & Discussion, ``Why the gap extends beyond CRC'' and ``Limitations and methodological considerations'': the analyses use European-ancestry summary statistics, and the protein-layer coverage constraint is argued to generalise across traits rather than being specific to CRC. \\
+\midrule
+\textbf{18} & \textbf{Funding} & Describe sources of funding and the role of funders in the present study and, if applicable, sources of funding for the databases and original study or studies on which the present study is based. & ``Funding'': Jiangsu Provincial Health Commission Project (Z2024049) and the Nanjing Medical University Science and Technology Development Fund (NMUB20240108); the funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript. Funding and governance of the source datasets (eQTLGen, UKB-PPP, deCODE, GTEx, FinnGen) are described in the corresponding publications. \\
+\midrule
+\textbf{19} & \textbf{Data and data sharing} & Provide the data used to perform all analyses or report where and how the data can be accessed, and reference these sources in the article. Provide the statistical code needed to reproduce the results in the article, or report whether the code is publicly accessible and if so, where. & ``Data Availability'' (accession numbers and URLs for every dataset, including the new Steiger analysis in Supplementary Table S10) and ``Code Availability'' (complete analysis pipeline under an MIT licence at https://github.com/zjjwcwk2025/crc-smr-pqtl-atlas). \\
+\midrule
+\textbf{20} & \textbf{Conflicts of interest} & All authors should declare all potential conflicts of interest. & ``Competing Interests'': the author declares that he has no competing interests. \\
+\midrule
+\end{longtable}
+
+\end{document}
