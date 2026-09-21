@@ -54,7 +54,7 @@ with BMP2 carrying the largest per-SD CRC risk effect (OR = 1.38, 95\% CI:
 1.27--1.50) and GPBAR1 the only protective effect (OR = 0.78, 95\% CI:
 0.73--0.83). At the protein layer, however, only 15 of the 62 protein-coding
 genes had matching plasma protein measurements (17 in total, including two
-TNF-pathway genes analysed outside the Bonferroni set), only nine had cis-pQTL instruments
+TNF-pathway genes analyzed outside the Bonferroni set), only nine had cis-pQTL instruments
 at genome-wide significance, and only one (CCM2, PPH4 = 0.9514) colocalized with
 CRC risk, against 43 of 76 (57\%) at the eQTL layer; five of the six core
 candidates were not measured in either panel. Instrument-strength and pleiotropy
@@ -197,7 +197,17 @@ UKB-PPP pQTL data (Olink, $n\approx35,000$) were accessed via Synapse
 (project syn51364943)~\cite{sun2023plasma, sudlow2015ukbiobank}. deCODE pQTL data (SomaScan v4, $n\approx35,000$) were
 obtained from the deCODE genetics proteomics download portal~\cite{ferkingstad2021large}. Cis-pQTL
 instruments were selected at $p < 5\times10^{-8}$ within $\pm$1 Mb of the
-transcription start site. Mendelian randomization was performed using
+transcription start site. Two effect estimates are reported in this paper and
+are not interchangeable. The single-variant Wald ratio uses the lead cis-pQTL
+variant only; it is the estimate given in Table~\ref{tab:pqtl_coverage}(B) and the
+one used for the protein-layer classification in
+Fig.~\ref{fig:eqtl_pqtl_class}. The number of cis-pQTL instruments listed for a
+gene in Table~\ref{tab:pqtl_coverage}(A) is the number of variants available at that
+locus, not the number that contributes to the Wald ratio. The IVW estimate uses
+all available cis-pQTL instruments and, with its sensitivity analyses, is
+reported in Table~\ref{tab:mr_sensitivity}. Wherever the multi-instrument estimate
+could be computed we report both, because the two can differ in magnitude and,
+at one locus (CDKN1A), in sign. Mendelian randomization was performed using
 Wald ratio (single instrument) and inverse-variance weighted (IVW; multiple
 instruments) methods~\cite{burgess2013ivw}, with the weighted median~\cite{bowden2016median},
 weighted mode~\cite{hartwig2017mode}, MR-Egger~\cite{bowden2015egger} and
@@ -348,8 +358,8 @@ through drug target prioritization.
 % \draw[arw] (b3.east) -- (c1.west);
 % \end{tikzpicture}
 \caption{Conceptual overview of the two evidence layers. The genetic layer (left) is
-saturated: 15{,}582 gene-level SMR tests yield 43 colocalising probe--gene pairs out of 76.
-The protein layer (centre) collapses: only 15 of the 62 protein-coding candidates have plasma
+saturated: 15{,}582 gene-level SMR tests yield 43 colocalizing probe--gene pairs out of 76.
+The protein layer (center) collapses: only 15 of the 62 protein-coding candidates have plasma
 measurements, nine have cis-pQTL instruments, and one colocalises with CRC risk. The limiting
 step is therefore protein-layer coverage, not genetic significance, and blood eQTL and plasma
 pQTL evidence are not interchangeable.}
@@ -552,19 +562,31 @@ using two independent proteomic datasets. Coverage, instrument strength, and
 colocalization results for all 17 measured genes are summarized in
 Table~\ref{tab:pqtl_coverage}. From UKB-PPP, 5 of the 62
 protein-coding genes had matching Olink protein measurements (CDKN1A, LTA,
-NCF2, TET2, TNF). MR analysis identified CDKN1A (Wald $p = 0.020$) and TNF
-(Wald $p = 5.0\times10^{-4}$) as significant, with effects in the risk-increasing
-direction for CDKN1A (Wald $b = +0.130$) and protective direction for TNF
-(Wald $b = -0.295$).  However, none of the 5 genes showed pQTL--GWAS colocalization (max PPH4 = 0.275 for TNF; Supplementary Table~S4; Supplementary Fig.~S6).
+NCF2, TET2, TNF). By the single-variant Wald ratio, MR analysis identified
+CDKN1A (Wald $p = 0.020$) and TNF (Wald $p = 5.0\times10^{-4}$) as significant,
+with effects in the risk-increasing direction for CDKN1A (Wald $b = +0.130$) and
+the protective direction for TNF (Wald $b = -0.295$). The multi-instrument IVW
+estimates agreed for TNF ($b = -0.062$, $p = 8.1\times10^{-29}$) but not for
+CDKN1A, whose sign reversed ($b = -0.131$, $p = 1.3\times10^{-18}$). LTA and NCF2
+were non-significant by the Wald ratio ($p = 0.506$ and $0.307$); by IVW the LTA
+estimate became significant ($b = -0.022$, $p = 5.4\times10^{-44}$) while NCF2
+remained null ($b = -0.033$, $p = 0.156$; Table~\ref{tab:mr_sensitivity}). However, none of the 5 genes showed pQTL--GWAS colocalization (max PPH4 = 0.275 for TNF; Supplementary Table~S4; Supplementary Fig.~S6).
 
 From deCODE genetics, 16 unique genes (14 of them within the 62-gene Bonferroni set) had SomaScan protein measurements,
 representing 12 deCODE-only genes beyond the 4 genes also covered by UKB-PPP
 (CDKN1A, NCF2, TNF, LTA; analyzed above). Of the 12 deCODE-only genes, 5
-had significant cis-pQTL instruments (at $p < 5\times10^{-8}$):
-LIMA1 (70 instruments, Wald $b = +0.858$, $p = 4.29\times10^{-7}$), CCM2 (94 instruments,
-Wald $b = -0.766$, $p = 6.28\times10^{-6}$), and STAT6 (61 instruments, Wald $b = -0.029$, $p =
-3.86\times10^{-5}$) were significant, while TNFRSF1A (Wald $b = -0.070$, $p = 0.349$) and
-TNFRSF1B (Wald $b = -0.035$, $p = 0.614$) were not. The seven remaining deCODE-only genes had
+carried cis-pQTL instruments at genome-wide significance ($p < 5\times10^{-8}$):
+LIMA1 (70 instruments), CCM2 (94), STAT6 (61), TNFRSF1A (25) and TNFRSF1B (73).
+By the single-variant Wald ratio, three were significant---LIMA1
+($b = +0.858$, $p = 4.29\times10^{-7}$), CCM2 ($b = -0.766$, $p = 6.28\times10^{-6}$)
+and STAT6 ($b = -0.029$, $p = 3.86\times10^{-5}$)---whereas TNFRSF1A
+($b = -0.070$, $p = 0.349$) and TNFRSF1B ($b = -0.035$, $p = 0.614$) were not.
+The multi-instrument IVW estimates agreed in magnitude for the two strongest
+signals, CCM2 ($b = -0.515$, $p = 2.7\times10^{-17}$) and LIMA1
+($b = +0.882$, $p = 1.3\times10^{-26}$), but not for the other three: STAT6 was
+not significant by IVW ($b = -0.007$, $p = 0.427$) whereas TNFRSF1B was
+($b = -0.052$, $p = 3.0\times10^{-7}$), and TNFRSF1A remained null by both
+estimators ($b = -0.013$, $p = 0.637$). The seven remaining deCODE-only genes had
 no cis-pQTL instruments at genome-wide significance, reflecting the
 smaller sample size and higher technical variability of plasma proteomic
 measurements.
@@ -580,41 +602,56 @@ remaining 4 genes did not colocalize. STAT6, LIMA1, and TNFRSF1A showed
 PPH3 $\approx 1.0$, indicating distinct causal variants for the pQTL and
 GWAS signals; STAT6 and LIMA1 had significant pQTL MR associations (Wald
 $p = 3.86\times10^{-5}$ and $4.29\times10^{-7}$), whereas TNFRSF1A did not
-(Wald $p = 0.349$). TNFRSF1B showed neither colocalization (PPH4 = 0.0084)
-nor a distinct pQTL signal (PPH3 = 0.287), consistent with its
-non-significant pQTL association (Wald $p = 0.614$).
+(Wald $p = 0.349$). TNFRSF1B showed no colocalization (PPH4 = 0.0084) and no
+distinct pQTL signal (PPH3 = 0.287), yet its multi-instrument IVW estimate was
+significant ($b = -0.052$, $p = 3.0\times10^{-7}$) even though its single-variant
+Wald ratio was not ($p = 0.614$)---the opposite pattern to CDKN1A, and a further
+reminder that the two estimators can disagree in either direction.
 
 \input{manuscript/tables/Table2_pqtl_coverage.tex}
 
-Formal instrument-strength and pleiotropy diagnostics for the nine genes with
-cis-pQTL instruments are reported in Supplementary Figs.~S8--S9 and
-Supplementary Figs.~S10--S13. Every instrument in all 17 gene--dataset
-combinations had an F statistic above the conventional weak-instrument threshold
-(minimum F = 18.2; median F per gene 30.4--326.3). Cochran's Q indicated
-substantial heterogeneity for all five genes with multi-instrument IVW estimates
-(CCM2 Q = 770.7, df = 93, p = 2.8e-107; LIMA1 Q = 575.7, df = 69, p = 5.3e-81;
-STAT6 Q = 177.0, df = 60, p = 1.7e-13; CDKN1A Q = 687.1, df = 227, p = 8.8e-48;
-TNF Q = 9683.2, df = 2287, p < 1e-300). MR-Egger intercepts were non-significant
-for CCM2 (b = 0.013, p = 0.55) and LIMA1 (b = 0.074, p = 0.11), the two genes
-with colocalizing or near-colocalizing protein-level support, but were significant
-for STAT6 (b = 0.021, p = 3.0e-12), CDKN1A (b = -0.012, p = 1.8e-4) and TNF
-(b = -0.012, p < 1e-300), indicating directional pleiotropy in the latter three.
-MR-PRESSO detected pleiotropy in all four genes for which it was computationally
-feasible (global test p < 2e-4 in each, the resolution limit of the 5,000-draw
-null distribution) and flagged 5 of 61 (STAT6), 10 of 70 (LIMA1), 15 of 94 (CCM2)
-and 22 of 228 (CDKN1A) instruments as outliers; the distortion test was
-significant for LIMA1, CCM2 and CDKN1A (p < 2e-4) but not for STAT6 (p = 0.085),
-so in the first three the outliers do shift the point estimate. Removing them did
-not change the direction of any estimate: the two significant protein-level
-signals became stronger (CCM2, b = -0.52 raw versus -0.76 outlier-corrected,
-p = 1.9e-57; LIMA1, 0.88 versus 1.08, p = 8.1e-37), whereas STAT6 stayed null
-(0.004, p = 0.67) and CDKN1A was essentially unchanged (-0.13 versus -0.10,
-p = 5.9e-20). Because cis-pQTL instruments come from a single locus and remain
-partly correlated, the MR-PRESSO global test is anti-conservative here, and we
-therefore read it as a sensitivity check rather than as evidence against a causal
-effect. Instrument strength alone therefore does not explain the pattern; only
-CCM2 and LIMA1 carry a coherent protein-level signal
-(Table~\ref{tab:mr_sensitivity}).
+Formal instrument-strength and pleiotropy diagnostics for all nine genes with
+cis-pQTL instruments are reported in Table~\ref{tab:mr_sensitivity} and
+Supplementary Figs.~S8--S13. Every instrument across the nine genes had an F
+statistic well above the conventional weak-instrument threshold (minimum
+F = 29.7; median F per gene 30.4--175.4). Cochran's Q indicated substantial
+heterogeneity in the eight genes with more than two instruments (TNFRSF1A
+Q = 94.8, df = 24, p = 2.3e-10; NCF2 Q = 103.1, df = 27, p = 7.9e-11; STAT6
+Q = 177.0, df = 60, p = 1.7e-13; LIMA1 Q = 575.7, df = 69, p = 5.3e-81; CCM2
+Q = 770.7, df = 93, p = 2.8e-107; CDKN1A Q = 687.1, df = 227, p = 8.8e-48; TNF
+Q = 9683.2, df = 2287, p < 1e-300; LTA Q = 63797, df = 10212, p < 1e-300) but
+not in TNFRSF1B, whose 73 instruments were homogeneous (Q = 43.1, df = 72,
+p = 0.997). MR-Egger intercepts were non-significant for CCM2 (b = 0.013,
+p = 0.55) and LIMA1 (b = 0.074, p = 0.11), the two genes with colocalizing or
+near-colocalizing protein-level support, and significant for the remaining seven
+genes (TNFRSF1A b = -0.017, p = 5.1e-4; NCF2 b = +0.041, p = 0.034; STAT6
+b = 0.021, p = 3.0e-12; TNFRSF1B b = -0.014, p = 8.7e-5; CDKN1A b = -0.012,
+p = 1.8e-4; TNF b = -0.012, p < 1e-300; LTA b = -0.002, p = 7.4e-4). MR-PRESSO
+was run at NbDistribution = 5000 for the seven genes with at most 228
+instruments and returned a significant global test for every one of them
+(p < 2.0e-4, the resolution limit of the 5,000-draw null distribution); the
+number of instruments flagged as outliers and the resulting outlier-corrected
+estimates are given in Table~\ref{tab:mr_sensitivity}(C). Removal of the
+flagged instruments left the two strongest protein-level signals intact and
+larger in magnitude (CCM2, b = -0.52 raw versus -0.76 outlier-corrected,
+p = 1.9e-57; LIMA1, 0.88 versus 1.08, p = 8.1e-37), and left STAT6 null
+(0.004, p = 0.67) and CDKN1A essentially unchanged (-0.13 versus -0.10,
+p = 5.9e-20). Two estimates did move across a threshold: the TNFRSF1A null
+result became nominally significant after correction (-0.013, p = 0.64 versus
+-0.086, p = 0.028), and NCF2 reversed sign (-0.033, p = 0.16 versus +0.047,
+p = 0.004), so no direction is interpreted for NCF2. For TNFRSF1B the global
+test was not significant (p = 0.997), so no instrument was flagged and no
+outlier-corrected estimate is available. Because cis-pQTL instruments come from a
+single locus and remain partly correlated, both the MR-PRESSO global test and the
+MR-Egger intercept test are anti-conservative here, and we therefore read them as
+sensitivity checks rather than as evidence against a causal effect. Instrument
+strength alone therefore does not explain the pattern; only CCM2 and LIMA1 carry
+a coherent protein-level signal (Table~\ref{tab:mr_sensitivity}). Two of the nine
+genes, \textit{TNF} and \textit{LTA}, lie within the MHC region (chr6:29--33 Mb),
+where strong long-range LD violates the instrument-independence assumption of
+every MR method used here; their estimates are therefore reported in
+Table~\ref{tab:mr_sensitivity} for completeness and should be read as reference
+values only, consistent with the fine-mapping caveat noted above.
 
 \input{manuscript/tables/Table3_mr_sensitivity.tex}
 
@@ -647,7 +684,7 @@ orientation.
 \includegraphics[width=\linewidth]{Fig2a_coverage_funnel.pdf}
 \caption{Protein-layer coverage funnel. Of the 62 protein-coding genes passing
 Bonferroni-corrected SMR, 15 have plasma protein measurements in at least one of the two
-proteomic panels (deCODE and UKB-PPP); adding the two TNF-pathway genes analysed outside the
+proteomic panels (deCODE and UKB-PPP); adding the two TNF-pathway genes analyzed outside the
 Bonferroni set (TNFRSF1A, TNFRSF1B) gives the 17-gene protein-layer analysis set. Seven of the
 15 (nine of the 17) carry genome-wide significant cis-pQTL instruments, and one, CCM2, shows
 pQTL--GWAS colocalization. Five of the six core Tier 1 candidates have no protein measurement in
@@ -662,7 +699,12 @@ either panel.}
 \includegraphics[width=\linewidth]{Fig2b_eqtl_pqtl_classification.pdf}
 \caption{Classification of the $n = 17$ genes with matched pQTL data by eQTL SMR and pQTL
 Wald-ratio significance (two-sided $p < 0.05$): 4 concordant and significant (A), 1 discordant and
-significant (B), and 12 without significant pQTL signal (C).}
+significant (B), and 12 without significant pQTL signal (C). Both axes use the single-variant
+lead estimate. The one discordant gene is CDKN1A, and it is discordant by the Wald ratio only:
+its multi-instrument IVW estimate is negative and therefore concordant with the eQTL layer
+(Table~3). Two genes change category when the multi-instrument estimate is used instead---STAT6
+loses nominal significance and TNFRSF1B gains it---so this panel should be read as a
+single-variant view of the protein layer, not as the final classification.}
 \label{fig:eqtl_pqtl_class}
 \end{subfigure}
 
@@ -718,7 +760,7 @@ zone (PNKD: ME6 second lowest; Supplementary Fig.~S16;
 Supplementary Table~S6). Pairwise spatial cross-correlation statistics for the
 chr2:219Mb locus are provided in Supplementary Table~S7.
 
-The tissue layer can localize a candidate gene within the tumour but cannot
+The tissue layer can localize a candidate gene within the tumor but cannot
 validate causality. TCGA COAD+READ survival analysis~\cite{weinstein2013tcga} of the six non-MHC Tier 1 genes found no
 significant associations (log-rank $p = 0.26$--$0.79$, all $p > 0.05$), and we report that negative result as-is rather than
 presenting tissue expression as confirmation.
@@ -921,16 +963,24 @@ pQTL level. We therefore interpret the observed discordance as evidence that
 target colocalization at most loci, not as definitive proof of
 biological divergence.
 
-The directional discordance observed for CDKN1A (eQTL SMR protective,
-$b = -0.288$; pQTL MR risk-increasing, $b = +0.130$) merits particular
-attention. This bidirectional signal may reflect the dual role of CDKN1A/p21
-as both a cell-cycle inhibitor (tumor suppressive) and an anti-apoptotic
-regulator (pro-survival in stressed cells). The pQTL signal was
-driven by the rs1801270 (C31S) missense variant, which alters p21 protein
-stability, potentially explaining how the same gene can exhibit opposite
-transcript- and protein-level effects. Discordant transcript- and
-protein-level effects from one locus therefore require multi-level evidence
-before drug-target prioritization.
+The apparent directional discordance at CDKN1A illustrates why the estimator
+must be stated explicitly rather than why the biology is bidirectional. The eQTL
+SMR estimate is protective ($b = -0.288$), and the single-variant lead pQTL Wald
+ratio is nominally risk-increasing ($b = +0.130$, $p = 0.020$)---this is the one
+discordant point in Fig.~\ref{fig:eqtl_pqtl_class}. The multi-instrument estimate at the same locus,
+however, points the other way ($b = -0.131$, $p = 1.3\times10^{-18}$), as do the
+weighted median and weighted mode estimates, and is therefore concordant with the
+eQTL layer (Table~\ref{tab:mr_sensitivity}). The lead variant is rs1801270 (C31S),
+a missense change that alters p21 protein stability, but the reversal of sign
+between the single lead variant and the full set of 228 correlated cis variants
+(Cochran's $Q$ $p = 8.8\times10^{-48}$) is a property of the instrument set, not
+evidence that CDKN1A exerts opposite effects at transcript and protein level. We
+therefore report CDKN1A as a locus whose direction depends on the estimator used,
+and treat it as unresolved rather than as a biological finding. The same caution
+applies in the opposite direction to TNFRSF1B, which is null by the Wald ratio but
+significant by IVW: a single cis-pQTL lead variant is not a sufficient basis for
+assigning direction, and multi-level evidence remains necessary before
+drug-target prioritization.
 
 \subsection*{Why the gap extends beyond CRC}
 
@@ -952,7 +1002,7 @@ overlap with Chen 2024 is expected given that both Chen 2024 and the present
 study employ SMR from blood eQTL data, whereas Hazelwood 2025 relies on
 multi-tissue TWAS with splicing QTLs---methodologically distinct approaches
 that test different biological hypotheses and consequently identify partially non-overlapping gene sets~\cite{chen2024integrative, hazelwood2025multi}. The gene-level comparison underlying Fig.~\ref{fig:competitor} is provided in Supplementary Table~S9.
-To our knowledge this is the first systematic documentation of eQTL/pQTL
+This is, to our knowledge, a systematic documentation of eQTL/pQTL
 colocalization divergence in CRC susceptibility genetics, and it implies that
 cis-pQTL coverage should be reported alongside any comparable target list.
 
@@ -993,12 +1043,15 @@ the right. Of this study's 69 genes, 34 (49\%) are not present in either prior g
 Even among the overlapping genes, the analytical depth differs
 substantially. The chr2:219Mb locus illustrates this distinction: both
 Hazelwood 2025 (via coloc) and Chen 2024 (via conditional analysis) identified
-signals at this region, but neither provided the single-SNP causal resolution
-that our SuSiE analysis achieved, separating PNKD, TMBIM1, and GPBAR1 into
-independent credible sets. This matters for drug development: the three genes
-span a 222 kb region with distinct druggability profiles (Tclin, Tbio, Tchem
-respectively), and conflating them would lead to an ambiguous target
-prioritization. UTP11 was not reported by any prior CRC study, and GPBAR1 was
+signals at this region, whereas we examined the locus at variant level and asked
+whether the three resident genes---PNKD, TMBIM1 and GPBAR1---carry separable cis
+signals. They do not, with the reference panel available to us: the credible sets
+returned for all three genes share the same lead variants (rs116204487 heads the
+first credible set of each gene, and rs116515067 recurs in their second and third
+sets), so the region does not resolve into three independent causal signals. This
+matters for drug development: the three genes span a 222 kb region with distinct
+druggability profiles (Tclin, Tbio, Tchem respectively), and the genetics cannot
+currently tell the three candidate targets apart. UTP11 was not reported by any prior CRC study, and GPBAR1 was
 absent from Chen 2024 but present in the Hazelwood 2025 druggable-genome set. CCM2, while present in both Chen 2024 and the Wang
 BMC Cancer supplement, is the only gene across all studies to date to achieve
 triple-convergent evidence (eQTL fine-mapping + pQTL MR + pQTL coloc), a level
@@ -1012,11 +1065,11 @@ mapped, and that the incremental contribution of future studies will come not
 from discovering entirely new loci but from higher-resolution causal inference,
 multi-omic integration (particularly the eQTL--pQTL gap we document), and
 biologically contextualized validation. The distinct contribution of this
-work is therefore the \textit{analytical resolution} (SuSiE
-fine-mapping, eQTL--pQTL colocalization discordance characterization, spatial
-transcriptomics) and \textit{target tractability assessment} (IDG druggability
-classification, PheWAS, drug repurposing scoring) applied to both shared and
-unique loci.
+work is therefore the \textit{analytical depth} (variant-level LD-aware
+fine-mapping used as a consistency check on colocalization, characterization of
+the eQTL--pQTL colocalization discordance, spatial transcriptomics) and
+\textit{target tractability assessment} (IDG druggability classification, PheWAS,
+drug repurposing scoring) applied to both shared and unique loci.
 
 \subsection*{What remains actionable}
 
@@ -1045,7 +1098,9 @@ UTP11 is the only Tier 1 gene absent from all prior CRC studies. GPBAR1 was
 absent from Chen 2024 but present in the Hazelwood 2025 druggable-genome set;
 BMP2 was present in Chen 2024 but absent from Hazelwood 2025. LAMC1, PNKD, and
 TMBIM1 were identified by both Hazelwood 2025 and Chen 2024. Independent
-SuSiE fine-mapping resolved single-SNP credible sets at each of these loci. BMP2 (bone morphogenetic protein 2) is a member of the
+SuSiE fine-mapping resolved single-SNP credible sets at each of these loci; as
+noted above, we read these as an LD-aware consistency check on colocalization
+rather than as resolved causal variants. BMP2 (bone morphogenetic protein 2) is a member of the
 TGF-$\beta$ superfamily with well-characterized roles in embryonic development
 and bone morphogenesis, classified as Tchem by IDG with FDA-approved
 recombinant protein therapy (Infuse) for bone regeneration. BMP2 showed the
@@ -1115,13 +1170,12 @@ would require de novo drug discovery programs.
 
 The tissue-localization layer carries additional limitations of its own. It rests on a
 single Visium section ($n = 3{,}493$ spots; GSE285505, which contains further CRC
-sections that were not analysed here) and a single single-cell reference
-($n = 50{,}214$ cells), so the observations above describe one tumour and were not tested
+sections that were not analyzed here) and a single single-cell reference
+($n = 50{,}214$ cells), so the observations above describe one tumor and were not tested
 for replication in an independent section or cohort. These analyses were designed to ask
 \emph{where} each candidate is expressed, not to estimate effect sizes: the
-spatial--microenvironment associations are unadjusted for multiple comparisons, and the
-TMBIM1--meCAF correlation noted above explains less than 1\% of the variance even though it
-is significant. We therefore treat the single-cell and spatial results as supporting
+spatial--microenvironment associations are unadjusted for multiple comparisons. We therefore
+treat the single-cell and spatial results as supporting
 tissue-localization evidence rather than causal or functional evidence, and no independent
 tissue validation (immunohistochemistry or in situ hybridization) was performed.
 
@@ -1139,6 +1193,9 @@ that the underlying GWAS (GCST90255675) has a large sample size
 propagate to SMR test statistics through shared LD architecture. The Bonferroni
 correction we applied is conservative and controls the family-wise error rate
 at the stated threshold, even in the presence of test correlation from local LD.
+We did not derive an empirical null distribution for the SMR statistics (for
+example by simulation under a matched LD structure), so the inflation factor is
+reported as a descriptive observation rather than as a corrected test statistic.
 
 %==========================================================================
 \section{Conclusions}
@@ -1150,16 +1207,18 @@ significance: of 15,582 genes tested, 75 reached SMR significance and 19 reached
 Tier 1 status, yet only 15 of the 62 protein-coding genes were measured in either
 plasma proteomic panel and only one colocalized at the protein layer. The
 distinct contribution of this study
-lies in analytical resolution (SuSiE fine-mapping producing single-SNP credible
-sets at loci where prior coloc-only approaches could not separate causal
-signals), multi-omic integration (the first systematic documentation of eQTL/pQTL
-colocalization discordance in CRC, with CCM2 as the sole triple-convergent
-gene), and biological contextualization (spatial transcriptomics characterizing
-tumor microenvironment zones and gene-level spatial independence at the complex
-chr2:219Mb locus). The eQTL/pQTL discordance suggests that current proteomic
+lies in analytical precision (variant-level LD-aware fine-mapping used as a
+consistency check on colocalization, including the finding that the three genes
+at the chr2:219Mb locus cannot be separated into independent cis signals with
+current reference panels), multi-omic integration (a systematic documentation of
+eQTL/pQTL colocalization discordance in CRC, with CCM2 as the sole
+triple-convergent gene), and biological contextualization (spatial transcriptomics
+characterizing tumor microenvironment zones and gene-level spatial
+cross-correlations among Tier 1 genes). The eQTL/pQTL discordance suggests that current proteomic
 GWAS datasets, while valuable, are insufficient for high-confidence
 protein-level colocalization at most loci, and expanded proteomic resources
 will be needed.
+
 Once the coverage constraint is stated explicitly, the candidates that remain
 defensible are CCM2 and BMP2: CCM2 carries the only triple-convergent evidence in
 this study, and BMP2 combines the strongest genetic support with an existing

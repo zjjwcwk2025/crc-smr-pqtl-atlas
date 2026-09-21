@@ -178,9 +178,10 @@ indicating that no single instrument drives the result.}
 \centering
 \includegraphics[width=\textwidth]{FigS12_pqtl_mr_methods_forest.pdf}
 \caption{\textbf{pQTL MR multi-method comparison.}
-IVW, weighted median, weighted mode and MR-Egger slope estimates with 95\% CI for each of the five
-pQTL MR genes. MR-Egger slope accounts for directional pleiotropy; qualitatively consistent
-directions across methods support a robust causal estimate.}
+IVW, weighted median, weighted mode and MR-Egger slope estimates with 95\% CI for the five genes
+shown (CCM2, LIMA1, STAT6, CDKN1A, TNF). MR-Egger slope accounts for directional pleiotropy; qualitatively consistent
+directions across methods support a robust causal estimate. The four further genes carrying cis-pQTL
+instruments (TNFRSF1A, NCF2, TNFRSF1B, LTA) are summarized in Table~3.}
 \label{fig:S26}
 \end{figure}
 
@@ -188,13 +189,17 @@ directions across methods support a robust causal estimate.}
 \centering
 \includegraphics[width=\textwidth]{FigS13_pqtl_mr_funnel_pleiotropy.pdf}
 \caption{\textbf{pQTL MR funnel plot and pleiotropy diagnostics.}
-Per-SNP Wald-ratio causal estimate versus instrument precision (1/SE) for the five pQTL MR genes;
+Per-SNP Wald-ratio causal estimate versus instrument precision (1/SE) for the five genes shown
+(CCM2, LIMA1, STAT6, CDKN1A, TNF);
 symmetry around the IVW line indicates no directional pleiotropy. Annotations report MR-Egger
 intercept and Cochran's Q. Statistically significant MR-Egger intercepts for STAT6
 ($p = 3.0\times10^{-12}$), CDKN1A ($p = 1.8\times10^{-4}$) and TNF ($p < 10^{-6}$) indicate
 directional pleiotropy at these loci; high Cochran's Q indicates residual heterogeneity.
-MR-PRESSO flagged 5 (STAT6), 10 (LIMA1), 15 (CCM2) and 22 (CDKN1A) outlier instruments and left
-the direction of every estimate unchanged (Table~3).}
+MR-PRESSO flagged 5 (TNFRSF1A), 3 (NCF2), 5 (STAT6), 10 (LIMA1), 15 (CCM2) and 22 (CDKN1A) outlier
+instruments. Removing them left the two strongest protein-level signals (CCM2, LIMA1) intact and
+larger in magnitude and left STAT6 null and CDKN1A essentially unchanged, but reversed the sign of
+the NCF2 estimate, for which no direction is therefore interpreted (Table~3). No instrument was
+flagged for TNFRSF1B, whose global test was not significant ($p = 0.997$).}
 \label{fig:S27}
 \end{figure}
 
@@ -247,7 +252,7 @@ expression in the single-cell atlas (Supplementary Fig.~\ref{fig:S7}).}
 \caption{\textbf{Spatial microenvironment zoning of CRC Visium data.}
 (A) K-means within-cluster sum of squares for $k = 2$ to $k = 8$; the elbow at $k = 6$ defined
 the final partition. (B) Composition of the six K-means-defined microenvironment (ME) zones
-across 3{,}493 Visium spots; ME6 Stromal matrix was the largest zone (927 spots, 26.5\%),
+across 3{,}493 Visium spots; ME6 Stromal cells was the largest zone (927 spots, 26.5\%),
 followed by ME3 Mast cell zone (746, 21.4\%), ME5 T cell territory (613, 17.5\%), ME1
 Myeloid-enriched (580, 16.6\%), ME2 Epithelial-dominant (518, 14.8\%) and ME4 B cell niches
 (109, 3.1\%). (C) Expression of the 15 Tier 1 genes detected in Visium data across the six ME

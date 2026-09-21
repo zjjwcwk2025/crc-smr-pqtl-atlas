@@ -35,7 +35,9 @@ R 4.4.3; Python 3.11; Poppler (pdftoppm, pdftotext). Genomic coordinates are hg3
 - `scripts/11_coloc_eqtl.R`, `scripts/11b_coloc_eqtl_all75.R` - Bayesian colocalization at the eQTL layer (Fig 1c)
 - `scripts/15_susie_finemap.R`, `scripts/15b_susie_extended.R`, `scripts/31_susie_sensitivity.R` - SuSiE fine-mapping and sensitivity (Fig S3)
 - `scripts/07_ukbppp_pqtl_mr.R`, `scripts/42_decode_pqtl_mr.R`, `scripts/18_pqtl_coloc.R`, `scripts/43_decode_coloc.R`, `scripts/44_decode_supplement_mr.R` - pQTL MR and colocalization (Fig 3a; Fig S6-S13; Tables S4, S5)
-- `scripts/24_mr_sensitivity.R`, `scripts/45_compute_fstatistics.R`, `scripts/48_mr_methods_pleiotropy.R` - instrument strength, MR-PRESSO, MR-Egger, leave-one-out (Fig S5, S10-S13)
+- `scripts/24_mr_sensitivity.R`, `scripts/45_compute_fstatistics.R`, `scripts/48_mr_methods_pleiotropy.R` - instrument strength, MR-Egger, leave-one-out (Fig S5, S10-S13)
+- `scripts/49_mr_presso_table3.R` - MR-PRESSO for the nine genes of Table 3 at `NbDistribution = 5000`; at the package default of 1000 the smallest resolvable outlier-test p-value is `n/1000` (0.061-0.228 for these genes), above 0.05, so the default cannot flag outliers at these instrument counts. TNF (n = 2288) and LTA (n = 10213) are not feasible and are recorded as skipped in Table 3.
+- `scripts/50_fast_presso_reference.R` - vectorised re-implementation of the MR-PRESSO core algorithm, used for the MR-PRESSO columns of Table 3. Verified against `MRPRESSO::mr_presso` at seed 20260921 and NbDistribution = 5000: RSSobs agrees to <= 2.3e-13 and the flagged instrument sets are identical for CCM2, LIMA1, STAT6, CDKN1A, TNFRSF1A and NCF2. The package call is about 1.5 h per 60 instruments on a single core, so this script is what produced the reported values for all nine genes.
 - `scripts/12_finngen_replication.R` - FinnGen directional consistency (Fig S17)
 - `scripts/40_gtex_colon_compare.R` - GTEx colon sensitivity (Fig 3b, 3c)
 - `scripts/30_locus_count.R`, `scripts/32_tier1_smr_or.R` - locus counting and Tier-1 SMR odds ratios (Fig S2, S4)
