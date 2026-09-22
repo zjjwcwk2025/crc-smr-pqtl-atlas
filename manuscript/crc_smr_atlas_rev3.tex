@@ -18,6 +18,7 @@
 \usetikzlibrary{arrows.meta,positioning,calc}
 \captionsetup[subfigure]{labelformat=parens,labelsep=space}
 \renewcommand{\thesubfigure}{\Alph{subfigure}}
+\providecommand{\tblnote}[1]{\par\vspace{3pt}{\footnotesize\noindent #1\par}}
 
 \graphicspath{{results/figures_rev3/}{results/figures/}{results/phase6_scrna/}}
 
@@ -59,8 +60,8 @@ at genome-wide significance, and only one (CCM2, PPH4 = 0.9514) colocalized with
 CRC risk, against 43 of 76 (57\%) at the eQTL layer; five of the six core
 candidates were not measured in either panel. Instrument-strength and pleiotropy
 diagnostics (all instruments $F>10$; MR-Egger intercepts non-significant for
-CCM2 and LIMA1 only; MR-PRESSO outlier correction left the direction of every
-estimate unchanged) indicate that the discordance is a property of the evidence
+CCM2 and LIMA1 only; MR-PRESSO outlier correction left the two strongest
+protein-level signals intact and larger in magnitude) indicate that the discordance is a property of the evidence
 layers rather than of individual genes. 
 
 \noindent\textbf{Conclusions:} Protein-layer coverage, not genetic
@@ -1282,8 +1283,8 @@ discloses that Claude (Anthropic) and Codex (OpenAI) were used for language
 editing, code generation and debugging, and for a pre-submission simulated peer
 review. All analytical decisions (statistical thresholds, parameter choices,
 interpretation of results) were made by the author. All AI-generated code was
-reviewed, tested and validated by the author, and every AI-suggested edit was
-critically evaluated before acceptance. No generative AI tool was used to
+reviewed by the author, tested and validated, and every AI-suggested edit was
+critically evaluated before acceptance. OpenAI Codex (a GPT-5-class coding agent) was accessed through the Codex desktop application, and Claude (Anthropic) through its web interface; both were used between August 2026 and September 2026. No generative AI tool was used to
 fabricate or manipulate data, to create fraudulent references, or to circumvent
 peer review. The author takes full responsibility for the accuracy, integrity
 and originality of the work.
