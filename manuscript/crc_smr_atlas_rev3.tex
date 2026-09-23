@@ -200,13 +200,13 @@ obtained from the deCODE genetics proteomics download portal~\cite{ferkingstad20
 instruments were selected at $p < 5\times10^{-8}$ within $\pm$1 Mb of the
 transcription start site. Two effect estimates are reported in this paper and
 are not interchangeable. The single-variant Wald ratio uses the lead cis-pQTL
-variant only; it is the estimate given in Table~\ref{tab:pqtl_coverage}(B) and the
-one used for the protein-layer classification in
-Fig.~\ref{fig:eqtl_pqtl_class}. The number of cis-pQTL instruments listed for a
-gene in Table~\ref{tab:pqtl_coverage}(A) is the number of variants available at that
-locus, not the number that contributes to the Wald ratio. The IVW estimate uses
-all available cis-pQTL instruments and, with its sensitivity analyses, is
-reported in Table~\ref{tab:mr_sensitivity}. Wherever the multi-instrument estimate
+variant only; it is the estimate used for the protein-layer
+classification reported in the Results, and it is the estimate given in the
+protein-layer coverage table. The number of cis-pQTL instruments listed for a
+gene in that table is the number of variants available at that locus, not the
+number that contributes to the Wald ratio. The IVW estimate uses all available
+cis-pQTL instruments and, with its sensitivity analyses, is reported in the
+Results. Wherever the multi-instrument estimate
 could be computed we report both, because the two can differ in magnitude and,
 at one locus (CDKN1A), in sign. Mendelian randomization was performed using
 Wald ratio (single instrument) and inverse-variance weighted (IVW; multiple
@@ -290,7 +290,8 @@ compared against six prior CRC genetic studies: four low-tier SMR/MR studies
 (Hong et al.~2025, 9 genes~\cite{hong2025integrative}; Wang et al.~2025, 4
 genes~\cite{wang2025discovoncol}; Xia and Wang, BMC Cancer, 6
 genes~\cite{xia2025bmccancer}; Tian et al.~2025, 8 genes~\cite{tian2025dbi}) and two high-tier Nature Communications studies (Hazelwood
-2025, 41 genes from multi-tissue TWAS~\cite{hazelwood2025multi}; Chen et
+2025, 41 genes from a multi-tissue transcriptome-wide association
+study (TWAS)~\cite{hazelwood2025multi}; Chen et
 al.~2024, 290 published genes from 254K-individual GWAS + SMR + multi-tissue
 eQTL/mQTL~\cite{chen2024integrative}, the largest prior CRC fine-mapping study).
 Chen 2024 gene lists were extracted from Supplementary Data 20 (288 putative
@@ -311,7 +312,7 @@ statistics.
 \section{Results}
 %==========================================================================
 
-\subsection{A resolved genetic map of CRC susceptibility genes}
+\subsection{A saturated genetic layer: 75 genes and 43 colocalizing probe--gene pairs}
 
 The overall study design and the two evidence layers are summarized in
 Fig.~\ref{fig:design}, encompassing seven analytical phases from SMR discovery
@@ -361,7 +362,7 @@ through drug target prioritization.
 \caption{Conceptual overview of the two evidence layers. The genetic layer (left) is
 saturated: 15{,}582 gene-level SMR tests yield 43 colocalizing probe--gene pairs out of 76.
 The protein layer (center) collapses: only 15 of the 62 protein-coding candidates have plasma
-measurements, nine have cis-pQTL instruments, and one colocalises with CRC risk. The limiting
+measurements, nine have cis-pQTL instruments, and one colocalizes with CRC risk. The limiting
 step is therefore protein-layer coverage, not genetic significance, and blood eQTL and plasma
 pQTL evidence are not interchangeable.}
 \label{fig:design_concept}
@@ -731,7 +732,7 @@ Only CCM2 showed convergent evidence across both layers with coloc support.}
 \end{subfigure}
 \end{figure}
 
-\subsection{What can still be said: one convergent gene and a tissue-level example}
+\subsection{Convergent evidence at CCM2 and a concordant tissue layer}
 
 The one candidate that survives this coverage constraint is CCM2, which carries
 convergent evidence across all three layers available in this study (Fig.~\ref{fig:ccm2_convergence}): eQTL
@@ -828,7 +829,7 @@ $p = 0.0030$, with 21 of 25 (84\%) direction-concordant.}
 \end{subfigure}
 \end{figure}
 
-\subsection{From evidence to tractability}
+\subsection{Tractability and safety of the six core Tier~1 candidates}
 
 To systematically assess target tractability, we classified the six non-MHC
 Tier 1 genes according to the Illuminating the Druggable Genome (IDG)
@@ -913,6 +914,61 @@ across DrugBank and Open Targets. Tier A: highest repurposing potential (coloc $
 \end{figure}
 
 %==========================================================================
+\subsection{Overlap with prior CRC target-discovery studies is only partial}
+
+We compared our 69 unique gene symbols with six prior CRC genetic studies, to
+place the present gene set in the context of the existing literature
+(Fig.~\ref{fig:competitor}A and Supplementary Table~S9). Overlap was minimal
+with the four smaller studies: Hong et al.~2025 (9
+genes)~\cite{hong2025integrative}, Wang et al.~2025 (4
+genes)~\cite{wang2025discovoncol}, Xia and Wang
+(6 genes)~\cite{xia2025bmccancer} and Tian et al.~2025 (8
+genes)~\cite{tian2025dbi} shared at most three gene symbols with our set. Overlap was higher but still incomplete with
+the two largest prior studies: 44.9\% with Chen et
+al.~2024~\cite{chen2024integrative} (289 resolvable gene
+symbols from a 254,000-individual GWAS with multi-tissue eQTL/mQTL) and 17.4\%
+with Hazelwood 2025~\cite{hazelwood2025multi} (41 genes from a multi-tissue
+TWAS). Of our 69 symbols, 34
+(49\%) were absent from both prior lists (Fig.~\ref{fig:competitor}B).
+
+At the level of independent loci, 23 of our 37 loci (62.2\%) contained at least
+one gene also reported by Chen et al.~2024, whereas 14 loci (37.8\%) were not
+reported by any prior study.
+
+\begin{figure}[htbp]
+\centering
+\begin{subfigure}{\textwidth}
+\centering
+\includegraphics[width=\linewidth]{Fig5a_competitor_overlap.pdf}
+\caption{Gene overlap counts with six prior CRC genetic studies. Low-tier
+studies (Hong, Wang, Wang BMC Cancer suppl., Tian) showed $\leq$3 gene overlap;
+high-tier studies (Chen 2024, Hazelwood 2025) showed 44.9\% and 17.4\% overlap,
+respectively.}
+\label{fig:competitor_overlap}
+\end{subfigure}
+
+\vspace{0.6em}
+
+\caption{The genetic layer is largely saturated: overlap with prior CRC target-discovery studies.}
+\label{fig:competitor}
+\end{figure}
+
+\begin{figure}[tbp]
+\ContinuedFloat
+\centering
+\setcounter{subfigure}{1}
+
+\begin{subfigure}{\textwidth}
+\centering
+\includegraphics[width=\linewidth]{Fig5b_gene_overlap_venn.pdf}
+\caption{Venn diagram of shared and unique gene symbols between this study (69 gene symbols),
+Chen 2024 (289 resolvable gene symbols) and Hazelwood 2025 (41 genes). Circle areas are not
+drawn to scale; every region is labelled with its exact symbol count and set sizes are given on
+the right. Of this study's 69 genes, 34 (49\%) are not present in either prior gene list.}
+\label{fig:competitor_upset}
+\end{subfigure}
+\end{figure}
+
 \section{Discussion}
 %==========================================================================
 
@@ -992,54 +1048,16 @@ plasma proteomic panel measures all protein-coding genes. The genetic layer
 itself is close to saturated, and the incremental value of further SMR or coloc
 screens therefore lies in the validation layers rather than in new gene lists.
 
-Our gene set showed 44.9\% overlap with Chen et al.~2024, the
-largest prior CRC genetic study (254K individuals, 289 resolvable gene symbols), and
-17.4\% overlap with Hazelwood 2025 (52K meta-GWAS, 41 genes; Fig.~\ref{fig:competitor}).
-Overlap with four additional low-tier studies (Hong et al.~\cite{hong2025integrative}, Wang et al.~\cite{wang2025discovoncol},
-Xia and Wang~\cite{xia2025bmccancer}, Tian et al.~\cite{tian2025dbi}, based on
-smaller FinnGen GWAS) was minimal
-($\leq$3 genes total). The higher
-overlap with Chen 2024 is expected given that both Chen 2024 and the present
+The degree of overlap tracked the analytical approach rather than the
+disease. The higher overlap with Chen 2024 is expected given that both Chen 2024 and the present
 study employ SMR from blood eQTL data, whereas Hazelwood 2025 relies on
 multi-tissue TWAS with splicing QTLs---methodologically distinct approaches
 that test different biological hypotheses and consequently identify partially non-overlapping gene sets~\cite{chen2024integrative, hazelwood2025multi}. The gene-level comparison underlying Fig.~\ref{fig:competitor} is provided in Supplementary Table~S9.
-This is, to our knowledge, a systematic documentation of eQTL/pQTL
+This is, to our knowledge, the first systematic documentation of
+eQTL/pQTL
 colocalization divergence in CRC susceptibility genetics, and it implies that
 cis-pQTL coverage should be reported alongside any comparable target list.
 
-\begin{figure}[htbp]
-\centering
-\begin{subfigure}{\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Fig5a_competitor_overlap.pdf}
-\caption{Gene overlap counts with six prior CRC genetic studies. Low-tier
-studies (Hong, Wang, Wang BMC Cancer suppl., Tian) showed $\leq$3 gene overlap;
-high-tier studies (Chen 2024, Hazelwood 2025) showed 44.9\% and 17.4\% overlap,
-respectively.}
-\label{fig:competitor_overlap}
-\end{subfigure}
-
-\vspace{0.6em}
-
-\caption{The genetic layer is largely saturated: overlap with prior CRC target-discovery studies.}
-\label{fig:competitor}
-\end{figure}
-
-\begin{figure}[tbp]
-\ContinuedFloat
-\centering
-\setcounter{subfigure}{1}
-
-\begin{subfigure}{\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Fig5b_gene_overlap_venn.pdf}
-\caption{Venn diagram of shared and unique gene symbols between this study (69 gene symbols),
-Chen 2024 (289 resolvable gene symbols) and Hazelwood 2025 (41 genes). Circle areas are not
-drawn to scale; every region is labelled with its exact symbol count and set sizes are given on
-the right. Of this study's 69 genes, 34 (49\%) are not present in either prior gene list.}
-\label{fig:competitor_upset}
-\end{subfigure}
-\end{figure}
 
 Even among the overlapping genes, the analytical depth differs
 substantially. The chr2:219Mb locus illustrates this distinction: both
@@ -1058,9 +1076,7 @@ BMC Cancer supplement, is the only gene across all studies to date to achieve
 triple-convergent evidence (eQTL fine-mapping + pQTL MR + pQTL coloc), a level
 of protein-level validation uniquely provided by our pipeline.
 
-At the locus level, 23 of our 37 independent loci (62.2\%) contained genes
-also reported by Chen 2024, while 14 loci (37.8\%) were fully independent in
-our analysis. We interpret these data as indicating that the CRC susceptibility
+We interpret these data as indicating that the CRC susceptibility
 transcriptome accessible through blood eQTL-based SMR has been substantially
 mapped, and that the incremental contribution of future studies will come not
 from discovering entirely new loci but from higher-resolution causal inference,
