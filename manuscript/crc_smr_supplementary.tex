@@ -16,7 +16,7 @@
 \graphicspath{{results/figures_rev3/}{results/figures/}{results/phase6_scrna/}}
 
 \title{Supplementary Material\\[0.4em]
-\large Limited plasma proteomic coverage constrains genetic drug-target prioritization in colorectal cancer}
+\large Limited plasma proteomic coverage constrains genetic drug-target prioritization in colorectal cancer: CCM2 and BMP2 as the defensible candidates}
 \author{Jiajie Zhou}
 \date{}
 
@@ -310,6 +310,15 @@ main text uses those.}
 \renewcommand{\tablename}{Supplementary Table}
 \subsection*{Supplementary Tables}
 
+%% Display order = order of first citation in the main text (JTM rule).
+%% NOTE: the file-name number is NOT the displayed number for S6-S10; the mapping is
+%%   TableS10_steiger.tex            -> Supplementary Table S6
+%%   TableS6_me_zone_characterization-> Table S7
+%%   TableS7_spatial_crosscorrelation-> Table S8
+%%   TableS8_phewas_safety.tex       -> Table S9
+%%   TableS9_chen2024_gene_list.tex  -> Table S10
+%% File names were left unchanged on purpose: they are read by scripts/rev*.R, which
+%% reference them by name.
 \input{manuscript/tables/TableS1_smr_top10.tex}
 %% Table S2 is a full gene list (62 entries) typeset as a longtable that flows
 %% across pages at 10 pt; give it a clean page start and keep the preceding float clear.
@@ -318,12 +327,12 @@ main text uses those.}
 \input{manuscript/tables/TableS3_susie_sensitivity.tex}
 \input{manuscript/tables/TableS4_ukbppp_pqtl_coloc.tex}
 \input{manuscript/tables/TableS5_decode_pqtl_coloc.tex}
+\input{manuscript/tables/TableS10_steiger.tex}
 \input{manuscript/tables/TableS6_me_zone_characterization.tex}
 \clearpage
 \input{manuscript/tables/TableS7_spatial_crosscorrelation.tex}
 \input{manuscript/tables/TableS8_phewas_safety.tex}
 \clearpage
 \input{manuscript/tables/TableS9_chen2024_gene_list.tex}
-\input{manuscript/tables/TableS10_steiger.tex}
 
 \end{document}

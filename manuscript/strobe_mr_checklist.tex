@@ -59,7 +59,7 @@ This checklist follows the STROBE-MR statement (Skrivankova VW, et al. JAMA 2021
 \midrule
 \textbf{7} & \textbf{Assessment of assumptions} & Describe any methods or previous knowledge used to assess the assumptions or justify their validity. & Methods, ``eQTL data and SMR analysis'' (HEIDI test) and ``pQTL data and Mendelian randomization'' (MR-Egger intercept, MR-PRESSO, weighted median and mode); Results, ``The protein layer does not corroborate the genetic layer'' (instrument strength; all F $>$ 10). \\
 \midrule
-\textbf{8} & \textbf{Sensitivity analyses and additional analyses} & Describe any sensitivity analyses or additional analyses performed (e.g. comparison of effect estimates from different approaches, independent replication, bias analytical techniques, validation of instruments, and simulations). & Methods, ``pQTL data and Mendelian randomization'' (alternative estimators), ``Independent locus definition'', ``FinnGen directional consistency assessment'', ``Competitor comparison''; Results; Table 3; Supplementary Tables S3 and S10. \\
+\textbf{8} & \textbf{Sensitivity analyses and additional analyses} & Describe any sensitivity analyses or additional analyses performed (e.g. comparison of effect estimates from different approaches, independent replication, bias analytical techniques, validation of instruments, and simulations). & Methods, ``pQTL data and Mendelian randomization'' (alternative estimators), ``Independent locus definition'', ``FinnGen directional consistency assessment'', ``Competitor comparison''; Results; Table 3; Supplementary Tables S3 and S6. \\
 \midrule
 \textbf{9} & \textbf{Software and pre-registration} & Name statistical software and package(s), including version and setting used. & Methods, ``eQTL data and SMR analysis'' (SMR v1.4.2), ``Bayesian colocalization and SuSiE fine-mapping'' (coloc v5.2.3), ``pQTL data and Mendelian randomization'' (TwoSampleMR, MR-PRESSO). The complete software list with versions is distributed with the analysis code (``Code Availability''). \\
 \midrule
@@ -87,7 +87,7 @@ This checklist follows the STROBE-MR statement (Skrivankova VW, et al. JAMA 2021
 \midrule
 \textbf{12} & \textbf{Assessment of assumptions (results)} & Report the assessment of the validity of the assumptions (12a) and any additional statistics (12b). & See items 12a--12b below. \\
 \midrule
-\textbf{12a} & \textbf{Validity of the assumptions} & Report the assessment of the validity of the assumptions. & Results: instrument strength (all F $>$ 10); HEIDI p-values (Supplementary Table S2, Fig. S5); MR-Egger intercepts and MR-PRESSO outlier tests (Table 3); Steiger directionality testing (Supplementary Table S10). \\
+\textbf{12a} & \textbf{Validity of the assumptions} & Report the assessment of the validity of the assumptions. & Results: instrument strength (all F $>$ 10); HEIDI p-values (Supplementary Table S2, Fig. S5); MR-Egger intercepts and MR-PRESSO outlier tests (Table 3); Steiger directionality testing (Supplementary Table S6). \\
 \midrule
 \textbf{12b} & \textbf{Additional statistics} & Report any additional statistics (e.g. assessments of heterogeneity across genetic variants, such as I$^{2}$, Q statistic, or E value). & Results; Table 3 (heterogeneity statistics); Supplementary Table S5. \\
 \midrule
@@ -95,11 +95,11 @@ This checklist follows the STROBE-MR statement (Skrivankova VW, et al. JAMA 2021
 \midrule
 \textbf{13a} & \textbf{Sensitivity analyses} & Report any sensitivity analyses to assess the robustness of the main results to violations of the assumptions. & Results; Table 3 (weighted median, weighted mode, MR-Egger and MR-PRESSO); Supplementary Fig. S6. \\
 \midrule
-\textbf{13b} & \textbf{Other additional analyses} & Report results from other sensitivity analyses or additional analyses. & Results: FinnGen directional consistency assessment; GTEx Colon Transverse sensitivity analysis; comparison with six prior CRC target-discovery studies; Supplementary Tables S3 and S9. \\
+\textbf{13b} & \textbf{Other additional analyses} & Report results from other sensitivity analyses or additional analyses. & Results: FinnGen directional consistency assessment; GTEx Colon Transverse sensitivity analysis; comparison with six prior CRC target-discovery studies; Supplementary Tables S3 and S10. \\
 \midrule
-\textbf{13c} & \textbf{Direction of causality} & Report any assessment of direction of causality (e.g. bidirectional MR). & Methods and Results: the Steiger test was applied to every cis-pQTL instrument and to the lead cis-pQTL variant of each gene; all 13,080 instrument-level comparisons and all nine per-gene tests were correctly oriented (Supplementary Table S10). \\
+\textbf{13c} & \textbf{Direction of causality} & Report any assessment of direction of causality (e.g. bidirectional MR). & Methods and Results: the Steiger test was applied to every cis-pQTL instrument and to the lead cis-pQTL variant of each gene; all 13,080 instrument-level comparisons and all nine per-gene tests were correctly oriented (Supplementary Table S6). \\
 \midrule
-\textbf{13d} & \textbf{Comparison with non-MR estimates} & When relevant, report and compare with estimates from non-MR analyses. & Results, ``Competitor comparison'' and Fig. 5: overlap of the prioritised gene set with six prior CRC target-discovery studies that used colocalization-only or non-MR designs; Supplementary Table S9. \\
+\textbf{13d} & \textbf{Comparison with non-MR estimates} & When relevant, report and compare with estimates from non-MR analyses. & Results, ``Competitor comparison'' and Fig. 5: overlap of the prioritised gene set with six prior CRC target-discovery studies that used colocalization-only or non-MR designs; Supplementary Table S10. \\
 \midrule
 \textbf{13e} & \textbf{Additional plots} & Consider additional plots to visualise results (e.g. leave-one-out analyses). & Fig. 2C; Fig. 3A--3C; Supplementary Figs. S3--S5 and S17. \\
 \midrule
@@ -119,7 +119,7 @@ This checklist follows the STROBE-MR statement (Skrivankova VW, et al. JAMA 2021
 \midrule
 \textbf{18} & \textbf{Funding} & Describe sources of funding and the role of funders in the present study and, if applicable, sources of funding for the databases and original study or studies on which the present study is based. & ``Funding'': Jiangsu Provincial Health Commission Project (Z2024049) and the Nanjing Medical University Science and Technology Development Fund (NMUB20240108); the funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript. Funding and governance of the source datasets (eQTLGen, UKB-PPP, deCODE, GTEx, FinnGen) are described in the corresponding publications. \\
 \midrule
-\textbf{19} & \textbf{Data and data sharing} & Provide the data used to perform all analyses or report where and how the data can be accessed, and reference these sources in the article. Provide the statistical code needed to reproduce the results in the article, or report whether the code is publicly accessible and if so, where. & ``Data Availability'' (accession numbers and URLs for every dataset, including the new Steiger analysis in Supplementary Table S10) and ``Code Availability'' (complete analysis pipeline under an MIT licence at https://github.com/zjjwcwk2025/crc-smr-pqtl-atlas). \\
+\textbf{19} & \textbf{Data and data sharing} & Provide the data used to perform all analyses or report where and how the data can be accessed, and reference these sources in the article. Provide the statistical code needed to reproduce the results in the article, or report whether the code is publicly accessible and if so, where. & ``Data Availability'' (accession numbers and URLs for every dataset, including the new Steiger analysis in Supplementary Table S6) and ``Code Availability'' (complete analysis pipeline under an MIT licence at https://github.com/zjjwcwk2025/crc-smr-pqtl-atlas). \\
 \midrule
 \textbf{20} & \textbf{Conflicts of interest} & All authors should declare all potential conflicts of interest. & ``Competing Interests'': the author declares that he has no competing interests. \\
 \midrule

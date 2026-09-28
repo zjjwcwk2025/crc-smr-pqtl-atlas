@@ -22,7 +22,7 @@
 
 \graphicspath{{results/figures_rev3/}{results/figures/}{results/phase6_scrna/}}
 
-\title{Limited plasma proteomic coverage constrains genetic\\drug-target prioritization in colorectal cancer}
+\title{Limited plasma proteomic coverage constrains genetic\\drug-target prioritization in colorectal cancer: CCM2 and BMP2 as the defensible candidates}
 
 \author{Jiajie Zhou\textsuperscript{1,*}\\[0.4em]
 \normalsize\textsuperscript{1}The Affiliated Huaian No.1 People's Hospital of\\ Nanjing Medical University,\\ Huaian, Jiangsu, China\\[0.3em]
@@ -188,7 +188,7 @@ but passed coloc and SuSiE were retained in Tier 1, as colocalization evidence
 under a single-causal-variant model provides independent support against
 pleiotropy at the tested locus. HEIDI failure in the presence of coloc is
 interpreted as evidence of heterogeneity not attributable to shared causal
-variants, and such genes are flagged in Supplementary Table~S2 and Supplementary Fig.~S5. Accordingly,
+variants, and such genes are flagged in the Supplementary Information. Accordingly,
 HEIDI was treated as a pleiotropy flag, not a formal exclusion criterion
 when coloc and SuSiE converged on a shared causal variant.
 
@@ -236,7 +236,7 @@ UKB-PPP) with the variance in CRC risk explained by the same variant
 implemented in \texttt{TwoSampleMR::directionality\_test}. Because the aggregate
 statistic sums $r^2$ across correlated variants and can exceed unity, a second
 per-gene test restricted to the lead cis-pQTL variant was also performed
-(Supplementary Table~S10).
+ (results in the Supplementary Information).
 
 
 \subsection{FinnGen directional consistency assessment}
@@ -316,7 +316,7 @@ statistics.
 
 The overall study design and the two evidence layers are summarized in
 Fig.~\ref{fig:design}, encompassing eight analytical phases from SMR discovery
-through drug target prioritization.
+through drug target prioritization. Two features of this layer shape everything that follows. It is dense: 15,582 gene-level SMR tests return 75 significant genes. And it is saturated in the specific sense used throughout this paper—not that every causal gene has been found, but that further screens of the same design return largely the same loci rather than new ones. We test that second claim directly against six prior CRC target-discovery studies in the final Results subsection; if it holds, the genetic layer has stopped being the rate-limiting step.
 
 \begin{figure}[htbp]
 \centering
@@ -359,8 +359,7 @@ through drug target prioritization.
 %    eQTL $\neq$ pQTL\\[3pt] 5 of 6 core candidates\\not measured in either panel};
 % \draw[arw] (b3.east) -- (c1.west);
 % \end{tikzpicture}
-\caption{Conceptual overview of the two evidence layers. The genetic layer (left) is
-saturated: 15{,}582 gene-level SMR tests yield 43 colocalizing probe--gene pairs out of 76.
+\caption{Conceptual overview of the two evidence layers. The genetic layer (left) is saturated—further screens of the same design return largely the same loci rather than new ones: 15{,}582 gene-level SMR tests yield 43 colocalizing probe--gene pairs out of 76.
 The protein layer (center) collapses: only 15 of the 62 protein-coding candidates have plasma
 measurements, nine have cis-pQTL instruments, and one colocalizes with CRC risk. The limiting
 step is therefore protein-layer coverage, not genetic significance, and blood eQTL and plasma
@@ -673,7 +672,7 @@ supported the instrument-to-protein direction. All 13,080 instrument-level
 comparisons showed greater variance explained in plasma protein level than in
 CRC risk, and the lead cis-pQTL variant was correctly oriented for every gene
 (Steiger $P$ from $1.3\times10^{-4}$ for CCM2 to $P < 1\times10^{-300}$ for LTA;
-Supplementary Table~S10). Directionality was therefore equally supported for the
+Supplementary Table~S6). Directionality was therefore equally supported for the
 single colocalizing gene and for the genes that did not colocalize, indicating
 that the eQTL--pQTL discordance is not explained by reversed instrument
 orientation.
@@ -734,10 +733,9 @@ Only CCM2 showed convergent evidence across both layers with coloc support.}
 
 \subsection{Convergent evidence at CCM2 and a concordant tissue layer}
 
-The one candidate that survives this coverage constraint is CCM2, which carries
-convergent evidence across all three layers available in this study (Fig.~\ref{fig:ccm2_convergence}): eQTL
+The one candidate that survives this coverage constraint is CCM2, which carries three mutually reinforcing lines of evidence at a single locus (Fig.~\ref{fig:ccm2_convergence}): eQTL
 colocalization with a converged SuSiE credible set, a significant pQTL MR
-association, and pQTL--GWAS colocalization. It is worth stating plainly that CCM2
+association, and pQTL--GWAS colocalization. These three are not independent layers—they draw on the same cis region and, for the two protein-level tests, the same pQTL data—so we read them as one well-supported locus rather than as three separate confirmations. It is worth stating plainly that CCM2
 belongs to the 13-gene non-MHC Tier 1 set but is not one of the six core Tier 1
 genes selected for in-depth characterization: the gene with the strongest
 cross-layer support is not the gene with the strongest genetic prioritization,
@@ -759,8 +757,8 @@ detectable tissue expression (all but GPBAR1, which was detected in a single spo
 mean expression varied only 1.25--1.59-fold across the six zones, and UTP11, BMP2,
 LAMC1 and TMBIM1 each reached their lowest mean expression in the stromal ME6
 zone (PNKD: ME6 second lowest; Supplementary Fig.~S16;
-Supplementary Table~S6). Pairwise spatial cross-correlation statistics for the
-chr2:219Mb locus are provided in Supplementary Table~S7.
+Supplementary Table~S7). Pairwise spatial cross-correlation statistics for the
+chr2:219Mb locus are provided in Supplementary Table~S8.
 
 The tissue layer can localize a candidate gene within the tumor but cannot
 validate causality. TCGA COAD+READ survival analysis~\cite{weinstein2013tcga} of the six non-MHC Tier 1 genes found no
@@ -783,7 +781,7 @@ To assess whether blood-based eQTL findings generalize to colon tissue, we
 performed SMR using GTEx Colon Transverse cis-eQTL data. Of 25 tested genes
 with colon cis-eQTLs at the standard threshold, 84\% showed concordant effect
 direction with eQTLGen blood-based estimates (Spearman $\rho = 0.58$, $p = 0.0030$). All 10 genes
-significant in both tissues showed identical direction. However, 5 of the 6 prioritized non-MHC Tier 1 genes lacked detectable colon cis-eQTLs, reflecting the power limitation of tissue-specific eQTL datasets (Fig.~\ref{fig:tissue_layer}). Forest plots for the FinnGen directional-consistency analysis are provided in Supplementary Fig.~S17.
+significant in both tissues showed identical direction. However, 5 of the 6 prioritized non-MHC Tier 1 genes lacked detectable colon cis-eQTLs, reflecting the power limitation of tissue-specific eQTL datasets This tissue-level check describes the genetic layer as a whole rather than any individual candidate: the 25 genes with colon cis-eQTLs include only one of the six core Tier 1 candidates (TMBIM1) and do not include CCM2, so panels B and C of this figure should not be read as support for CCM2. (Fig.~\ref{fig:tissue_layer}). Forest plots for the FinnGen directional-consistency analysis are provided in Supplementary Fig.~S17.
 
 \begin{figure}[htbp]
 \centering
@@ -806,13 +804,13 @@ SuSiE fine-mapping support at the same locus.}
 \includegraphics[width=\linewidth]{Fig3b_gtex_colon_scatter.pdf}
 \caption{Scatter of eQTLGen (blood) versus GTEx Colon Transverse SMR effect sizes for
 $n = 25$ genes with colon cis-eQTL ($p < 5\times10^{-8}$); Spearman $\rho = 0.58$,
-$p = 0.0030$, with 21 of 25 (84\%) direction-concordant.}
+$p = 0.0030$, with 21 of 25 (84\%) direction-concordant. This panel describes the genetic layer as a whole: the 25 genes include only one of the six core Tier 1 candidates (TMBIM1) and do not include CCM2.}
 \label{fig:gtex_scatter}
 \end{subfigure}
 
 \vspace{0.6em}
 
-\caption{Convergence at CCM2 and GTEx Colon Transverse SMR sensitivity analysis.}
+\caption{Convergence at CCM2, and blood-to-colon concordance of the genetic layer.}
 \label{fig:tissue_layer}
 \end{figure}
 
@@ -848,7 +846,7 @@ PheWAS screening using Open Targets Platform genetic associations and summarized
 each gene on two transparent dimensions rather than on a single composite score:
 the number of distinct organ-system risk categories carrying at least one genetic
 association, and the number of non-CRC high-risk phenotypes with genetic evidence
-(Table~\ref{tab:tier1}; Supplementary Table~S8). BMP2 showed the narrowest risk
+(Table~\ref{tab:tier1}; Supplementary Table~S9). BMP2 showed the narrowest risk
 spectrum among the six non-MHC Tier 1 genes: its genetic associations were
 confined to two categories (cardiovascular and neurological) and to two high-risk
 phenotypes (atrial fibrillation; neurodegenerative disease). GPBAR1, by contrast,
@@ -856,7 +854,7 @@ had the fewest genetic associations of the six (5) but these included hepatic an
 renal phenotypes consistent with its bile-acid physiology (8 high-risk
 phenotypes). The remaining four genes spanned three to four categories each
 (Fig.~\ref{fig:phewas}; Supplementary Fig.~S19). Because the composite
-safety score in Supplementary Table~S8 and Supplementary Fig.~S19 is
+safety score in Supplementary Table~S9 and Supplementary Fig.~S19 is
 dominated by the number of genetic associations, it ranks GPBAR1 numerically below
 BMP2; we therefore report the two components separately in Table~\ref{tab:tier1}
 and use those components, not the composite score, in the interpretation below.
@@ -885,8 +883,7 @@ Heatmap of genetic disease associations across risk categories (Open Targets Pla
 Darker blue = more genetic evidence in that category. Among the six genes, the associations of
 BMP2 are confined to the narrowest set of organ systems (cardiovascular and neurological) and to
 the fewest high-risk phenotypes (2). The composite score $2.0\times$ risk-category diversity $+$
-$1.5\times$ genetic evidence $+$ $0.5\times$ high-risk count is reported in Supplementary
-Table~S8 and Supplementary Fig.~S19; it is dominated by the number of genetic
+$1.5\times$ genetic evidence $+$ $0.5\times$ high-risk count is reported in Supplementary Table~S9 and Supplementary Fig.~S19; it is dominated by the number of genetic
 associations, so Table~\ref{tab:tier1} reports the two components separately and the main text
 uses those.}
 \label{fig:phewas}
@@ -918,7 +915,7 @@ across DrugBank and Open Targets. Tier A: highest repurposing potential (coloc $
 
 We compared our 69 unique gene symbols with six prior CRC genetic studies, to
 place the present gene set in the context of the existing literature
-(Fig.~\ref{fig:competitor}A and Supplementary Table~S9). Overlap was minimal
+(Fig.~\ref{fig:competitor}A and Supplementary Table~S10). Overlap was minimal
 with the four smaller studies: Hong et al.~2025 (9
 genes)~\cite{hong2025integrative}, Wang et al.~2025 (4
 genes)~\cite{wang2025discovoncol}, Xia and Wang
@@ -1052,7 +1049,7 @@ The degree of overlap tracked the analytical approach rather than the
 disease. The higher overlap with Chen 2024 is expected given that both Chen 2024 and the present
 study employ SMR from blood eQTL data, whereas Hazelwood 2025 relies on
 multi-tissue TWAS with splicing QTLs---methodologically distinct approaches
-that test different biological hypotheses and consequently identify partially non-overlapping gene sets~\cite{chen2024integrative, hazelwood2025multi}. The gene-level comparison underlying Fig.~\ref{fig:competitor} is provided in Supplementary Table~S9.
+that test different biological hypotheses and consequently identify partially non-overlapping gene sets~\cite{chen2024integrative, hazelwood2025multi}. The gene-level comparison underlying Fig.~\ref{fig:competitor} is provided in Supplementary Table~S10.
 This is, to our knowledge, the first systematic documentation of
 eQTL/pQTL
 colocalization divergence in CRC susceptibility genetics, and it implies that
