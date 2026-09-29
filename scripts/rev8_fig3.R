@@ -127,7 +127,7 @@ p3b <- ggplot(m) +
   geom_point(aes(x = b_b, y = b_g, colour = conc, shape = conc), size = 2.6, stroke = 0.65) +
   geom_text_repel(aes(x = b_b, y = b_g, label = Gene), size = sz(6.4), colour = COL$ink,
                   max.overlaps = Inf, force = 14, box.padding = 0.5, point.padding = 0.3,
-                  min.segment.length = 0, seed = 11, segment.size = 0.22,
+                  min.segment.length = 0, seed = as.integer(Sys.getenv("FIG3B_SEED", "11")), segment.size = 0.22,
                   segment.colour = COL$ink3) +
   annotate("label", x = XL[1] + 0.025 * diff(XR), y = YL[2] - 0.02 * diff(YR),
            hjust = 0, vjust = 1, label = stat_lab, size = sz(6.4), colour = COL$ink,
