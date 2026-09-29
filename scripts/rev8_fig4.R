@@ -109,10 +109,10 @@ p4b <- ggplot(grid) +
   geom_text(data = tot, aes(x = length(CATS) + 0.62, y = yp, label = total),
             hjust = 0, size = sz(6.8), colour = COL$ink,
             fontface = ifelse(tot$gene == "BMP2", "bold", "plain")) +
-  geom_text(data = tot, aes(x = 0.62, y = yp, label = gene), hjust = 1,
+  geom_text(data = tot, aes(x = 0.46, y = yp, label = gene), hjust = 1,
             size = sz(7.0), colour = COL$ink,
             fontface = ifelse(tot$gene == "BMP2", "bold", "plain")) +
-  annotate("text", x = 0.62, y = max(tot$yp) + 0.82, hjust = 1, label = "Gene",
+  annotate("text", x = 0.46, y = max(tot$yp) + 0.82, hjust = 1, label = "Gene",
            size = sz(6.4), fontface = "bold", colour = COL$ink) +
   annotate("text", x = length(CATS) + 0.62, y = max(tot$yp) + 0.82, hjust = 0,
            label = "High-risk\nphenotypes", size = sz(6.4), fontface = "bold",
