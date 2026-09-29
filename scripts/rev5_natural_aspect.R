@@ -1,14 +1,17 @@
 #!/usr/bin/env Rscript
-# rev3 main figures - regenerated at final print size (6.30 in = textwidth)
+# rev3 main figures, drawn at the final full-page width (6.69 in = 170 mm).
+# HEIGHT = the panel natural proportion at that width. Never shrink the height to
+# fit a page-height budget: that squashes the plot (figure-spec.md section 4.6).
+# rev5 2026-09-27: heights restored to natural aspect (rev3 aspect x 6.69/6.30).
 suppressMessages({
   library(data.table); library(ggplot2); library(dplyr); library(readr)
   library(tidyr); library(tibble); library(forcats); library(stringr)
   library(ggrepel); library(scales); library(cowplot); library(ComplexUpset)
 })
 setwd("/ifs1/User/zhouman/project9-v5-crc-atlas")
-outdir <- "results/figures_rev3"
+outdir <- "results/figures_rev7_natural"
 dir.create(outdir, showWarnings = FALSE, recursive = TRUE)
-TEXTW <- 6.30
+TEXTW <- 6.69
 
 source("scripts/theme_pub.R")
 theme_nc <- theme_pub()
@@ -112,7 +115,7 @@ p2a <- ggplot(coloc_show, aes(x = PPH4_plot, y = gene_label)) +
     plot.caption = element_blank()
   )
 
-ggsave(file.path(outdir, "Fig1c_coloc_pph4.pdf"), p2a, width = 6.30, height = 7.0, device = cairo_pdf)
+ggsave(file.path(outdir, "Fig1c_coloc_pph4.pdf"), p2a, width = 6.69, height = 7.43, device = cairo_pdf)
 cat("  -> Fig1c_coloc_pph4.pdf\n")
 # ==============================================================
 #  Fig 2b — eQTL/pQTL discordance classification bar
@@ -146,7 +149,7 @@ p2b <- ggplot(class_counts, aes(x=reorder(class_label, n), y=n, fill=class_label
   coord_flip() +
   theme_nc
 
-ggsave(file.path(outdir, "Fig2b_eqtl_pqtl_classification.pdf"), p2b, width = 6.30, height = 2.9, device = cairo_pdf)
+ggsave(file.path(outdir, "Fig2b_eqtl_pqtl_classification.pdf"), p2b, width = 6.69, height = 3.08, device = cairo_pdf)
 cat("  -> Fig2b_eqtl_pqtl_classification.pdf\n")
 # ==============================================================
 #  Fig 2c — eQTL/pQTL effect size scatter
@@ -197,7 +200,7 @@ p2c <- ggplot(contrast_both, aes(x=b_SMR, y=pqtl_wald_b)) +
        caption=stats_label) +
   theme_nc
 
-ggsave(file.path(outdir, "Fig2c_eqtl_pqtl_scatter.pdf"), p2c, width = 6.30, height = 5.4, device = cairo_pdf)
+ggsave(file.path(outdir, "Fig2c_eqtl_pqtl_scatter.pdf"), p2c, width = 6.69, height = 5.73, device = cairo_pdf)
 cat("  -> Fig2c_eqtl_pqtl_scatter.pdf\n")
 # ==============================================================
 #  Fig 3 — GTEx Colon vs Blood SMR scatter
@@ -252,7 +255,7 @@ p3 <- ggplot(merged, aes(x=b_SMR_blood, y=b_SMR)) +
        caption=paste0("n = ", nrow(merged), " genes with SMR estimates in both tissues; Spearman correlation, two-sided.")) +
   theme_nc
 
-ggsave(file.path(outdir, "Fig3b_gtex_colon_scatter.pdf"), p3, width = 6.30, height = 5.0, device = cairo_pdf)
+ggsave(file.path(outdir, "Fig3b_gtex_colon_scatter.pdf"), p3, width = 6.69, height = 5.31, device = cairo_pdf)
 cat("  -> Fig3b_gtex_colon_scatter.pdf\n")
 # ==============================================================
 #  Fig 3 — forest plot (companion panel)
@@ -288,7 +291,7 @@ if(nrow(merged_sorted) > 0) {
                      panel.grid.major.x=element_line(color="grey90", linewidth=0.3),
                      panel.grid.major.y=element_line(color="grey90", linewidth=0.3))
 
-  ggsave(file.path(outdir, "Fig3c_gtex_colon_forest.pdf"), p3f, width = 6.30, height = 4.2, device = cairo_pdf)
+  ggsave(file.path(outdir, "Fig3c_gtex_colon_forest.pdf"), p3f, width = 6.69, height = 4.46, device = cairo_pdf)
   cat("  -> Fig3c_gtex_colon_forest.pdf\n")
 }
 # ==============================================================
@@ -316,7 +319,7 @@ drug_top <- drug %>%
 p5a <- ggplot(drug_top, aes(x=gene, y=repurposing_score)) +
   geom_col(aes(fill=tier_label), width=0.7, color="black", linewidth=0.2) +
   geom_text(aes(label=ifelse(n_drugs>0, paste0(n_drugs," drug",ifelse(n_drugs>1,"s","")), ""),
-                y=repurposing_score+0.03), size=2.8, fontface="italic") +
+                y=repurposing_score+0.03), size=2.8, fontface="plain") +
   scale_fill_manual(values=c("Approved drug"="#2166AC", "Investigational"="#F4A582", "No drugs"="grey85"),
                     name="Drug status") +
   scale_y_continuous(limits=c(0, max(drug_top$repurposing_score)*1.15), expand=c(0,0)) +
@@ -327,7 +330,7 @@ p5a <- ggplot(drug_top, aes(x=gene, y=repurposing_score)) +
   coord_flip() +
   theme_nc
 
-ggsave(file.path(outdir, "Fig4b_drug_repurposing.pdf"), p5a, width = 6.30, height = 4.9, device = cairo_pdf)
+ggsave(file.path(outdir, "Fig4b_drug_repurposing.pdf"), p5a, width = 6.69, height = 5.20, device = cairo_pdf)
 cat("  -> Fig4b_drug_repurposing.pdf\n")
 # ==============================================================
 #  Fig 4b — PheWAS safety heatmap  (phase5c_phewas_safety.csv)
@@ -348,8 +351,12 @@ risk_cat_long <- phewas %>%
 
 p5b <- ggplot(risk_cat_long, aes(x=category_name, y=gene, fill=category_count)) +
   geom_tile(color="white", linewidth=0.5) +
-  geom_text(aes(label=category_count), size=3.5, fontface="bold") +
-  scale_fill_gradient(low="#F7FBFF", high="#08306B", name="N diseases") +
+  # Numerals: white on the dark end of the fill ramp, dark grey on the light end.
+  # Black on #08306B is ~1.5:1 contrast and disappears in print.
+  geom_text(aes(label = category_count, colour = category_count >= 9),
+            size = 3.2, fontface = "plain", show.legend = FALSE) +
+  scale_colour_manual(values = c("FALSE" = "grey15", "TRUE" = "white")) +
+  scale_fill_gradient(low="#F7FBFF", high="#08306B", name="N diseases", guide = guide_colourbar(raster = FALSE)) +
   labs(x="Disease Category", y="",
        title="PheWAS Disease Association Profile",
        subtitle="Tier 1 genes: Open Targets Platform disease associations by category",
@@ -361,7 +368,7 @@ p5b <- ggplot(risk_cat_long, aes(x=category_name, y=gene, fill=category_count)) 
     legend.position = "right"
   )
 
-ggsave(file.path(outdir, "Fig4a_phewas_safety.pdf"), p5b, width = 6.30, height = 3.2, device = cairo_pdf)
+ggsave(file.path(outdir, "Fig4a_phewas_safety.pdf"), p5b, width = 6.69, height = 3.40, device = cairo_pdf)
 cat("  -> Fig4a_phewas_safety.pdf\n")
 # ==============================================================
 #  Fig 4c — Competitor overlap  (competitor_overlap.tsv + UpSet)
@@ -404,7 +411,7 @@ p5c_bar <- ggplot(comp_plot, aes(y=study_short, x=overlap_n)) +
   geom_col(aes(fill=journal_if_num), width=0.6, color="black", linewidth=0.3) +
   geom_text(aes(label=paste0(overlap_n, " (", overlap_rate, ")")),
             hjust=-0.12, size=3.5, fontface="bold") +
-  scale_fill_gradient(low="#FDDBC7", high="#2166AC", name="Journal IF") +
+  scale_fill_gradient(low="#FDDBC7", high="#2166AC", name="Journal IF", guide = guide_colourbar(raster = FALSE)) +
   scale_x_continuous(limits=c(0, max(comp_plot$overlap_n)*1.35), expand=c(0,0)) +
   labs(x="Overlapping genes with this study", y="",
        title="Overlap with prior CRC target-discovery studies",
@@ -415,7 +422,7 @@ p5c_bar <- ggplot(comp_plot, aes(y=study_short, x=overlap_n)) +
   theme(panel.grid.major.y = element_blank(),
         panel.grid.major.x = element_line(color = "grey90", linewidth = 0.3))
 
-ggsave(file.path(outdir, "Fig5a_competitor_overlap.pdf"), p5c_bar, width = 6.30, height = 3.5, device = cairo_pdf)
+ggsave(file.path(outdir, "Fig5a_competitor_overlap.pdf"), p5c_bar, width = 6.69, height = 3.72, device = cairo_pdf)
 cat("  -> Fig5a_competitor_overlap.pdf\n")
 
 # Fig 5b (UpSet) is generated by scripts/63_fig5b_upset.R, which reads Table S8
@@ -473,7 +480,7 @@ p1 <- ggplot() +
            label = "Data: 78,473-case CRC GWAS (GCST90255675); eQTLGen (n = 31,684); deCODE and UKB-PPP plasma proteomes;\nFinnGen R13; TCGA-COAD and READ; Visium spatial transcriptomics.") +
   coord_cartesian(xlim = c(0, 13.8), ylim = c(-0.78, 5.7), expand = FALSE) +
   theme_void() + theme(plot.margin = margin(4, 4, 4, 4))
-ggsave(file.path(outdir, "Fig1b_study_design.pdf"), p1, width = TEXTW, height = 3.56, device = cairo_pdf)
+ggsave(file.path(outdir, "Fig1b_study_design.pdf"), p1, width = TEXTW, height = 3.78, device = cairo_pdf)
 
 # ==============================================================
 #  Fig 2a - evidence funnel: 62 -> 15 (measured) -> 7 of 15 / 9 of 17 (cis-pQTL instruments) -> 1
@@ -521,7 +528,7 @@ p2a <- ggplot(funnel) +
            label = note_2a) +
   coord_cartesian(xlim = c(0, 1.0), ylim = c(0, 4.75), expand = FALSE) +
   theme_void() + theme(plot.margin = margin(4, 4, 4, 4))
-ggsave(file.path(outdir, "Fig2a_coverage_funnel.pdf"), p2a, width = TEXTW, height = 2.5, device = cairo_pdf)
+ggsave(file.path(outdir, "Fig2a_coverage_funnel.pdf"), p2a, width = TEXTW, height = 2.65, device = cairo_pdf)
 
 # ==============================================================
 #  Fig 3a - pQTL convergence: MR effect and colocalization, aligned
@@ -552,7 +559,7 @@ pR <- ggplot(dd, aes(x = PPH4, y = gene)) +
   theme_nc + theme(legend.position = "none", axis.text.y = element_blank(),
                    axis.ticks.y = element_blank(), axis.line.y = element_blank())
 p3a <- plot_grid(pL, pR, nrow = 1, rel_widths = c(1.25, 1))
-ggsave(file.path(outdir, "Fig3a_ccm2_convergence.pdf"), p3a, width = TEXTW, height = 2.4, device = cairo_pdf)
+ggsave(file.path(outdir, "Fig3a_ccm2_convergence.pdf"), p3a, width = 6.69, height = 2.55, device = cairo_pdf)
 
 
 # ==============================================================

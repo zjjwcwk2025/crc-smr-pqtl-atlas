@@ -12,7 +12,7 @@ v5 <- unique(read_tsv("results/phase1_bonferroni_significant_annotated.tsv",
                       show_col_types = FALSE)$SYMBOL)
 v5 <- sort(unique(v5[!is.na(v5) & v5 != ""]))
 
-t8 <- readLines("manuscript/tables/TableS8_chen2024_gene_list.tex")
+t8 <- readLines("manuscript/tables/TableS9_chen2024_gene_list.tex")
 keep <- grepl("^\\s*[A-Za-z0-9][A-Za-z0-9._-]*\\s*&", t8)
 chen <- sub("^\\s*([A-Za-z0-9._-]+)\\s*&.*$", "\\1", t8[keep])
 chen <- sort(unique(chen[chen != "Gene"]))

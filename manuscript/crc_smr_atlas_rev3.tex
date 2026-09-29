@@ -700,7 +700,8 @@ either panel.}
 \includegraphics[width=\linewidth]{Fig2b_eqtl_pqtl_classification.pdf}
 \caption{Classification of the $n = 17$ genes with matched pQTL data by eQTL SMR and pQTL
 Wald-ratio significance (two-sided $p < 0.05$): 4 concordant and significant (A), 1 discordant and
-significant (B), and 12 without significant pQTL signal (C). Both axes use the single-variant
+significant (B), 4 with a cis-pQTL instrument that was tested and null (C), and 8 for which no
+cis-pQTL instrument was available at all (D). Both axes use the single-variant
 lead estimate. The one discordant gene is CDKN1A, and it is discordant by the Wald ratio only:
 its multi-instrument IVW estimate is negative and therefore concordant with the eQTL layer
 (Table~3). Two genes change category when the multi-instrument estimate is used instead---STAT6
@@ -839,7 +840,7 @@ infrastructure), BMP2 (Tchem, TGF-$\beta$ family with known receptor
 inhibitors), UTP11 (Tchem, structure with ligand but zero antibody
 tractability as a nucleolar protein), TMBIM1 (Tbio, no chemical probes or
 known ligands---de novo discovery required despite highest genetic evidence),
-and PNKD (Tbio, limited functional annotation with no drug discovery infrastructure; Supplementary Fig.~S18).
+and PNKD (Tbio, limited functional annotation with no drug discovery infrastructure; Fig.~\ref{fig:idg} and Supplementary Fig.~S18).
 
 To assess potential safety risks of modulating these targets, we performed
 PheWAS screening using Open Targets Platform genetic associations and summarized
@@ -877,7 +878,23 @@ repositioning of an existing agent.
 \centering
 \begin{subfigure}{\textwidth}
 \centering
-\includegraphics[width=\linewidth]{Fig4a_phewas_safety.pdf}
+\includegraphics[width=\linewidth]{Fig4a_idg_druggability.pdf}
+\caption{IDG tractability gradient of the six core non-MHC Tier 1 genes. Bars show an ordinal
+IDG target development level score combining the Pharos/DrugCentral target development level with
+antibody accessibility (Tclin $=$ 4, Tchem $=$ 3, Tchem without antibody tractability $=$ 2.5,
+Tbio $=$ 2 and 1); the adjacent columns give the IDG class, the number of antibody entries and the
+available structure/ligand evidence. BMP2 (bold) is Tchem with a ligand-bound structure in a
+family that already has approved receptor inhibitors, whereas TMBIM1 and PNKD are Tbio, with no
+chemical probes or known ligands, so de novo discovery would be required despite their genetic
+support.}
+\label{fig:idg}
+\end{subfigure}
+
+\vspace{0.8em}
+
+\begin{subfigure}{\textwidth}
+\centering
+\includegraphics[width=\linewidth]{Fig4b_phewas_safety.pdf}
 \caption{PheWAS screening of the six core non-MHC Tier 1 genes.
 Heatmap of genetic disease associations across risk categories (Open Targets Platform).
 Darker blue = more genetic evidence in that category. Among the six genes, the associations of
@@ -898,14 +915,16 @@ uses those.}
 \begin{figure}[tbp]
 \ContinuedFloat
 \centering
-\setcounter{subfigure}{1}
+\setcounter{subfigure}{2}
 
 \begin{subfigure}{\textwidth}
 \centering
-\includegraphics[width=\linewidth]{Fig4b_drug_repurposing.pdf}
+\includegraphics[width=\linewidth]{Fig4c_drug_repurposing.pdf}
 \caption{Drug repurposing tier distribution.
 Of $n = 62$ protein-coding SMR-significant genes, 8 (13\%) have known pharmacological agents
-across DrugBank and Open Targets. Tier A: highest repurposing potential (coloc $+$ approved drug).}
+across DrugBank and Open Targets, and 4 of those have an approved drug. Tiers: A, highest
+repurposing potential (coloc $+$ approved drug), 1 gene; B, strong, 1 gene; C, moderate,
+9 genes; D, exploratory, 51 genes.}
 \label{fig:drug}
 \end{subfigure}
 \end{figure}
@@ -937,7 +956,8 @@ reported by any prior study.
 \begin{subfigure}{\textwidth}
 \centering
 \includegraphics[width=\linewidth]{Fig5a_competitor_overlap.pdf}
-\caption{Gene overlap counts with six prior CRC genetic studies. Low-tier
+\caption{Gene overlap counts with six prior CRC genetic studies. Bars are coloured by study
+tier (light blue, low-tier; dark blue, high-tier). Low-tier
 studies (Hong, Wang, Xia \& Wang, Tian) showed $\leq$3 gene overlap;
 high-tier studies (Chen 2024, Hazelwood 2025) showed 44.9\% and 17.4\% overlap,
 respectively.}
