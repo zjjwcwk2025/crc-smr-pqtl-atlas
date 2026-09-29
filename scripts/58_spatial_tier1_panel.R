@@ -22,7 +22,7 @@ print(round(pct, 2))
 
 plots <- lapply(genes, function(g) {
   lab <- if (pct[[g]] < 1) sprintf("%.2f%% of spots", pct[[g]]) else sprintf("%.1f%% of spots", pct[[g]])
-  SpatialFeaturePlot(vis, features = g, pt.size.factor = 1.6, alpha = c(0.3, 1), stroke = 0,
+  SpatialFeaturePlot(vis, features = g, pt.size.factor = 1.6, alpha = c(0.3, 1), stroke = NA,   # 0 still emits an 0.008 pt hairline per spot (21k of them); NA emits none
                      image.scale = "hires") +
     labs(title = g, subtitle = lab) +
     theme(plot.title    = element_text(size = 8, face = "bold", hjust = 0.5, margin = margin(b = 0)),

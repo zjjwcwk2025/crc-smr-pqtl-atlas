@@ -258,7 +258,9 @@ p1c <- ggplot(cs, aes(y = lab)) +
     legend.direction = "horizontal",
     legend.key = element_blank(),
     panel.grid.major.y = element_blank(),
-    plot.caption = element_text(size = sz(6.1), colour = COL$ink3, hjust = 0,
+    # theme elements take POINTS, not the geom_text size unit: sz() here
+    # rendered the caption at 2.14 pt (measured), i.e. unreadable in print.
+    plot.caption = element_text(size = 6.1, colour = COL$ink3, hjust = 0,
                                 margin = margin(t = 3)),
     plot.margin = margin(6, 8, 4, 4)) +
   guides(fill = guide_legend(override.aes = list(size = 2.6)))

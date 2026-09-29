@@ -114,6 +114,25 @@ XL <- c(XR[1] - xp, XR[2] + xp); YL <- c(YR[1] - yp, YR[2] + yp)
 stat_lab <- sprintf("Spearman rho = %.2f, p = %.3f\n%d of %d direction-concordant",
                     ct$estimate, ct$p.value, n_conc, nrow(m))
 
+# ------------------------------------------------------------
+#  Label seeding (2026-09-29).  In the approved layout five gene names
+#  sat underneath the regression line: measured on the rendered PDF, up
+#  to 18.7 % of a label's glyph ink overlapped the trend line.  ggrepel
+#  cannot see a smooth as an obstacle, so those five are seeded away
+#  from it.  force / box.padding / point.padding / max.overlaps / seed
+#  are untouched, so the other twenty labels keep the approved layout.
+#  After the change no label is cut by the trend line except B3GNTL1,
+#  whose box still grazes it (4 % of its ink).
+# ------------------------------------------------------------
+NUDGE_X <- c("HLA-K" = -0.0289, "B3GNTL1" = -0.0340, "RP11-378A13.1" = -0.0554,
+             "ZFP57" = 0.0339, "ARPC2" = -0.0161)
+NUDGE_Y <- c("HLA-K" = 0.0931, "B3GNTL1" = -0.0127, "RP11-378A13.1" = 0.0284,
+             "ZFP57" = 0.0172, "ARPC2" = 0.0281)
+m[, `:=`(nx = 0, ny = 0)]
+m[Gene %in% names(NUDGE_X), nx := NUDGE_X[Gene]]
+m[Gene %in% names(NUDGE_Y), ny := NUDGE_Y[Gene]]
+stopifnot(nrow(m) == 25, all(c("nx", "ny") %in% names(m)))
+
 p3b <- ggplot(m) +
   annotate("rect", xmin = 0, xmax = XL[2], ymin = 0, ymax = YL[2],
            fill = COL$tint_blue, colour = NA) +
@@ -128,6 +147,7 @@ p3b <- ggplot(m) +
   geom_text_repel(aes(x = b_b, y = b_g, label = Gene), size = sz(6.4), colour = COL$ink,
                   max.overlaps = Inf, force = 14, box.padding = 0.5, point.padding = 0.3,
                   min.segment.length = 0, seed = as.integer(Sys.getenv("FIG3B_SEED", "11")), segment.size = 0.22,
+                  nudge_x = m$nx, nudge_y = m$ny,
                   segment.colour = COL$ink3) +
   annotate("label", x = XL[1] + 0.025 * diff(XR), y = YL[2] - 0.02 * diff(YR),
            hjust = 0, vjust = 1, label = stat_lab, size = sz(6.4), colour = COL$ink,
