@@ -20,6 +20,7 @@ source("scripts/theme_pub2.R")
 outdir <- "results/figures_rev8_cns"
 dir.create(outdir, showWarnings = FALSE, recursive = TRUE)
 th <- theme_pub2()
+LE <- "\u2264"
 
 TIER_COL <- c(A = "#084594", B = "#2171B5", C = "#6BAED6", D = "#C6DBEF")
 
@@ -34,12 +35,17 @@ idg[, base := sub("\\*$", "", tdl)]
 idg[, colr := c(Tclin = "#084594", Tchem = "#2171B5", Tbio = "#A6A6A6")[base]]
 stopifnot(!any(is.na(idg$colr)))
 idg[, yp := match(gene, idg[order(tdl_score, gene)]$gene)]     # 1 = bottom
-idg[, lab := sprintf("%s   |   antibody entries: %d   |   %s", tdl, antibody, sm)]
-XL4A <- c(0, 4.35)
-YL4A <- c(0.45, max(idg$yp) + 1.20)
+idg[, lab_ab := sprintf("%d", antibody)]
+idg[, lab_sm := gsub("Structure( with |\\+)Ligand", "Structure + ligand", sm)]
+stopifnot(!any(grepl("Structure with Ligand|Structure\\+Ligand", idg$lab_sm)))
+idg[, lab_sm := gsub(":\\s*", ":\n", lab_sm)]
+XL4A <- c(0, 9.90)
+YL4A <- c(-0.15, max(idg$yp) + 1.45)
+CX1 <- 4.72; CX2 <- 6.05; CX3 <- 7.05; XEND <- 9.80
+HY  <- max(idg$yp) + 0.62
 
 p4a <- ggplot(idg) +
-  annotate("rect", xmin = XL4A[1], xmax = XL4A[2],
+  annotate("rect", xmin = -1.20, xmax = XEND,
            ymin = idg[gene == "BMP2", yp] - 0.45, ymax = idg[gene == "BMP2", yp] + 0.45,
            fill = COL$tint_blue, colour = NA) +
   geom_rect(aes(xmin = 0, xmax = tdl_score, ymin = yp - 0.26, ymax = yp + 0.26,
@@ -47,23 +53,43 @@ p4a <- ggplot(idg) +
   scale_fill_identity() +
   geom_text(aes(x = tdl_score + 0.09, y = yp, label = sprintf("%.1f", tdl_score)),
             hjust = 0, size = sz(6.6), fontface = "bold", colour = COL$ink) +
-  geom_text(aes(x = XL4A[2] + 0.30, y = yp, label = lab), hjust = 0,
-            size = sz(6.2), colour = COL$ink2) +
   geom_text(aes(x = -0.12, y = yp, label = gene,
                 fontface = ifelse(gene == "BMP2", "bold", "plain")),
             hjust = 1, size = sz(7.2), colour = COL$ink) +
-  annotate("text", x = XL4A[2] + 0.30, y = max(idg$yp) + 0.80, hjust = 0,
-           label = "IDG class   |   antibody tractability   |   structure / ligand evidence",
-           size = sz(6.2), fontface = "bold", colour = COL$ink) +
-  scale_x_continuous(expand = c(0, 0), breaks = 0:4) +
+  # three aligned attribute columns (replaces the former "a | b | c" run-on text)
+  geom_text(aes(x = CX1, y = yp, label = tdl), hjust = 0,
+            size = sz(6.4), colour = COL$ink) +
+  geom_text(aes(x = CX2, y = yp, label = lab_ab), hjust = 0.5,
+            size = sz(6.4), colour = COL$ink) +
+  geom_text(aes(x = CX3, y = yp, label = lab_sm), hjust = 0,
+            size = sz(6.4), colour = COL$ink2, lineheight = 0.92) +
+  annotate("text", x = CX1, y = max(idg$yp) + 1.02, hjust = 0, label = "IDG class",
+           size = sz(6.4), fontface = "bold", colour = COL$ink) +
+  annotate("text", x = CX2, y = max(idg$yp) + 1.02, hjust = 0.5, label = "Antibody\nentries",
+           size = sz(6.4), fontface = "bold", colour = COL$ink, lineheight = 0.92) +
+  annotate("text", x = CX3, y = max(idg$yp) + 1.02, hjust = 0, label = "Structure /\nligand evidence",
+           size = sz(6.4), fontface = "bold", colour = COL$ink, lineheight = 0.92) +
+  annotate("segment", x = CX1 - 0.06, xend = XEND, y = HY, yend = HY,
+           linewidth = 0.35, colour = COL$axis) +
+  # axis drawn by hand so it spans the bar region only
+  annotate("segment", x = 0, xend = 4.35, y = 0.34, yend = 0.34,
+           linewidth = 0.40, colour = COL$axis) +
+  annotate("segment", x = 0:4, xend = 0:4, y = 0.34, yend = 0.17,
+           linewidth = 0.40, colour = COL$axis) +
+  annotate("text", x = 0:4, y = 0.05, label = as.character(0:4),
+           size = sz(6.0), colour = COL$ink2) +
+  annotate("text", x = 2.175, y = -0.32, label = "IDG target development level score (Pharos)",
+           size = sz(7.4), fontface = "bold", colour = COL$ink) +
+  scale_x_continuous(expand = c(0, 0)) +
   scale_y_continuous(expand = c(0, 0)) +
   coord_cartesian(xlim = XL4A, ylim = YL4A, clip = "off") +
-  labs(x = "IDG target development level score (Pharos)", y = NULL) +
-  th + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(),
-             axis.line.y = element_blank(), panel.grid.major.y = element_blank(),
-             plot.margin = margin(4, 92, 3, 20, unit = "mm"))
+  labs(x = NULL, y = NULL) +
+  th + theme(axis.text = element_blank(), axis.ticks = element_blank(),
+             axis.line = element_blank(), panel.grid.major.y = element_blank(),
+             panel.grid.major.x = element_blank(), panel.grid.minor = element_blank(),
+             plot.margin = margin(4, 4, 6, 20, unit = "mm"))
 save_panel(p4a, file.path(outdir, "Fig4a_idg_druggability.pdf"),
-           mm_snap(169.69), mm_snap(58))
+           mm_snap(169.69), mm_snap(62))
 
 # ============================================================
 #  Figure 4b -- PheWAS safety (was 4a, same size)
@@ -161,20 +187,29 @@ TCOL <- setNames(unname(TIER_COL[tnum$letter]), LVL)
 cat(sprintf("   tiers: %s  (total %d); 8 (13%%) with agents, 4 approved\n",
             paste(LVL, collapse = " | "), sum(tnum$N)))
 
-tnum[, xmax := cumsum(N)]
-tnum[, xmin := c(0, head(xmax, -1))]
-strip <- ggplot(tnum) +
-  geom_rect(aes(xmin = xmin, xmax = xmax, ymin = -0.5, ymax = 0.5, fill = lvl),
-            colour = "white", linewidth = 0.6) +
-  annotate("text", x = 13, y = 0, hjust = 0, size = sz(6.2), colour = COL$ink,
-           label = "8 of 62 (13%) have known pharmacological agents; 4 with approved drugs") +
-  annotate("text", x = -1.2, y = 0, hjust = 1, size = sz(6.4), colour = COL$ink,
-           fontface = "bold", lineheight = 0.95,
-           label = "62 protein-coding\nSMR-significant genes") +
-  scale_fill_manual(name = NULL, values = TCOL) +
+# strip = three-step attrition, not a proportional tier bar: with n = 1 and
+# n = 1 out of 62 the two top tiers are 1.6% slivers that read as artefacts.
+# The tier composition itself is already carried by the legend of the rank
+# panel below, so the strip only has to show the 62 -> 8 -> 4 attrition.
+att <- data.table(
+  yp  = c(3L, 2L, 1L),
+  n   = c(62L, 8L, 4L),
+  lft = c("62 protein-coding\nSMR-significant genes",
+          "8 with known agents",
+          "4 with approved drugs"),
+  rgt = c("62", "8  (13%)", "4  (6%)"))
+strip <- ggplot(att) +
+  geom_rect(aes(xmin = 0, xmax = n, ymin = yp - 0.36, ymax = yp + 0.36,
+                fill = factor(yp)), colour = NA) +
+  scale_fill_manual(values = c(`3` = "#BFBFBF", `2` = "#737373", `1` = "#262626"),
+                    guide = "none") +
+  geom_text(aes(x = n + 1.4, y = yp, label = rgt), hjust = 0,
+            size = sz(6.4), colour = COL$ink) +
+  geom_text(aes(x = -1.6, y = yp, label = lft), hjust = 1, size = sz(6.4),
+            colour = COL$ink, lineheight = 0.92) +
   scale_x_continuous(expand = c(0, 0)) +
   scale_y_continuous(expand = c(0, 0)) +
-  coord_cartesian(xlim = c(0, 62), ylim = c(-1.05, 1.05), clip = "off") +
+  coord_cartesian(xlim = c(0, 62), ylim = c(0.25, 3.75), clip = "off") +
   labs(x = NULL, y = NULL) +
   theme_void(base_family = "Liberation Sans") +
   theme(legend.position = "none",
@@ -205,7 +240,10 @@ rank <- ggplot(top) +
            label = "agents (approved)", size = sz(6.2), fontface = "bold", colour = COL$ink) +
   scale_x_continuous(expand = c(0, 0), breaks = c(0, 0.2, 0.4, 0.6, 0.8)) +
   scale_y_continuous(expand = c(0, 0)) +
-  coord_cartesian(xlim = c(0, 0.80), ylim = c(0.3, Y25 + 1.35), clip = "off") +
+  coord_cartesian(xlim = c(0, 0.80), ylim = c(-0.55, Y25 + 1.35), clip = "off") +
+  annotate("text", x = 0, y = -0.20, hjust = 0, size = sz(5.9), colour = COL$ink3,
+           label = sprintf("Top 25 of %d genes shown; the other %d (score %s %.3f) are not drawn.",
+                           nrow(dpc), nrow(dpc) - 25L, LE, top$repurposing_score[25])) +
   labs(x = "Integrated repurposing score (components and weights in Methods)", y = NULL) +
   th + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(),
              axis.line.y = element_blank(), panel.grid.major.y = element_blank(),

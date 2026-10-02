@@ -98,63 +98,57 @@ n_v5 <- length(v5_sym); n_chen <- length(chen); n_haz <- length(haz)
 
 BLUE <- COL$genetic; CYAN <- "#6BAED6"; GREY <- COL$mute
 SELF <- "This study"
-CX <- 2.75; CY <- 2.40; R <- 1.28; D <- 1.15
-off <- data.frame(
-  set = c(SELF, "Chen 2024", "Hazelwood 2025"),
-  x0  = CX + c(0, -0.866, 0.866) * D,
-  y0  = CY + c(1, -0.5, -0.5) * D,
-  col = c(BLUE, CYAN, GREY))
+DNAM <- c("Chen 2024", SELF, "Hazelwood 2025")
+DSET <- c(n_chen, n_v5, n_haz)
 
-gx <- seq(CX - (D + R) * 1.02, CX + (D + R) * 1.02, length.out = 700)
-gr <- expand.grid(x = gx, y = seq(CY - (D + R) * 1.02, CY + (D + R) * 1.02, length.out = 700))
-ins <- function(i) (gr$x - off$x0[i])^2 + (gr$y - off$y0[i])^2 <= R^2
-key <- paste(ins(1), ins(2), ins(3))
-cent <- function(k) { i <- which(key == k); c(x = mean(gr$x[i]), y = mean(gr$y[i])) }
-K <- c(v5_only = "TRUE FALSE FALSE",   chen_only = "FALSE TRUE FALSE",
-       haz_only = "FALSE FALSE TRUE",  v5_chen = "TRUE TRUE FALSE",
-       v5_haz = "TRUE FALSE TRUE",     chen_haz = "FALSE TRUE TRUE",
-       triple = "TRUE TRUE TRUE")
-vals <- c(v5_only = cnt(FALSE, TRUE, FALSE), chen_only = cnt(TRUE, FALSE, FALSE),
-          haz_only = cnt(FALSE, FALSE, TRUE), v5_chen = cnt(TRUE, TRUE, FALSE),
-          v5_haz = cnt(FALSE, TRUE, TRUE),   chen_haz = cnt(TRUE, FALSE, TRUE),
-          triple = cnt(TRUE, TRUE, TRUE))
-cat("   regions:", paste(sprintf("%s=%d", names(vals), vals), collapse = " "), "\n")
-stopifnot(sum(vals) == length(allg), vals[["v5_only"]] == 34)
+up <- data.frame(
+  lab = c("Chen 2024 only", "This study only", "This study + Chen 2024",
+          "Chen 2024 + Hazelwood 2025", "Hazelwood 2025 only", "All three studies",
+          "This study + Hazelwood 2025"),
+  n   = c(cnt(TRUE, FALSE, FALSE), cnt(FALSE, TRUE, FALSE), cnt(TRUE, TRUE, FALSE),
+          cnt(TRUE, FALSE, TRUE), cnt(FALSE, FALSE, TRUE), cnt(TRUE, TRUE, TRUE),
+          cnt(FALSE, TRUE, TRUE)),
+  Chen = c(TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, FALSE),
+  v5   = c(FALSE, TRUE, TRUE, FALSE, FALSE, TRUE, TRUE),
+  Haz  = c(FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE),
+  stringsAsFactors = FALSE)
+stopifnot(sum(up$n) == length(allg),
+          cnt(TRUE, FALSE, FALSE) == 242, cnt(FALSE, TRUE, FALSE) == 34,
+          cnt(TRUE, TRUE, FALSE) == 23, cnt(TRUE, FALSE, TRUE) == 16,
+          cnt(FALSE, FALSE, TRUE) == 13, cnt(TRUE, TRUE, TRUE) == 8,
+          cnt(FALSE, TRUE, TRUE) == 4)
+up <- up[order(-up$n), ]
+up$yp <- rev(seq_len(nrow(up)))
+up$xend <- up$n / max(up$n) * 0.50
 
-lab <- do.call(rbind, lapply(names(K), function(nm) {
-  cc <- cent(K[[nm]]); data.frame(x = cc[["x"]], y = cc[["y"]], txt = unname(vals[nm]), nm = nm)
-}))
-lab$col <- ifelse(lab$nm %in% c("v5_only", "v5_chen", "v5_haz", "triple"), BLUE, COL$ink2)
+DX <- c(0.620, 0.765, 0.910)
+YTOP <- nrow(up)
 
-nms <- data.frame(x = c(CX, 1.22, 4.28), y = c(4.99, 0.20, 0.20),
-                  txt = c(SELF, "Chen 2024", "Hazelwood 2025"),
-                  col = c(BLUE, CYAN, COL$ink2))
-szdf <- data.frame(set = c("Chen 2024", SELF, "Hazelwood 2025"),
-                   n = c(n_chen, n_v5, n_haz), col = c(CYAN, BLUE, GREY),
-                   y = c(3.92, 2.55, 1.18))
-BMAX <- 2.95; BX <- 6.90
-szdf$len <- szdf$n / max(szdf$n) * BMAX
-
-p5b <- ggplot() +
-  geom_circle(data = off, aes(x0 = x0, y0 = y0, r = R, fill = col, colour = col),
-              alpha = 0.20, linewidth = 0.55) +
-  geom_text(data = lab, aes(x = x, y = y, label = txt, colour = col), size = sz(7.2)) +
-  geom_text(data = nms, aes(x = x, y = y, label = txt, colour = col),
-            size = sz(7.2), fontface = "bold") +
-  geom_text(aes(x = BX - 0.16, y = szdf$y, label = szdf$set), hjust = 1,
-            size = sz(6.6), colour = COL$ink) +
-  geom_rect(aes(xmin = BX, xmax = BX + szdf$len, ymin = szdf$y - 0.25,
-                ymax = szdf$y + 0.25), fill = szdf$col, colour = NA) +
-  geom_text(aes(x = BX + szdf$len + 0.16, y = szdf$y, label = szdf$n), hjust = 0,
-            size = sz(6.6), colour = COL$ink, fontface = "bold") +
-  annotate("text", x = BX, y = 4.72, label = "Set size", hjust = 0,
-           size = sz(6.6), fontface = "bold", colour = COL$ink) +
-  scale_colour_identity() + scale_fill_identity() +
-  coord_fixed(ratio = 1, xlim = c(0.20, 11.00), ylim = c(0.00, 5.22), expand = FALSE) +
+p5b <- ggplot(up) +
+  geom_segment(aes(x = DX[1], xend = DX[3], y = yp, yend = yp),
+               colour = "#DCDCDC", linewidth = 0.35) +
+  geom_rect(aes(xmin = 0, xmax = xend, ymin = yp - 0.29, ymax = yp + 0.29),
+            fill = BLUE, colour = NA) +
+  geom_text(aes(x = xend + 0.014, y = yp, label = n), hjust = 0,
+            size = sz(6.2), colour = COL$ink, fontface = "bold") +
+  geom_text(aes(x = -0.016, y = yp, label = lab), hjust = 1,
+            size = sz(6.0), colour = COL$ink2) +
+  geom_point(aes(x = DX[1], y = yp, colour = Chen), size = 2.6, stroke = 0.7) +
+  geom_point(aes(x = DX[2], y = yp, colour = v5),   size = 2.6, stroke = 0.7) +
+  geom_point(aes(x = DX[3], y = yp, colour = Haz),  size = 2.6, stroke = 0.7) +
+  scale_colour_manual(values = c(`TRUE` = BLUE, `FALSE` = "#DCDCDC"), guide = "none") +
+  annotate("text", x = DX, y = YTOP + 0.92, hjust = 0.5, vjust = 1,
+           size = sz(6.0), fontface = "bold", colour = COL$ink, lineheight = 1.10,
+           label = sprintf("%s\nn = %d", DNAM, DSET)) +
+  annotate("text", x = 0, y = YTOP + 0.92, hjust = 0, vjust = 1,
+           size = sz(6.0), fontface = "bold", colour = COL$ink,
+           label = "Number of genes") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  coord_cartesian(xlim = c(-0.34, 1.00), ylim = c(0.35, YTOP + 1.55), clip = "off") +
+  labs(x = NULL, y = NULL) +
   theme_void(base_family = "Liberation Sans") +
-  theme(plot.background = element_rect(fill = "white", colour = NA),
-        plot.margin = margin(3, 4, 3, 4))
-save_panel(p5b, file.path(outdir, "Fig5b_gene_overlap_venn.pdf"),
-           mm_snap(169.69), mm_snap(82.20))
-
+  theme(plot.margin = margin(3, 4, 3, 4))
+save_panel(p5b, file.path(outdir, "Fig5b_gene_overlap_upset.pdf"),
+           mm_snap(169.69), mm_snap(68))
 cat("\n== rev8 Figure 5 done ==\n")

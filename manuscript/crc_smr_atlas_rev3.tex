@@ -383,24 +383,8 @@ genes characterized in detail.}
 
 \vspace{0.5em}
 
-\caption{Study design, evidence layers and genetic-layer colocalization screen.}
+\caption{Study design and evidence layers.}
 \label{fig:design}
-\end{figure}
-
-\begin{figure}[tbp]
-\ContinuedFloat
-\centering
-\setcounter{subfigure}{2}
-
-\begin{subfigure}{\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Fig1c_coloc_pph4.pdf}
-\caption{Bayesian colocalization of the 76 probe--gene pairs.
-Posterior probability of colocalization (PPH4, coloc.abf) shown for the 49 pairs with PPH4 $>$ 0.5:
-43 pairs (57\%) passed the colocalization threshold (PPH4 $>$ 0.8, dark blue) and 6 were marginal
-(0.5--0.8, light blue). The remaining 27 pairs (6 weak, 21 failing) are omitted from the panel.}
-\label{fig:coloc}
-\end{subfigure}
 \end{figure}
 
 We performed SMR using cis-eQTL data from eQTLGen ($n=31,684$ blood
@@ -429,7 +413,7 @@ forward to colocalization analysis.
 
 Across the 75 SMR-significant genes we tested colocalization on 76 probe--gene pairs
 (\textit{UTP11} contributed two probes at chr1:38.4~Mb, hence 76 pairs for 75 unique
-genes; Fig.~\ref{fig:coloc}). 43 of 76 pairs (57\%) showed strong evidence of shared causal variants
+genes; Supplementary Fig.~S2). 43 of 76 pairs (57\%) showed strong evidence of shared causal variants
 (PPH4 $>$ 0.8). The four strongest independent loci were \textit{SMAD7} (PPH4 = 0.9997),
 \textit{UTP11} (PPH4 = 0.9996; two concordant probes), \textit{TNF} (PPH4 = 0.9991)
 and \textit{BMP2} (PPH4 = 0.9971), closely followed by \textit{B9D2} (PPH4 = 0.9967).
@@ -485,7 +469,7 @@ HLA-K, HLA-DRB5, ZFP57, HCG27); the six MHC genes are counted nominally, because
 their credible sets were driven by overlapping variants and therefore do not
 represent independent causal signals (see above). Among these, the six non-MHC
 Tier 1 genes were selected for in-depth downstream characterization and are
-summarized in Table~\ref{tab:tier1} (UTP11, BMP2, PNKD, LAMC1, TMBIM1, GPBAR1). Regional association plots for all Tier 1 loci are provided in Supplementary Fig.~S2. Among the
+summarized in Table~\ref{tab:tier1} (UTP11, BMP2, PNKD, LAMC1, TMBIM1, GPBAR1). Regional association plots for all Tier 1 loci are provided in Supplementary Fig.~S3. Among the
 remaining 13 Tier 1 genes, CCM2 merits particular attention as the only Tier 1
 gene with convergent pQTL colocalization evidence---characterized in detail in the
 Discussion (subsection \emph{eQTL--pQTL colocalization discordance})---while the
@@ -508,7 +492,7 @@ complexity exceeded the resolution of the 1000 Genomes Phase 3 European referenc
 panel. All successful combinations returned single-SNP credible sets with
 PIP = 1.0, but---as noted above---the number of credible sets tracked the
 user-specified $L$, and we therefore regard the singleton pattern as a property of
-the method/settings, not evidence establishing a single causal variant (Supplementary Fig.~S3).
+the method/settings, not evidence establishing a single causal variant (Supplementary Fig.~S4).
 
 We used the coloc.abf default priors ($p_1 = p_2 = 10^{-4}$, $p_{12} = 10^{-5}$);
 a prior sensitivity analysis showed that PPH4 values for the six non-MHC Tier 1
@@ -525,11 +509,11 @@ BMP2 (OR = 1.38, 95\% CI: 1.27--1.50), TMBIM1
 (OR = 1.27, 95\% CI: 1.20--1.36), LAMC1 (OR = 1.14, 95\% CI:
 1.11--1.17), and PNKD (OR = 1.12, 95\% CI: 1.09--1.15). GPBAR1
 was the only protective gene (OR = 0.78, 95\% CI: 0.73--0.83; per-SD odds
-ratios for the six genes are shown in Supplementary Fig.~S4).
+ratios for the six genes are shown in Supplementary Fig.~S5).
 
 Six of the 18 Tier 1 genes with HEIDI results failed the HEIDI heterogeneity
 test ($p_{\text{HEIDI}} < 0.01$, the standard SMR heterogeneity threshold) and
-are flagged in Supplementary Table~S2 and Supplementary Fig.~S5. BMP2 had no HEIDI result; the remaining 12
+are flagged in Supplementary Table~S2 and Supplementary Fig.~S6. BMP2 had no HEIDI result; the remaining 12
 passed.
 
 To contextualize the genetic architecture, we collapsed the 75 SMR-significant
@@ -571,7 +555,7 @@ estimates agreed for TNF ($b = -0.062$, $p = 8.1\times10^{-29}$) but not for
 CDKN1A, whose sign reversed ($b = -0.131$, $p = 1.3\times10^{-18}$). LTA and NCF2
 were non-significant by the Wald ratio ($p = 0.506$ and $0.307$); by IVW the LTA
 estimate became significant ($b = -0.022$, $p = 5.4\times10^{-44}$) while NCF2
-remained null ($b = -0.033$, $p = 0.156$; Table~\ref{tab:mr_sensitivity}). However, none of the 5 genes showed pQTL--GWAS colocalization (max PPH4 = 0.275 for TNF; Supplementary Table~S4; Supplementary Fig.~S6).
+remained null ($b = -0.033$, $p = 0.156$; Table~\ref{tab:mr_sensitivity}). However, none of the 5 genes showed pQTL--GWAS colocalization (max PPH4 = 0.275 for TNF; Supplementary Table~S4; Supplementary Fig.~S7).
 
 From deCODE genetics, 16 unique genes (14 of them within the 62-gene Bonferroni set) had SomaScan protein measurements,
 representing 12 deCODE-only genes beyond the 4 genes also covered by UKB-PPP
@@ -594,7 +578,7 @@ measurements.
 
 Among the 5 deCODE genes with instruments, only CCM2 showed
 evidence of pQTL--GWAS colocalization (PPH4 = 0.9514, 6,850 SNPs;
-Supplementary Table~S5, Supplementary Fig.~S7). This makes CCM2 the only gene in our study with
+Supplementary Table~S5, Supplementary Fig.~S8). This makes CCM2 the only gene in our study with
 convergent eQTL and pQTL colocalization evidence. CCM2 is also one
 of the 19 Tier 1 genes (eQTL coloc PPH4 = 0.9633, SuSiE converged with
 single-SNP credible set), making it the sole gene with triple-convergent
@@ -613,7 +597,7 @@ reminder that the two estimators can disagree in either direction.
 
 Formal instrument-strength and pleiotropy diagnostics for all nine genes with
 cis-pQTL instruments are reported in Table~\ref{tab:mr_sensitivity} and
-Supplementary Figs.~S8--S13. Every instrument across the nine genes had an F
+Supplementary Figs.~S9--S14. Every instrument across the nine genes had an F
 statistic well above the conventional weak-instrument threshold (minimum
 F = 29.7; median F per gene 30.4--175.4). Cochran's Q indicated substantial
 heterogeneity in the eight genes with more than two instruments (TNFRSF1A
@@ -746,18 +730,18 @@ As a tissue-localization layer, we analyzed CRC single-cell RNA-seq data
 ($n = 50,214$ cells across 10 cell types) and spatial transcriptomics (Visium,
 $n = 3,493$ spots). Of the 75 SMR genes, 61 (81\%) were detected in the
 single-cell atlas; TMBIM1 showed fibroblast-enriched expression
-(Supplementary Fig.~S14) and broad detection in CRC tissue (57\% of
-3{,}493 Visium spots; Supplementary Fig.~S15). In contrast,
+(Supplementary Fig.~S15) and broad detection in CRC tissue (57\% of
+3{,}493 Visium spots; Supplementary Fig.~S16). In contrast,
 GPBAR1 was detected in only 1 of 3,493 Visium spots (0.03\%). Across the six core
 Tier 1 candidates, therefore, five (UTP11, BMP2, PNKD, LAMC1 and TMBIM1) were
-detectable in this section (11--57\% of spots; Supplementary Fig.~S15),
+detectable in this section (11--57\% of spots; Supplementary Fig.~S16),
 the mirror image of the protein layer, in which only BMP2 had a matching plasma
 measurement and none of the six carried cis-pQTL instruments (Fig.~\ref{fig:coverage_funnel}). Partitioning
 Visium spots into $k=6$ spatial microenvironment (ME) zones showed no zone-restricted expression: among the five core candidates with
 detectable tissue expression (all but GPBAR1, which was detected in a single spot),
 mean expression varied only 1.25--1.59-fold across the six zones, and UTP11, BMP2,
 LAMC1 and TMBIM1 each reached their lowest mean expression in the stromal ME6
-zone (PNKD: ME6 second lowest; Supplementary Fig.~S16;
+zone (PNKD: ME6 second lowest; Supplementary Fig.~S17;
 Supplementary Table~S7). Pairwise spatial cross-correlation statistics for the
 chr2:219Mb locus are provided in Supplementary Table~S8.
 
@@ -782,7 +766,7 @@ To assess whether blood-based eQTL findings generalize to colon tissue, we
 performed SMR using GTEx Colon Transverse cis-eQTL data. Of 25 tested genes
 with colon cis-eQTLs at the standard threshold, 84\% showed concordant effect
 direction with eQTLGen blood-based estimates (Spearman $\rho = 0.58$, $p = 0.0030$). All 10 genes
-significant in both tissues showed identical direction. However, 5 of the 6 prioritized non-MHC Tier 1 genes lacked detectable colon cis-eQTLs, reflecting the power limitation of tissue-specific eQTL datasets This tissue-level check describes the genetic layer as a whole rather than any individual candidate: the 25 genes with colon cis-eQTLs include only one of the six core Tier 1 candidates (TMBIM1) and do not include CCM2, so panels B and C of this figure should not be read as support for CCM2. (Fig.~\ref{fig:tissue_layer}). Forest plots for the FinnGen directional-consistency analysis are provided in Supplementary Fig.~S17.
+significant in both tissues showed identical direction. However, 5 of the 6 prioritized non-MHC Tier 1 genes lacked detectable colon cis-eQTLs, reflecting the power limitation of tissue-specific eQTL datasets. This tissue-level check describes the genetic layer as a whole rather than any individual candidate: the 25 genes with colon cis-eQTLs include only one of the six core Tier 1 candidates (TMBIM1) and do not include CCM2, so panel B of this figure should not be read as support for CCM2 (Fig.~\ref{fig:tissue_layer}). The blood-versus-colon effect-size scatter is provided in Supplementary Fig.~S18, and forest plots for the FinnGen directional-consistency analysis in Supplementary Fig.~S19.
 
 \begin{figure}[htbp]
 \centering
@@ -800,25 +784,14 @@ SuSiE fine-mapping support at the same locus.}
 
 \vspace{0.6em}
 
-\begin{subfigure}{\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Fig3b_gtex_colon_scatter.pdf}
-\caption{Scatter of eQTLGen (blood) versus GTEx Colon Transverse SMR effect sizes for
-$n = 25$ genes with colon cis-eQTL ($p < 5\times10^{-8}$); Spearman $\rho = 0.58$,
-$p = 0.0030$, with 21 of 25 (84\%) direction-concordant. This panel describes the genetic layer as a whole: the 25 genes include only one of the six core Tier 1 candidates (TMBIM1) and do not include CCM2.}
-\label{fig:gtex_scatter}
-\end{subfigure}
-
-\vspace{0.6em}
-
-\caption{Convergence at CCM2, and blood-to-colon concordance of the genetic layer.}
+\caption{Convergence at CCM2 and a concordant colon tissue layer.}
 \label{fig:tissue_layer}
 \end{figure}
 
 \begin{figure}[tbp]
 \ContinuedFloat
 \centering
-\setcounter{subfigure}{2}
+\setcounter{subfigure}{1}
 
 \begin{subfigure}{\textwidth}
 \centering
@@ -840,7 +813,7 @@ infrastructure), BMP2 (Tchem, TGF-$\beta$ family with known receptor
 inhibitors), UTP11 (Tchem, structure with ligand but zero antibody
 tractability as a nucleolar protein), TMBIM1 (Tbio, no chemical probes or
 known ligands---de novo discovery required despite highest genetic evidence),
-and PNKD (Tbio, limited functional annotation with no drug discovery infrastructure; Fig.~\ref{fig:idg} and Supplementary Fig.~S18).
+and PNKD (Tbio, limited functional annotation with no drug discovery infrastructure; Fig.~\ref{fig:idg} and Supplementary Fig.~S20).
 
 To assess potential safety risks of modulating these targets, we performed
 PheWAS screening using Open Targets Platform genetic associations and summarized
@@ -854,15 +827,15 @@ phenotypes (atrial fibrillation; neurodegenerative disease). GPBAR1, by contrast
 had the fewest genetic associations of the six (5) but these included hepatic and
 renal phenotypes consistent with its bile-acid physiology (8 high-risk
 phenotypes). The remaining four genes spanned three to four categories each
-(Fig.~\ref{fig:phewas}; Supplementary Fig.~S19). Because the composite
-safety score in Supplementary Table~S9 and Supplementary Fig.~S19 is
+(Fig.~\ref{fig:phewas}; Supplementary Fig.~S21). Because the composite
+safety score in Supplementary Table~S9 and Supplementary Fig.~S21 is
 dominated by the number of genetic associations, it ranks GPBAR1 numerically below
 BMP2; we therefore report the two components separately in Table~\ref{tab:tier1}
 and use those components, not the composite score, in the interpretation below.
 
 Drug annotation using DrugBank and Open Targets identified 8 genes (13\% of
 the 62 protein-coding set) with known pharmacological agents, including 4 with
-approved drugs (Fig.~\ref{fig:drug}). LAMC1 was the highest-ranked drug candidate, with
+approved drugs (Supplementary Fig.~S22). LAMC1 was the highest-ranked drug candidate, with
 the approved drug ocriplasmin (repositioning score = 0.756).
 TNF had the largest drug portfolio (7 approved agents across 14 total entries
 in DrugBank), matching its established role as a therapeutic target in
@@ -900,7 +873,7 @@ Heatmap of genetic disease associations across risk categories (Open Targets Pla
 Darker blue = more genetic evidence in that category. Among the six genes, the associations of
 BMP2 are confined to the narrowest set of organ systems (cardiovascular and neurological) and to
 the fewest high-risk phenotypes (2). The composite score $2.0\times$ risk-category diversity $+$
-$1.5\times$ genetic evidence $+$ $0.5\times$ high-risk count is reported in Supplementary Table~S9 and Supplementary Fig.~S19; it is dominated by the number of genetic
+$1.5\times$ genetic evidence $+$ $0.5\times$ high-risk count is reported in Supplementary Table~S9 and Supplementary Fig.~S21; it is dominated by the number of genetic
 associations, so Table~\ref{tab:tier1} reports the two components separately and the main text
 uses those.}
 \label{fig:phewas}
@@ -910,23 +883,6 @@ uses those.}
 
 \caption{Tractability and safety of the six core non-MHC Tier 1 candidates.}
 \label{fig:tractability}
-\end{figure}
-
-\begin{figure}[tbp]
-\ContinuedFloat
-\centering
-\setcounter{subfigure}{2}
-
-\begin{subfigure}{\textwidth}
-\centering
-\includegraphics[width=\linewidth]{Fig4c_drug_repurposing.pdf}
-\caption{Drug repurposing tier distribution.
-Of $n = 62$ protein-coding SMR-significant genes, 8 (13\%) have known pharmacological agents
-across DrugBank and Open Targets, and 4 of those have an approved drug. Tiers: A, highest
-repurposing potential (coloc $+$ approved drug), 1 gene; B, strong, 1 gene; C, moderate,
-9 genes; D, exploratory, 51 genes.}
-\label{fig:drug}
-\end{subfigure}
 \end{figure}
 
 %==========================================================================
@@ -977,11 +933,12 @@ respectively.}
 
 \begin{subfigure}{\textwidth}
 \centering
-\includegraphics[width=\linewidth]{Fig5b_gene_overlap_venn.pdf}
-\caption{Venn diagram of shared and unique gene symbols between this study (69 gene symbols),
-Chen 2024 (289 resolvable gene symbols) and Hazelwood 2025 (41 genes). Circle areas are not
-drawn to scale; every region is labelled with its exact symbol count and set sizes are given on
-the right. Of this study's 69 genes, 34 (49\%) are not present in either prior gene list.}
+\includegraphics[width=\linewidth]{Fig5b_gene_overlap_upset.pdf}
+\caption{Intersection structure of the shared and unique gene symbols between this study
+(69 gene symbols), Chen 2024 (289 resolvable gene symbols) and Hazelwood 2025 (41 genes). Each
+row is one of the seven non-empty intersections; the bar gives the number of genes in that
+intersection and the dot matrix shows which of the three gene sets contribute. Of this study's
+69 genes, 34 (49\%) are not present in either prior gene list.}
 \label{fig:competitor_upset}
 \end{subfigure}
 \end{figure}
@@ -1357,7 +1314,7 @@ additionally available from the corresponding author.
 \begin{itemize}
 \item Additional file 1 --- File name: Additional file 1; File format: PDF (.pdf);
 Title: Supplementary figures and tables. Description: Supplementary Methods,
-Supplementary Fig.~S1--S19 and Supplementary Table~S1--S10.
+Supplementary Fig.~S1--S22 and Supplementary Table~S1--S10.
 \item Additional file 2 --- File name: Additional file 2; File format: DOCX (.docx);
 Title: Supplementary Tables S1--S10 (editable). Description: Editable versions of
 Supplementary Tables S1--S10 for production.

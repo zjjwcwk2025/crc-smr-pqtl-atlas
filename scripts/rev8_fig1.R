@@ -180,10 +180,11 @@ p1b <- ggplot() +
   geom_segment(data = chev, aes(x = x, y = y, xend = xend, yend = yend),
                colour = COL$ink3, linewidth = 0.5,
                arrow = arrow(length = unit(1.5, "mm"), type = "closed")) +
-  annotate("text", x = 3, y = 2.5, hjust = 0, size = sz(5.9), colour = COL$ink3,
+  annotate("text", x = 3, y = 1.2, hjust = 0, vjust = 0, size = sz(5.9), colour = COL$ink3,
+           lineheight = 1.25,
            label = paste0("Data: 78,473-case CRC GWAS (GCST90255675); eQTLGen (n = 31,684); ",
-                          "deCODE and UKB-PPP plasma proteomes;`n",
-                          "FinnGen R13; TCGA-COAD and READ; Visium spatial transcriptomics.")) +
+                          "deCODE and UKB-PPP plasma proteomes;",
+                          "\nFinnGen R13; TCGA-COAD and READ; Visium spatial transcriptomics.")) +
   coord_fixed(ratio = 1, xlim = c(0, BW), ylim = c(0, BH), expand = FALSE) +
   theme_void() + theme(plot.margin = margin(3, 4, 2, 3))
 save_panel(p1b, file.path(outdir, "Fig1b_study_design.pdf"), mm_snap(169.69), mm_snap(95.96))

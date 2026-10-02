@@ -32,14 +32,14 @@ R 4.4.3; Python 3.11; Poppler (pdftoppm, pdftotext). Genomic coordinates are hg3
 - `scripts/04_synapse_pqtl_download.py`, `scripts/08_download_decode.sh` - pQTL panel download
 - `scripts/05_heidi_from_vcf.py`, `scripts/06_run_heidi_75genes.sh` - HEIDI test for every significant probe
 - `scripts/06_classify_genes.py` - probe classification and gene-level annotation
-- `scripts/11_coloc_eqtl.R`, `scripts/11b_coloc_eqtl_all75.R` - Bayesian colocalization at the eQTL layer (Fig 1c)
+- `scripts/11_coloc_eqtl.R`, `scripts/11b_coloc_eqtl_all75.R` - Bayesian colocalization at the eQTL layer (Supplementary Fig. S2)
 - `scripts/15_susie_finemap.R`, `scripts/15b_susie_extended.R`, `scripts/31_susie_sensitivity.R` - SuSiE fine-mapping and sensitivity (Fig S3)
 - `scripts/07_ukbppp_pqtl_mr.R`, `scripts/42_decode_pqtl_mr.R`, `scripts/18_pqtl_coloc.R`, `scripts/43_decode_coloc.R`, `scripts/44_decode_supplement_mr.R` - pQTL MR and colocalization (Fig 3a; Fig S6-S13; Tables S4, S5)
 - `scripts/24_mr_sensitivity.R`, `scripts/45_compute_fstatistics.R`, `scripts/48_mr_methods_pleiotropy.R` - instrument strength, MR-Egger, leave-one-out (Fig S5, S10-S13)
 - `scripts/49_mr_presso_table3.R` - MR-PRESSO for the nine genes of Table 3 at `NbDistribution = 5000`; at the package default of 1000 the smallest resolvable outlier-test p-value is `n/1000` (0.061-0.228 for these genes), above 0.05, so the default cannot flag outliers at these instrument counts. TNF (n = 2288) and LTA (n = 10213) are not feasible and are recorded as skipped in Table 3.
 - `scripts/50_fast_presso_reference.R` - vectorised re-implementation of the MR-PRESSO core algorithm, used for the MR-PRESSO columns of Table 3. Verified against `MRPRESSO::mr_presso` at seed 20260921 and NbDistribution = 5000: RSSobs agrees to <= 2.3e-13 and the flagged instrument sets are identical for CCM2, LIMA1, STAT6, CDKN1A, TNFRSF1A and NCF2. The package call is about 1.5 h per 60 instruments on a single core, so this script is what produced the reported values for all nine genes.
 - `scripts/12_finngen_replication.R` - FinnGen directional consistency (Fig S17)
-- `scripts/40_gtex_colon_compare.R` - GTEx colon sensitivity (Fig 3b, 3c)
+- `scripts/40_gtex_colon_compare.R` - GTEx colon sensitivity (Fig 3b; Supplementary Fig. S18)
 - `scripts/30_locus_count.R`, `scripts/32_tier1_smr_or.R` - locus counting and Tier-1 SMR odds ratios (Fig S2, S4)
 - `scripts/16_scrna_celltype_localization.R` - single-cell cell-type specificity (Fig S14)
 - `scripts/17_visium_spatial_validation.R`, `scripts/51_spatial_microenvironment.R`, `scripts/55_spatial_gene_crosscorrelation.R`, `scripts/58_spatial_tier1_panel.R` - spatial layers (Fig S15, S16; Tables S7, S8)
@@ -50,16 +50,16 @@ R 4.4.3; Python 3.11; Poppler (pdftoppm, pdftotext). Genomic coordinates are hg3
 
 ## Figure assembly
 
-The 14 main-figure panels (Fig 1a-5b) and the 22 supplementary panels (Fig S1-S19)
+The 11 main-figure panels (Fig 1a-5b) and the 25 supplementary panels (Fig S1-S22)
 are produced by two pipelines. Everything is written into `results/figures_rev3/`.
 
 Main figures:
 
 - `scripts/theme_pub2.R` - publication theme (fonts, sizes, palettes) of the main figures
-- `scripts/rev8_fig1.R` - Fig 1a, 1b, 1c
+- `scripts/rev8_fig1.R` - Fig 1a, 1b
 - `scripts/rev8_fig2.R` - Fig 2a, 2b, 2c
-- `scripts/rev8_fig3.R` - Fig 3a, 3b, 3c
-- `scripts/rev8_fig4.R` - Fig 4a, 4b, 4c
+- `scripts/rev8_fig3.R` - Fig 3a, 3b
+- `scripts/rev8_fig4.R` - Fig 4a, 4b
 - `scripts/rev8_fig5.R` - Fig 5a, 5b
 
 These five scripts draw the submitted main-figure panels and supersede the
@@ -71,24 +71,29 @@ Supplementary figures:
 - `scripts/rev3_main_figures.R` - first render of every supplementary panel into
   `results/figures_rev3/`; the panels still shipped from that run are dated 2026-09-16
 - `scripts/rev5_natural_aspect.R` - re-renders a panel at its natural aspect ratio and at the
-  final printed width; the shipped versions of Fig S1a, S1b, S5, S16a and S16c come from this
+  final printed width; the shipped versions of `FigS1a`, `FigS1b`, `FigS5`, `FigS16a` and `FigS16c` come from this
   script, which also collects them into `results/figures_rev3/`
-- `scripts/79_regen_S14_dotplot.R` - Fig S14 (cell-type dot plot)
-- `scripts/figS26S27_regen.R` - Fig S12, S13 (MR method comparison, funnel/pleiotropy panels);
+- `scripts/79_regen_S14_dotplot.R` - `FigS14` (printed Supplementary Fig. S15; cell-type dot plot)
+- `scripts/figS26S27_regen.R` - `FigS12`, `FigS13` (printed Supplementary Fig. S13, S14; MR method comparison, funnel/pleiotropy panels);
   reads MR-PRESSO at NbDistribution = 5000, which is required to resolve
   n/NbDistribution <= 0.046 at these instrument counts
 - `scripts/71_regen_small_text.R`, `scripts/redraw_fig1_figs1.R` - Manhattan/QQ (Fig S1) and
-  Fig S16 panels re-rendered so that no label falls below 7 pt
+  the `FigS16a/b/c` panels (printed Supplementary Fig. S17) re-rendered so that no label falls
+  below 7 pt
 - upstream versions kept for provenance: `scripts/generate_manuscript_figures.R`,
   `scripts/73_export_fig1a_panel.py` (TikZ concept panel of Fig 1a), `scripts/fig5a_regen.R`,
   `scripts/63_fig5b_upset.R`
 - `scripts/trim_figs.py`, `scripts/split_docs.py`, `scripts/fix_cap.py`, `scripts/fix_supp.py` -
   manuscript and caption housekeeping
+- `scripts/80_build_supp_figures.py` - builds one combined `FigureS1`-`FigureS22` PDF and TIFF
+  per supplementary figure from the panel PDFs in `results/figures_rev3/`
+- `scripts/78b_build_composites_v2.py` - assembles the five main figures at the final printed
+  width (170 mm) and adds the bold panel letters
 
 ## Submission files
 
 - `scripts/91_build_submission_figures.py` - builds one combined PDF per figure
-  (`Figure1`-`Figure5`, `FigureS1`-`FigureS19`) into `submission/figures/`, for journals
+  (`Figure1`-`Figure5`, `FigureS1`-`FigureS22`) into `submission/figures/`, for journals
   that require multi-panel figures as a single file. Not used for this submission: JTM
   requires the individual panels plus the author-assembled figure. Panel letters (a), (b), (c) are
   preserved; captions are not embedded. Set `ONLY=Figure3,Figure5` to rebuild a subset.
@@ -108,7 +113,7 @@ figure sources.
 ## Reproducing the build
 
 Figures, then the two documents. They are independent: the main text quotes the
-supplementary item numbers literally (Supplementary Fig. S1-S19, Table S1-S10) instead of
+supplementary item numbers literally (Supplementary Fig. S1-S22, Table S1-S10) instead of
 reading the supplement's .aux file, so either document can be compiled on its own.
 
 1. main-figure panels: `Rscript scripts/rev8_fig1.R` (then `rev8_fig2.R` ... `rev8_fig5.R`)
@@ -137,37 +142,42 @@ Figures are resolved through
 |---|---|---|
 | Fig 1a | Fig1a_conceptual_overview.pdf | `rev8_fig1.R` |
 | Fig 1b | Fig1b_study_design.pdf | `rev8_fig1.R` |
-| Fig 1c | Fig1c_coloc_pph4.pdf | `rev8_fig1.R` |
 | Fig 2a | Fig2a_coverage_funnel.pdf | `rev8_fig2.R` |
 | Fig 2b | Fig2b_eqtl_pqtl_classification.pdf | `rev8_fig2.R` |
 | Fig 2c | Fig2c_eqtl_pqtl_scatter.pdf | `rev8_fig2.R` |
 | Fig 3a | Fig3a_ccm2_convergence.pdf | `rev8_fig3.R` |
-| Fig 3b | Fig3b_gtex_colon_scatter.pdf | `rev8_fig3.R` |
-| Fig 3c | Fig3c_gtex_colon_forest.pdf | `rev8_fig3.R` |
+| Fig 3b | Fig3c_gtex_colon_forest.pdf | `rev8_fig3.R` |
 | Fig 4a | Fig4a_idg_druggability.pdf | `rev8_fig4.R` |
 | Fig 4b | Fig4b_phewas_safety.pdf | `rev8_fig4.R` |
-| Fig 4c | Fig4c_drug_repurposing.pdf | `rev8_fig4.R` |
 | Fig 5a | Fig5a_competitor_overlap.pdf | `rev8_fig5.R` |
-| Fig 5b | Fig5b_gene_overlap_venn.pdf | `rev8_fig5.R` |
+| Fig 5b | Fig5b_gene_overlap_upset.pdf | `rev8_fig5.R` |
+
+Panels that are no longer part of a main figure ship as supplementary items: `Fig1c`
+-> Fig S2, `Fig3b` (scatter) -> Fig S18, `Fig4c` -> Fig S22. Panel file names are
+legacy; the printed panel letter is fixed by the composite layout
+(`scripts/78b_build_composites_v2.py`).
 | Fig S1 | FigS1a_manhattan.pdf, FigS1b_qq_plot.pdf | `71_regen_small_text.R` |
-| Fig S2 | FigS2_tier1_regional_plots.pdf | `rev3_main_figures.R` |
-| Fig S3 | FigS3_susie_sensitivity.pdf | `rev3_main_figures.R` |
-| Fig S4 | FigS4_smr_or_forest.pdf | `rev3_main_figures.R` |
-| Fig S5 | FigS5_mr_sensitivity.pdf | `rev3_main_figures.R` |
-| Fig S6 | FigS6_ukbppp_pqtl_coloc.pdf | `rev3_main_figures.R` |
-| Fig S7 | FigS7_decode_pqtl_coloc.pdf | `rev3_main_figures.R` |
-| Fig S8 | FigS8_pqtl_mr_decode_forest.pdf | `rev3_main_figures.R` |
-| Fig S9 | FigS9_pqtl_mr_ukbppp_forest.pdf | `rev3_main_figures.R` |
-| Fig S10 | FigS10_pqtl_mr_scatter.pdf | `rev3_main_figures.R` |
-| Fig S11 | FigS11_pqtl_mr_loo.pdf | `rev3_main_figures.R` |
-| Fig S12 | FigS12_pqtl_mr_methods_forest.pdf | `figS26S27_regen.R` |
-| Fig S13 | FigS13_pqtl_mr_funnel_pleiotropy.pdf | `figS26S27_regen.R` |
-| Fig S14 | FigS14_celltype_dotplot.pdf | `79_regen_S14_dotplot.R` |
-| Fig S15 | FigS15_spatial_tier1_genes.pdf | `rev3_main_figures.R` |
-| Fig S16 | FigS16a/b/c (elbow, ME-zone bar, ME Tier-1 heatmap) | `71_regen_small_text.R` |
-| Fig S17 | FigS17_finngen_replication_forest.pdf | `rev3_main_figures.R` |
-| Fig S18 | FigS18_idg_druggability.pdf | `rev3_main_figures.R` |
-| Fig S19 | FigS19_phewas_safety_scores.pdf | `rev3_main_figures.R` |
+| Fig S2 | FigS_add_coloc_all_pairs.pdf | `rev8_fig1.R` |
+| Fig S3 | FigS2_tier1_regional_plots.pdf | `rev3_main_figures.R` |
+| Fig S4 | FigS3_susie_sensitivity.pdf | `rev3_main_figures.R` |
+| Fig S5 | FigS4_smr_or_forest.pdf | `rev3_main_figures.R` |
+| Fig S6 | FigS5_mr_sensitivity.pdf | `rev3_main_figures.R` |
+| Fig S7 | FigS6_ukbppp_pqtl_coloc.pdf | `rev3_main_figures.R` |
+| Fig S8 | FigS7_decode_pqtl_coloc.pdf | `rev3_main_figures.R` |
+| Fig S9 | FigS8_pqtl_mr_decode_forest.pdf | `rev3_main_figures.R` |
+| Fig S10 | FigS9_pqtl_mr_ukbppp_forest.pdf | `rev3_main_figures.R` |
+| Fig S11 | FigS10_pqtl_mr_scatter.pdf | `rev3_main_figures.R` |
+| Fig S12 | FigS11_pqtl_mr_loo.pdf | `rev3_main_figures.R` |
+| Fig S13 | FigS12_pqtl_mr_methods_forest.pdf | `figS26S27_regen.R` |
+| Fig S14 | FigS13_pqtl_mr_funnel_pleiotropy.pdf | `figS26S27_regen.R` |
+| Fig S15 | FigS14_celltype_dotplot.pdf | `79_regen_S14_dotplot.R` |
+| Fig S16 | FigS15_spatial_tier1_genes.pdf | `rev3_main_figures.R` |
+| Fig S17 | FigS16a/b/c (elbow, ME-zone bar, ME Tier-1 heatmap) | `71_regen_small_text.R` |
+| Fig S18 | FigS_add_gtex_scatter.pdf | `rev8_fig3.R` |
+| Fig S19 | FigS17_finngen_replication_forest.pdf | `rev3_main_figures.R` |
+| Fig S20 | FigS18_idg_druggability.pdf | `rev3_main_figures.R` |
+| Fig S21 | FigS19_phewas_safety_scores.pdf | `rev3_main_figures.R` |
+| Fig S22 | FigS_add_drug_repurposing.pdf | `rev8_fig4.R` |
 | Table 1 | Table1_tier1_genes.tex | `rev3_tables.R` |
 | Table 2 | Table2_pqtl_coverage.tex | `rev3_tables.R` |
 | Table 3 | Table3_mr_sensitivity.tex | `rev3_tables.R` |

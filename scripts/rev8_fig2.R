@@ -40,14 +40,14 @@ stopifnot(n_coding == 62, length(measured) == 15, length(extra) == 2,
 
 wrap_lab <- function(x, w) paste(strwrap(x, width = w), collapse = "\n")
 fun <- data.frame(
-  y  = c(35, 25, 15, 6.5),
+  y  = c(110, 80, 50, 20),
   n  = c(n_coding, length(measured), sum(with_inst %in% measured), 1),
   head = c("Protein-coding genes",
            "With plasma protein measurement",
-           "With genome-wide significant cis-pQTL instruments",
+           "With cis-pQTL instruments",
            "With pQTL-GWAS colocalization"),
   detail = c("of 75 genes passing Bonferroni-corrected SMR (p < 3.21e-6)",
-             sprintf("deCODE %d + UKB-PPP %d, %d measured in both; adding the 2 TNF-pathway genes outside the Bonferroni set gives a 17-gene analysis set",
+             sprintf("deCODE %d + UKB-PPP %d (%d in both); plus 2 TNF-pathway genes outside the Bonferroni set = 17-gene analysis set",
                      length(intersect(dec, coding)), length(intersect(ukb, coding)), length(intersect(dec, ukb))),
              sprintf("%d of these 15; %d of the 17-gene analysis set",
                      n_inst_meas, sum(with_inst %in% all_meas)),
@@ -55,28 +55,24 @@ fun <- data.frame(
   fill = c(COL$genetic, "#5C8FC0", COL$protein, COL$alert),
   stringsAsFactors = FALSE)
 stopifnot(fun$n == c(62, 15, 7, 1))
-fun$detail <- vapply(fun$detail, wrap_lab, character(1), w = 66)
-fun$pct <- sprintf("%d%% of 62", round(100 * fun$n / 62))
-fun$bar <- 26 * fun$n / 62
-note <- wrap_lab(paste0("Five of the six core Tier 1 candidates have no protein measurement in either panel; ",
-                        "BMP2 is measured but carries no cis-pQTL instruments."), 150)
+fun$detail <- vapply(fun$detail, wrap_lab, character(1), w = 120)
+fun$bar <- 84 * fun$n / 62
+# the "five of six have no protein measurement" sentence is already the first
+# line of the published panel-a legend, so it is not repeated inside the panel
 
 p2a <- ggplot(fun) +
-  geom_rect(aes(xmin = 0, xmax = bar, ymin = y - 0.8, ymax = y + 4.0, fill = fill), colour = NA) +
+  geom_rect(aes(xmin = 0, xmax = bar, ymin = y - 4.6, ymax = y + 4.6, fill = fill), colour = NA) +
   scale_fill_identity() +
-  geom_text(aes(x = bar + 1.4, y = y + 1.6, label = n), hjust = 0, size = sz(10.5),
+  geom_text(aes(x = bar + 2.2, y = y, label = n), hjust = 0, size = sz(9.6),
             fontface = "bold", colour = COL$ink) +
-  geom_text(aes(x = 34, y = y + 1.6, label = head), hjust = 0, size = sz(7.2),
+  geom_text(aes(x = 0, y = y + 10.4, label = head), hjust = 0, size = sz(6.9),
             fontface = "bold", colour = COL$ink) +
-  geom_text(aes(x = 34, y = y - 1.7, label = detail), hjust = 0, size = sz(6.2),
+  geom_text(aes(x = 0, y = y - 6.4, label = detail), hjust = 0, size = sz(6.0),
             colour = COL$ink3, lineheight = 0.95, vjust = 1) +
-  geom_text(aes(x = 99.5, y = y + 1.6, label = pct), hjust = 1, size = sz(6.2), colour = COL$ink3) +
-  annotate("text", x = 0, y = 0.4, hjust = 0, size = sz(6.2), colour = COL$ink2,
-           label = note, lineheight = 0.95) +
   scale_x_continuous(limits = c(0, 100), expand = c(0, 0)) +
-  scale_y_continuous(limits = c(0, 39.5), expand = c(0, 0)) +
-  theme_void() + theme(plot.margin = margin(4, 4, 3, 3))
-save_panel(p2a, file.path(outdir, "Fig2a_coverage_funnel.pdf"), mm_snap(169.69), mm_snap(67.03))
+  scale_y_continuous(limits = c(0, 126), expand = c(0, 0)) +
+  theme_void() + theme(plot.margin = margin(3, 3, 2, 3))
+save_panel(p2a, file.path(outdir, "Fig2a_coverage_funnel.pdf"), mm_snap(169.69), mm_snap(60))
 
 # ============================================================
 #  Figure 2b -- can the protein layer be tested at all?
@@ -104,39 +100,39 @@ stopifnot(sum(tab$n[tab$cls == "A"]) == 4, sum(tab$n[tab$cls == "B"]) == 1,
           sum(tab$n[tab$cls == "C"]) == 4, sum(tab$n[tab$cls == "D"]) == 8,
           sum(tab$n) == 17)
 genes_of <- function(k) {
-  g <- sort(con$SYMBOL[con$cls == k]); paste(strwrap(paste(g, collapse = ", "), width = 36),
+  g <- sort(con$SYMBOL[con$cls == k]); paste(strwrap(paste(g, collapse = ", "), width = 58),
                                              collapse = "\n") }
 tab$genes <- vapply(tab$cls, genes_of, character(1))
-tab$y  <- c(33.5, 27.3, 21.1, 5.5)
-tab$bar <- 20 * tab$n / 17
+tab$y  <- c(98, 74, 50, 20)
+tab$bar <- 84 * tab$n / 17
 tab$lbl <- sprintf("%d  (%.0f%%)", tab$n, 100 * tab$n / 17)
-tab$short <- c("A  pQTL concordant\n    and significant",
-               "B  pQTL discordant\n    and significant",
-               "C  cis-pQTL tested,\n    not significant",
-               "D  no cis-pQTL\n    instrument")
+tab$short <- c("A  pQTL concordant and significant",
+               "B  pQTL discordant and significant",
+               "C  cis-pQTL tested, not significant",
+               "D  no cis-pQTL instrument available")
 
 p2b <- ggplot(tab) +
-  annotate("rect", xmin = 0, xmax = 100, ymin = 15, ymax = 39.5,
+  annotate("rect", xmin = 0, xmax = 100, ymin = 40, ymax = 112,
            fill = COL$tint_blue, colour = NA) +
-  annotate("rect", xmin = 0, xmax = 100, ymin = 0, ymax = 13.5,
+  annotate("rect", xmin = 0, xmax = 100, ymin = 0, ymax = 31,
            fill = COL$tint_amb, colour = NA) +
-  annotate("text", x = 0, y = 41.5, hjust = 0, size = sz(6.8), fontface = "bold",
+  annotate("text", x = 0, y = 114, hjust = 0, size = sz(6.7), fontface = "bold",
            colour = COL$ink, label = "cis-pQTL instrument available: 9 of 17 genes") +
-  annotate("text", x = 0, y = 11.5, hjust = 0, size = sz(6.8), fontface = "bold",
+  annotate("text", x = 0, y = 33.5, hjust = 0, size = sz(6.7), fontface = "bold",
            colour = COL$ink, label = "not testable at the protein layer: 8 of 17 genes") +
-  geom_rect(aes(xmin = 32.5, xmax = 32.5 + bar, ymin = y - 2.1, ymax = y + 2.1, fill = fill),
+  geom_rect(aes(xmin = 0, xmax = bar, ymin = y - 3.6, ymax = y + 3.6, fill = fill),
             colour = NA) +
   scale_fill_identity() +
-  geom_text(aes(x = 54, y = y, label = lbl), hjust = 0, size = sz(7.6),
+  geom_text(aes(x = bar + 2.2, y = y, label = lbl), hjust = 0, size = sz(7.4),
             fontface = "bold", colour = COL$ink) +
-  geom_text(aes(x = 29, y = y, label = short), hjust = 1, size = sz(6.5),
-            colour = COL$ink2, lineheight = 0.95) +
-  geom_text(aes(x = 63, y = y, label = genes), hjust = 0, size = sz(6.2),
+  geom_text(aes(x = 0, y = y + 8.4, label = short), hjust = 0, size = sz(6.3),
+            colour = COL$ink2) +
+  geom_text(aes(x = 0, y = y - 5.2, label = genes), hjust = 0, vjust = 1, size = sz(6.0),
             colour = COL$ink3, lineheight = 0.95) +
   scale_x_continuous(limits = c(0, 100), expand = c(0, 0)) +
-  scale_y_continuous(limits = c(0, 43), expand = c(0, 0)) +
-  theme_void() + theme(plot.margin = margin(4, 4, 3, 3))
-save_panel(p2b, file.path(outdir, "Fig2b_eqtl_pqtl_classification.pdf"), mm_snap(169.69), mm_snap(77.96))
+  scale_y_continuous(limits = c(0, 122), expand = c(0, 0)) +
+  theme_void() + theme(plot.margin = margin(3, 3, 2, 3))
+save_panel(p2b, file.path(outdir, "Fig2b_eqtl_pqtl_classification.pdf"), mm_snap(83.05), mm_snap(95))
 
 # ============================================================
 #  Figure 2c -- effect sizes in the two layers
@@ -185,8 +181,9 @@ p2c <- ggplot(both) +
   scale_y_continuous(limits = YL, expand = c(0, 0)) +
   labs(x = "eQTL SMR effect size b (blood, per SD of expression)",
        y = "pQTL Wald ratio b (plasma, per SD of protein)") +
-  th + theme(legend.position = "bottom", legend.box = "horizontal",
+  th + theme(legend.position = "bottom", legend.box = "vertical",
+             legend.box.just = "left", legend.spacing.y = unit(1.5, "pt"),
              plot.margin = margin(4, 8, 3, 4))
-save_panel(p2c, file.path(outdir, "Fig2c_eqtl_pqtl_scatter.pdf"), mm_snap(169.69), mm_snap(145.34))
+save_panel(p2c, file.path(outdir, "Fig2c_eqtl_pqtl_scatter.pdf"), mm_snap(83.05), mm_snap(95))
 
 cat("\n== rev8 Figure 2 done ==\n")
